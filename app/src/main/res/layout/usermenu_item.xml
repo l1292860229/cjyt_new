@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/usermenu_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="@color/white" >
+        <TextView
+            android:id="@+id/usermenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="自定义菜单"
+            android:textColor="@color/application_black"
+            android:textSize="18dp" />
+        <TextView
+            android:layout_below="@+id/usermenu"
+            android:id="@+id/usermenuurl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="自定义url"
+            android:lines="1"
+            android:textColor="@color/text_color"
+            android:textSize="12dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/deep_gray_arrow" />
+    </RelativeLayout>
+
+</LinearLayout>

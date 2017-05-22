@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.coolwin.XYT.widget.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/title_layout" />
+
+    <com.coolwin.XYT.widget.ResizeLayout
+        android:id="@+id/listlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1.0"
+        android:scrollbars="none">
+
+        <ListView
+            android:id="@+id/chat_main_list_msg"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:cacheColorHint="@null"
+            android:divider="@null"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="true"
+            android:focusable="true"
+            android:listSelector="@drawable/transparent_selector"
+            android:scrollbars="none" />
+    </com.coolwin.XYT.widget.ResizeLayout>
+
+    <include layout="@layout/chat_box"/>
+    <include layout="@layout/chat_box_expra" />
+    <include layout="@layout/emoji_layout" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible" >
+        <TextView
+            android:id="@+id/jinyan"
+            android:layout_width="fill_parent"
+            android:layout_height="38dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/message_edit_bg"
+            android:lines="1"
+            android:gravity="center"
+            android:text="楼主禁言中"
+            android:paddingLeft="10.0dp"
+            android:paddingRight="8.0dp"
+            android:textSize="20dp"
+            android:visibility="gone">
+        </TextView>
+    </RelativeLayout>
+</com.coolwin.XYT.widget.ResizeLayout>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/title_layout" />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="5dp" >
+            <RelativeLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp" >
+                <TextView
+                    android:id="@+id/bbstitle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="主题"
+                    android:textColor="@color/application_black"
+                    android:textSize="25dp" />
+                <TextView
+                    android:id="@+id/bbscontent"
+                    android:layout_below="@id/bbstitle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="内容"
+                    android:textColor="@color/application_deep_gray_black"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/bbs_eweima"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:background="@drawable/double_splite"
+                android:orientation="horizontal"
+                android:padding="5dip"
+                android:visibility="gone" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/bbs_eweima"
+                    android:textColor="@color/application_black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/getmsglayout"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:background="@drawable/double_splite"
+                android:orientation="horizontal"
+                android:padding="5dip"
+                android:visibility="gone" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="新消息提醒"
+                    android:textColor="@color/application_black"
+                    android:textSize="16sp" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+                    <ToggleButton
+                        android:id="@+id/getmsg_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/selector_butn_toggle"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn=""
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/bbs_setting_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:layout_marginTop="3dip"
+                android:background="@drawable/double_splite"
+                android:orientation="vertical"
+                android:visibility="visible" >
+                <LinearLayout
+                    android:id="@+id/bbs_close_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:background="@drawable/single_splite"
+                    android:orientation="horizontal"
+                    android:padding="5dip"
+                    android:visibility="visible" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/is_close_bbs"
+                        android:textColor="@color/application_black"
+                        android:textSize="16sp" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent" >
+                        <ImageView
+                            android:id="@+id/tip_message_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/deep_gray_arrow"
+                            android:visibility="gone"
+                            android:contentDescription="@string/desc" />
+
+                        <ToggleButton
+                            android:id="@+id/bbs_close_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:layout_toLeftOf="@+id/tip_message_arrow"
+                            android:background="@drawable/selector_butn_toggle"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/top_chat_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:background="@drawable/single_splite"
+                    android:orientation="horizontal"
+                    android:padding="5dip"
+                    android:visibility="visible" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/is_not_speak"
+                        android:textColor="@color/application_black"
+                        android:textSize="16sp" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent" >
+
+                        <ImageView
+                            android:id="@+id/top_chat_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/deep_gray_arrow"
+                            android:contentDescription="@string/desc"
+                            android:visibility="gone" />
+
+                        <ToggleButton
+                            android:id="@+id/not_speak_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:layout_toLeftOf="@+id/top_chat_arrow"
+                            android:background="@drawable/selector_butn_toggle"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/visitors_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:background="@drawable/single_splite"
+                    android:orientation="horizontal"
+                    android:padding="5dip"
+                    android:visibility="gone" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/visitors"
+                        android:textColor="@color/application_black"
+                        android:textSize="16sp" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent" >
+                        <ToggleButton
+                            android:id="@+id/visitors_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/selector_butn_toggle"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/closefriendloop_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:background="@drawable/single_splite"
+                    android:orientation="horizontal"
+                    android:padding="5dip"
+                    android:visibility="gone" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/closefriedloop"
+                        android:textColor="@color/application_black"
+                        android:textSize="16sp" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent" >
+                        <ToggleButton
+                            android:id="@+id/closefriendloop_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/selector_butn_toggle"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/not_speak_persion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/single_splite"
+                    android:gravity="center_vertical"
+                    android:padding="5dip"
+                    android:text="@string/find_not_speak_persion"
+                    android:textColor="@color/application_black"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/join_persion"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/single_splite"
+                    android:gravity="center_vertical"
+                    android:padding="5dip"
+                    android:text="@string/join_presion"
+                    android:textColor="@color/application_black"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/set_money"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/single_splite"
+                    android:gravity="center_vertical"
+                    android:padding="5dip"
+                    android:text="@string/set_money"
+                    android:textColor="@color/application_black"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/set_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/single_splite"
+                    android:gravity="center_vertical"
+                    android:padding="5dip"
+                    android:text="@string/set_title"
+                    android:textColor="@color/application_black"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/set_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/single_splite"
+                    android:gravity="center_vertical"
+                    android:padding="5dip"
+                    android:text="@string/set_content"
+                    android:textColor="@color/application_black"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

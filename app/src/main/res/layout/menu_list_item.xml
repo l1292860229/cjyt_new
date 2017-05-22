@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/grouplayout"
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        android:background="#efeff4"
+        android:visibility="gone" >
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="#ffffff"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/image_url"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp" />
+        <TextView
+            android:id="@+id/titlecontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/image_url"
+            android:layout_marginLeft="20dp"
+            android:text="小鱼圈"
+            android:textColor="#000000"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/friends_message_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/message_count_bg"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="1"
+            android:textSize="11dp" />
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="12dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/navigate_next"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/grouplayoutbottom"
+        android:layout_width="fill_parent"
+        android:layout_height="26dp"
+        android:background="#efeff4"
+        android:visibility="gone" >
+    </RelativeLayout>
+</LinearLayout>

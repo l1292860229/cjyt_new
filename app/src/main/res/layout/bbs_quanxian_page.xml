@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/title_layout" />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="5dp" >
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:layout_marginTop="3dip"
+                android:background="@drawable/double_splite"
+                android:orientation="vertical"
+                android:visibility="visible" >
+                <LinearLayout
+                    android:id="@+id/userinfo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:background="@drawable/single_splite"
+                    android:orientation="horizontal"
+                    android:padding="5dip"
+                    android:visibility="visible" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="查看资料"
+                        android:textColor="@color/application_black"
+                        android:textSize="16sp" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent" >
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/deep_gray_arrow"
+                            android:visibility="visible" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/bbs_close_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:background="@drawable/single_splite"
+                    android:orientation="horizontal"
+                    android:padding="5dip"
+                    android:visibility="visible" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="是否为管理员"
+                        android:textColor="@color/application_black"
+                        android:textSize="16sp" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent" >
+                        <ImageView
+                            android:id="@+id/tip_message_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/deep_gray_arrow"
+                            android:visibility="gone"
+                            android:contentDescription="@string/desc" />
+
+                        <ToggleButton
+                            android:id="@+id/is_quanguan_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:layout_toLeftOf="@+id/tip_message_arrow"
+                            android:background="@drawable/selector_butn_toggle"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/delchat_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dip"
+                    android:background="@drawable/single_splite"
+                    android:orientation="horizontal"
+                    android:padding="5dip"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="是否允许删除聊天内容"
+                        android:textColor="@color/application_black"
+                        android:textSize="16sp" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent" >
+
+                        <ImageView
+                            android:id="@+id/top_chat_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/deep_gray_arrow"
+                            android:contentDescription="@string/desc"
+                            android:visibility="gone" />
+
+                        <ToggleButton
+                            android:id="@+id/is_delchat_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15dp"
+                            android:layout_toLeftOf="@+id/top_chat_arrow"
+                            android:background="@drawable/selector_butn_toggle"
+                            android:text=""
+                            android:textOff=""
+                            android:textOn=""
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                android:id="@+id/deldynamic_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:background="@drawable/single_splite"
+                android:orientation="horizontal"
+                android:padding="5dip"
+                android:visibility="gone" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="是否允许删除动态内容"
+                    android:textColor="@color/application_black"
+                    android:textSize="16sp" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent" >
+                    <ToggleButton
+                        android:id="@+id/is_deldynamic_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/selector_butn_toggle"
+                        android:text=""
+                        android:textOff=""
+                        android:textOn=""
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/del_user"
+                android:layout_marginTop="20dp"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:background="@drawable/double_splite"
+                android:orientation="horizontal"
+                android:padding="5dip"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="踢出该用户"
+                    android:textColor="@color/application_black"
+                    android:textSize="18sp"
+                    android:id="@+id/textView" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

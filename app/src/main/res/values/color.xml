@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="friend_loop_item_line_color">#efeff4</color>
+    <color name="picred">#FF4A51</color>
+    <color name="gray">#e0e0e0</color>
+    <color name="text_black">#3e3e3e</color>
+    <color name="common_botton_bar_blue">#46c01b</color>
+    <color name="bottom_bar_normal_bg">#fcfcfc</color>
+    <color name="backgroud_color">#e9e9e9</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="select_system_text_color">#b7b7b7</color>
+    <color name="text_color">#777777</color>
+    <color name="tab_text_n_color">#E5D16D</color>
+    <color name="listview_foucs">#80dedede</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="chat_username_text_color">#111111</color>
+    <color name="high_lighted_color">#C4E0F5</color>
+    <color name="login_icon_bg">#005ead</color>
+    <color name="website_color">#a2e5ff</color>
+    <color name="product_status">#FF6600</color>
+    <color name="about_website_color">#0096ff</color>
+    <color name="search_dialog_bg">#b0000000</color>
+    <color name="order_title_color">#333333</color>
+    <color name="order_item_hint_color">#999999</color>
+    <color name="gray_black">#1e1e1e</color>
+
+    <color name="font_color">#2d2d2d</color>
+    <color name="main_menu_selected_color">#161316</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+     <color name="green">#008000</color><!--绿色 -->
+    <color name="biaoqian_textcolor">#f2658d</color>
+    <color name="albumback">#E1E0DE</color>
+    <color name="none_color">#00000000</color>
+    <!-- 返回按钮背景 -->
+     <color name="editor_text_color">#808080</color>
+     <color name="editor_hint_color">#777777</color>
+     <color name="text_title_color">#656565</color>
+     <!-- application  color -->
+     <color name="application_black">#101010</color>
+    <color name="friendloop_botton_select">#ef8318</color>
+     <color name="application_deep_gray_black">#828282</color>
+     <!-- 一般指时间 -->
+     <color name="application_gray_black">#a7a7a7</color>
+    <color name="application_transparent_bg">#80000000</color>
+     <color name="application_friends_loop_user_name">#1f2f58</color>
+     <color name="application_friends_loop_user_name_lun">#5B6F98</color>
+     <color name="application_search_title_bg_color">#22292C</color>
+     <color name="application_gray">#EAEAEA</color>
+     <color name="application_my_album_select">#BEBEBE</color>
+
+</resources>

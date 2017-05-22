@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout"
+        android:id="@+id/title_layout"/>
+    <LinearLayout
+        android:layout_below="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/usermenulist"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/notmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="310dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="设置自定义菜单可在聊天窗口让对方看到,例如添加&#034;公司首页&#034;,好友打开你的聊天窗口则会看到,点击就可以到你设置的网页中去"
+            android:textSize="16dp"
+            android:textColor="@color/text_color"/>
+        <Button
+            android:id="@+id/addusermenu"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:text="马上添加"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:background="@color/product_status"
+            android:textColor="@color/white"
+            android:textSize="16dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/cancreatecount"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20dp"
+            android:textColor="@color/text_color"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+    <include
+        layout="@layout/title_layout"
+        android:id="@+id/title_layout"/>
+    <RelativeLayout
+        android:layout_below="@+id/title_layout"
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e9e9e9" >
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout"
+        android:id="@+id/title_layout"/>
+    <LinearLayout
+        android:layout_below="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/white">
+            <TextView
+                android:id="@+id/menunametext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="名称:"
+                android:textSize="18dp"/>
+            <EditText
+                android:id="@+id/menuname"
+                android:layout_toRightOf="@+id/menunametext"
+                android:layout_width="260dp"
+                android:layout_height="40dp"
+                android:background="@drawable/cirle_edit_bg"
+                android:hint="需要显示的名称"
+                android:textSize="16dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/white">
+            <TextView
+                android:id="@+id/menuurltext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="地址:"
+                android:textSize="18dp"/>
+            <EditText
+                android:id="@+id/menuurl"
+                android:layout_toRightOf="@+id/menuurltext"
+                android:layout_width="260dp"
+                android:layout_height="80dp"
+                android:background="@drawable/cirle_edit_bg"
+                android:lines="3"
+                android:hint="网络地址,一般写链接"
+                android:gravity="top|left"
+                android:textSize="16dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

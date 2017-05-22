@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '25.0.0'
+    defaultConfig {
+        applicationId "com.coolwin.XYT"
+        minSdkVersion 17
+        targetSdkVersion 22
+        versionCode 20170517
+        versionName "1.0.0"
+    }
+    dataBinding {
+        enabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:22+'
+    testCompile 'junit:junit:4.12'
+    compile files('libs/audio.jar')
+    compile files('libs/baidumapapi_v2_3_1.jar')
+    compile files('libs/fastjson-1.1.27-android.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/locSDK_3.1.jar')
+    compile files('libs/Msc.jar')
+    compile files('libs/pinyin4j-2.5.0.jar')
+    compile files('libs/TalkingData_AppAnalytics_Android_SDK_V2.3.53.jar')
+    compile files('libs/tbs_sdk.jar')
+    compile files('libs/zxing.jar')
+    compile files('libs/httpclient-4.2.5.jar')
+    compile files('libs/httpcore-4.2.4.jar')
+    compile files('libs/asmack.jar')
+}

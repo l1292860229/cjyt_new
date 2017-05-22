@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_box_layout_expra"
+    android:layout_width="fill_parent"
+    android:layout_height="220dp"
+    android:background="#efeff4"
+    android:gravity="center|left"
+    android:orientation="vertical"
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp"
+    android:visibility="gone" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/chat_box_expra_marginLeft"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:drawableTop="@drawable/carmera" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingLeft="@dimen/chat_box_expra"
+                android:textColor="#828282"
+                android:layout_below="@id/chat_box_expra_btn_camera"
+                android:text="相机"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/chat_box_expra_marginLeft"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:drawableTop="@drawable/gallery" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingLeft="@dimen/chat_box_expra"
+                android:textColor="#828282"
+                android:layout_below="@id/chat_box_expra_btn_picture"
+                android:text="相册"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/chat_box_expra_marginLeft"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_location"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:drawableTop="@drawable/location"
+                android:background="@null"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingLeft="@dimen/chat_box_expra"
+                android:textColor="#828282"
+                android:layout_below="@id/chat_box_expra_btn_location"
+                android:text="定位"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/chat_box_expra_marginLeft"
+            android:layout_weight="1"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_card"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:drawableTop="@drawable/pink" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingLeft="@dimen/chat_box_expra"
+                android:textColor="#828282"
+                android:layout_below="@id/chat_box_expra_btn_card"
+                android:text="名片"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="2dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/chat_box_expra_marginLeft"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/chat_box_expra_btn_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:drawableTop="@drawable/file" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingLeft="@dimen/chat_box_expra"
+                android:textColor="#828282"
+                android:layout_below="@id/chat_box_expra_btn_favorite"
+                android:text="收藏"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/chat_box_expra_marginLeft"
+            android:layout_weight="1"
+            android:visibility="visible">
+            <Button
+                android:id="@+id/chat_box_expra_btn_video"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:drawableTop="@drawable/video" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="#828282"
+                android:layout_below="@id/chat_box_expra_btn_video"
+                android:text="小视频"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/redpacket_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/chat_box_expra_marginLeft"
+            android:layout_weight="1"
+            android:visibility="visible">
+            <Button
+                android:id="@+id/chat_box_expra_btn_redpacket"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:drawableTop="@drawable/rp_red_packet_records" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingLeft="@dimen/chat_box_expra"
+                android:textColor="#828282"
+                android:layout_below="@id/chat_box_expra_btn_redpacket"
+                android:text="红包"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/chat_box_expra_marginLeft"
+            android:layout_weight="1.01"
+            android:visibility="visible">
+    </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

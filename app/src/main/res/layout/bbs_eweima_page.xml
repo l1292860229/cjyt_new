@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/title_layout" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+            <ImageView
+                android:id="@+id/headsmall"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/contact_default_header"/>
+            <LinearLayout
+                android:id="@+id/group_header"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/room_header_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:visibility="gone">
+            </LinearLayout>
+        <TextView
+                android:id="@+id/bbs_title"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/headsmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="老司机开火车"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/bbs_content"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="老司机开火车"
+            android:maxWidth="120dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/text_color"
+            android:textSize="12dp"/>
+        <ImageView
+            android:id="@+id/bbs_eweima"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/contact_default_header"/>
+    </LinearLayout>
+</LinearLayout>

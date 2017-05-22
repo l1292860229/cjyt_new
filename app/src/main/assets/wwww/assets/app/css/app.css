@@ -1,0 +1,137 @@
+.appimg {
+	width: 64px;
+	height: 64px;
+	background-size: 100% 100%;
+	position: relative;
+}
+
+.demo-content{
+	width: auto;
+    height: auto;
+	margin: 10px;
+	text-align:center;
+}
+.demo-content span{
+	width: 50px;
+    height: 50px;
+    margin: 3px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 25px;
+}
+ul,li,ol{list-style: none; margin:0px;padding:0px;}
+
+.mygrid { margin:10px 0px;text-align: center; }
+.mygrid li{ display: inline-block;width:23%;height:60px;line-height:60px;text-align: center; border-radius: 8px;}
+.mygrid li a{ color:#fff;}
+
+.jiulist{ text-align: center; }
+.jiulist li{ display: inline-block;width: 48%;text-align: center;border:1px solid #ccc;margin:10px 0px;padding:10px;}
+.jiulist li img { width: 98%;min-height: 100px;}
+.jiulist li p { display:inline-block;width: 100%; white-space:nowrap;overflow: hidden;text-overflow: ellipsis; padding:0px 10px;}
+
+#detail li a{ text-align: left;}
+
+.xiangqing ul li{ text-align: left;}
+
+#myinfo { text-align: center; padding:60px 10px;}
+#myinfo img { width:100px;border-radius: 100px; margin-bottom:10px;}
+#myinfo p { line-height: 10px;}
+/*九宫控件*/
+.grid{
+    display:block;
+}
+
+/*九宫控件-单元格*/
+.grid-cell{
+	position:relative;
+	width:25%;
+	margin:8px 0;
+	text-align:center;
+	display:block;
+	float:left;
+	font-size:14px;
+}
+.grid[data-col="2"] .grid-cell{
+	width:50%;
+}
+.grid[data-col="3"] .grid-cell{
+	width:33.33%;
+}
+.grid[data-col="4"] .grid-cell{
+	width:25%;
+}
+.grid[data-col="5"] .grid-cell{
+	width:20%;
+}
+.card{
+	border-radius:4px;
+	margin:8px;
+	overflow:hidden;
+}
+
+.main-title {
+	line-height: 30px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 6px;
+}
+
+.category-menu{ width: 100px; height:100%;float: left; background: #fff;}
+.category-menu li{ display: block; width: 100%;line-height: 40px;border-bottom: 1px solid #fff; color: #000; }
+.category-menu li.active { background: #393939;color:#fff !important;}
+
+.category-submenu { display: none;float: right;width:160px;height: 100%;overflow-y: auto;}
+.category-submenu.active{display: block;}
+.category-submenu li{width: 100%;}
+.category-submenu li.category-leaf { line-height: 30px; text-align: right;color: #ccc;padding:4px;}
+.category-submenu li ol { display:inline-block; line-height:30px;font-size: 12px; width: 45%;text-align: center;white-space:nowrap;overflow: hidden;text-overflow: ellipsis;}
+
+.carts-item .media-body{ text-align: left;}
+.carts-item .media-object{ width: 50px;}
+.carts-item .carts-cal {border:1px solid #bdc3c7; border-radius: 4px;width:100px;height: 30px; text-align: center;}
+.carts-item .carts-cal span {vertical-align: middle;margin-bottom: -4px;display: inline-block;}
+.carts-item .carts-cal input {vertical-align: middle;width:40px;height: 100%;text-align: center;line-height: 30px;margin:0px;padding: 0px;border: none;outline:medium;}
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #bdc3c7;
+	border-collapse: collapse;
+	width: 100%;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #bdc3c7;
+	background-color: #ECF0F1;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #bdc3c7;
+	background-color: #ffffff;
+}
+table.gridtable select { width:80px;}
+table.gridtable input[type="button"],table.gridtable input[type="submit"] { width:45%;}
+
+.address-item {width: 100%;}
+.address-item li{ float:left; width:65%;text-align: left;}
+.address-item li input,.address-item li select{ height: 30px;}
+.address-item .address-title{ width: 35%;}
+.address-item .address-btn { width: 100%; text-align: center;margin-bottom: 40px;border-bottom: 1px solid #ccc;}
+.address-item .address-btn a { width: 45%;display: inline-block}
+.address-item li select { width: 25%;}
+
+#favorite_article .table-view li {padding-right:16px;}
+
+.content-tips{ padding:6px;border-radius: 15px;background: #ec4c3c;color: #fff;text-align: center;margin-bottom: 10px;}
+
+.city-item li{width:100%;}
+.city-item div{ width: 25%;float:left;line-height: 30px;}
