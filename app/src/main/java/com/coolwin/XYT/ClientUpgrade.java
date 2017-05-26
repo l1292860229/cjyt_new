@@ -130,6 +130,7 @@ public class ClientUpgrade {
 
 		return hasNewVer;
 	}
+	@Deprecated
 	public  boolean compareVersion(String local, String romote){
 		boolean isNewVersion = false;
 		try {

@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@null"
+    android:background="@color/item_background"
     android:cacheColorHint="@null"
     android:orientation="vertical"
     android:scrollbars="none">

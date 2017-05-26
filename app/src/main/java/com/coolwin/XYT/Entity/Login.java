@@ -101,6 +101,8 @@ public class Login implements Serializable {
 	public String remark; //备注名
 	public String urltitle;//中间按钮提示信息
 
+	public String isattest;
+
 	/*public int isfollow;
 	public int followers;
 	public int fansers;*/
@@ -347,6 +349,9 @@ public class Login implements Serializable {
 			}
 			if(!json.isNull("telephone")){
 				telephone = json.getString("telephone");
+			}
+			if(!json.isNull("isattest")){
+				isattest = json.getString("isattest");
 			}
 			picList = new ArrayList<Picture>();
 			if(!json.isNull("picture1")){

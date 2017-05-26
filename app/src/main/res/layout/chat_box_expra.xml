@@ -3,7 +3,7 @@
     android:id="@+id/chat_box_layout_expra"
     android:layout_width="fill_parent"
     android:layout_height="220dp"
-    android:background="#efeff4"
+    android:background="@color/item_background"
     android:gravity="center|left"
     android:orientation="vertical"
     android:paddingBottom="15dp"

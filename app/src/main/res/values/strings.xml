@@ -70,9 +70,7 @@
     <string name="fenxiang">分享</string>
     <string name="set_feedback">反馈意见</string>
     <string name="help">帮助中心</string>
-    <string name="about_us">关于小鱼塘</string>
     <string name="select">选择</string>
-    <string name="setting">设置</string>
     <string name="just_now">刚刚</string>
     <string name="hour">小时</string>
     <string name="minutes">分</string>
@@ -205,7 +203,7 @@
     <string name="comment">评论</string>
     <string name="favorite">收藏</string>
     <string name="share">发布</string>
-    <string name="bbs">发起</string>
+    <string name="bbs">创建</string>
     <string name="friends_loop">小鱼圈</string>
     <string name="bbs_loop">鱼塘</string>
     <string name="say_something">说点儿什么吧......</string>
@@ -276,7 +274,7 @@
     <string name="detail_material">详细资料</string>
     <string name="prohibition_material">禁言表</string>
     <string name="bbs_join_persion">申请人表</string>
-    <string name="bbs_persion">鱼塘成员表</string>
+    <string name="bbs_persion">成员表</string>
     <string name="favorite_detail">收藏详细</string>
     <string name="detail">详情</string>
     <string name="message">消息</string>

@@ -102,7 +102,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingTab"
+            android:name=".activity.SettingTabActivity"
             android:label="@string/ochat_app_name"
              android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
@@ -179,7 +179,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name=".activity.AboutActivity"
             android:configChanges="locale|orientation"
             android:label="@string/ochat_app_name"
             android:screenOrientation="portrait" >
@@ -739,6 +739,9 @@
         </activity>
         <activity
             android:name=".ChatMainBbsActivity" >
+        </activity>
+        <activity
+            android:name=".activity.CertificationActivity" >
         </activity>
         <service
             android:name=".service.SnsService"

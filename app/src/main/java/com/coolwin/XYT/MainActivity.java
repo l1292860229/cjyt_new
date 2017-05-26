@@ -32,32 +32,33 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.coolwin.XYT.DB.DBHelper;
-import com.coolwin.XYT.DB.MessageTable;
 import com.coolwin.XYT.DB.SessionTable;
 import com.coolwin.XYT.Entity.Login;
 import com.coolwin.XYT.Entity.Version;
 import com.coolwin.XYT.Entity.VersionInfo;
 import com.coolwin.XYT.exception.ExceptionHandler;
-import com.coolwin.XYT.fragment.BbsListFragment;
 import com.coolwin.XYT.fragment.ChatFragment;
 import com.coolwin.XYT.fragment.FatherContactsFragment;
 import com.coolwin.XYT.fragment.FoundFragment;
+import com.coolwin.XYT.fragment.FriensLoopFragment;
+import com.coolwin.XYT.fragment.MyBbsListFragment;
 import com.coolwin.XYT.fragment.ProfileFragment;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
-import com.coolwin.XYT.global.GlobleType;
 import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.net.IMException;
 import com.coolwin.XYT.receiver.NotifySystemMessage;
@@ -113,13 +114,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	/**
 	 * 聊天界面的Fragment
 	 */
-	private ChatFragment chatFragment;
-
+	//private ChatFragment chatFragment;
+	private MyBbsListFragment myBbsListFragment;
 	/**
 	 * 发现界面的Fragment
 	 */
 	private FoundFragment foundFragment;
-	private BbsListFragment bbsListFragment;
+	//private BbsListFragment bbsListFragment;
+	private FriensLoopFragment friensLoopFragment;
 	/**
 	 * 通讯录界面的Fragment
 	 */
@@ -165,7 +167,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			//透明状态栏
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			//透明导航栏
-			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+			//getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 		}
 		mContext = this;
 		if(IMCommon.getLoginResult(mContext) == null ||IMCommon.getLoginResult(mContext).nickname==null){
@@ -173,8 +175,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			startActivityForResult(intent, GlobalParam.LOGIN_REQUEST);
 		}else {
 			loginXMPP();
-			sessionPromptUpdate();
-			Intent intent = new Intent(GlobalParam.ACTION_SHOW_FOUND_NEW_TIP);
+			//sessionPromptUpdate();
+			Intent
+					intent = new Intent(GlobalParam.ACTION_SHOW_FOUND_NEW_TIP);
 			intent.putExtra("found_type", 1);
 			mContext.sendBroadcast(intent);
 			int friendsLoopTip = IMCommon.getFriendsLoopTip(mContext);
@@ -196,12 +199,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mTabs[3] = (RelativeLayout) findViewById(R.id.btn_find);
 		mTabs[4] = (RelativeLayout) findViewById(R.id.btn_profile);
 		mTabs[0].setSelected(true);
-		chatFragment = new ChatFragment();
+		myBbsListFragment = new MyBbsListFragment();
 		foundFragment = new FoundFragment();
-		bbsListFragment = new BbsListFragment();
+		friensLoopFragment = new FriensLoopFragment();
 		profileFragment = new ProfileFragment();
 		fatherContactsFragment = new FatherContactsFragment();
-		fragments = new Fragment[]{chatFragment,  fatherContactsFragment,bbsListFragment,foundFragment, profileFragment};
+		fragments = new Fragment[]{myBbsListFragment,  fatherContactsFragment,friensLoopFragment,foundFragment, profileFragment};
 		if (!fragments[0].isAdded()) {
 			getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragments[0])
 					.show(fragments[0]).commit();
@@ -327,7 +330,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	/**
 	 * 自定义titlebar
 	 */
-	TextView leftTitle;
+//	TextView leftTitle;
 	public void setActionBarLayout(){
 		mTitleLayout = (RelativeLayout)findViewById(R.id.title_layout);
 		mTitleView = (TextView)findViewById(R.id.title);
@@ -338,17 +341,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mAddBtn.setVisibility(View.VISIBLE);
 		//mSearchBtn.setOnClickListener(this);
 		mAddBtn.setOnClickListener(this);
-		leftTitle = (TextView)findViewById(R.id.left_title);
-		leftTitle.setText("忽略未读");
-		leftTitle.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				MessageTable messageTable = new MessageTable(DBHelper.getInstance(mContext).getWritableDatabase());
-				messageTable.updateRead();
-				sessionPromptUpdate();
-				sendBroadcast(new Intent(GlobalParam.SWITCH_LANGUAGE_ACTION));
-			}
-		});
+//		leftTitle = (TextView)findViewById(R.id.left_title);
+//		leftTitle.setText("忽略未读");
+//		leftTitle.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				MessageTable messageTable = new MessageTable(DBHelper.getInstance(mContext).getWritableDatabase());
+//				messageTable.updateRead();
+//				sessionPromptUpdate();
+//				sendBroadcast(new Intent(GlobalParam.SWITCH_LANGUAGE_ACTION));
+//			}
+//		});
 	}
 
 	
@@ -481,16 +484,16 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragments[0])
 						.show(fragments[0]).commit();
 			}else if(GlobalParam.ACTION_UPDATE_SESSION_COUNT.equals(action)){//消息未读消息数
-				sessionPromptUpdate();
+				//sessionPromptUpdate();
 			}
 			else if(GlobalParam.ACTION_LOGIN_OUT.equals(action)){//却换用户登陆
 				index=0;
-				chatFragment = new ChatFragment();
+				myBbsListFragment = new MyBbsListFragment();
 				foundFragment = new FoundFragment();
-				bbsListFragment = new BbsListFragment();
+				friensLoopFragment = new FriensLoopFragment();
 				profileFragment = new ProfileFragment();
 				fatherContactsFragment = new FatherContactsFragment();
-				fragments = new Fragment[]{chatFragment, fatherContactsFragment,bbsListFragment,foundFragment, profileFragment};
+				fragments = new Fragment[]{myBbsListFragment, fatherContactsFragment,friensLoopFragment,foundFragment, profileFragment};
 				try {
 					mTimer.cancel();
 				} catch (Exception e) {
@@ -539,17 +542,17 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 
 	//显示未读显示数
-	public void sessionPromptUpdate(){
-		SQLiteDatabase db = DBHelper.getInstance(mContext).getReadableDatabase();
-		SessionTable table = new SessionTable(db);
-		int count = table.querySessionCount(GlobleType.BBS_CHAT);
-		if(count>0){
-			findViewById(R.id.unread_msg_number).setVisibility(View.VISIBLE);
-			((TextView)findViewById(R.id.unread_msg_number)).setText(count+"");
-		}else{
-			findViewById(R.id.unread_msg_number).setVisibility(View.GONE);
-		}
-	}
+//	public void sessionPromptUpdate(){
+//		SQLiteDatabase db = DBHelper.getInstance(mContext).getReadableDatabase();
+//		SessionTable table = new SessionTable(db);
+//		int count = table.querySessionCount(GlobleType.BBS_CHAT);
+//		if(count>0){
+//			findViewById(R.id.unread_msg_number).setVisibility(View.VISIBLE);
+//			((TextView)findViewById(R.id.unread_msg_number)).setText(count+"");
+//		}else{
+//			findViewById(R.id.unread_msg_number).setVisibility(View.GONE);
+//		}
+//	}
 	
 	/**
 	 * 查询未读会议数据
@@ -575,11 +578,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private int index,currentTabIndex;
 	public void onTabClicked(View view) {
 		findViewById(R.id.title_layout).setVisibility(View.VISIBLE);
-		leftTitle.setVisibility(View.GONE);
+		//leftTitle.setVisibility(View.GONE);
 		mAddBtn.setVisibility(View.GONE);
+		findViewById(R.id.title).setVisibility(View.VISIBLE);
+		ToggleButton title2TB = (ToggleButton) findViewById(R.id.tglloop);
+		title2TB.setVisibility(View.GONE);
 		switch (view.getId()) {
 			case R.id.btn_conversation:
-				leftTitle.setVisibility(View.VISIBLE);
+				//leftTitle.setVisibility(View.VISIBLE);
 				mAddBtn.setVisibility(View.VISIBLE);
 				sendBroadcast(new Intent(ChatFragment.ACTION_CHECK_NEW));
 				index = 0;
@@ -588,7 +594,29 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				index = 1;
 				break;
 			case R.id.btn_container_supper:
-				findViewById(R.id.title_layout).setVisibility(View.GONE);
+				findViewById(R.id.title).setVisibility(View.GONE);
+				title2TB.setVisibility(View.VISIBLE);
+				title2TB.setBackgroundResource(R.drawable.selector_donttai_toggle);
+				//findViewById(R.id.title_layout).setVisibility(View.GONE);
+				title2TB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+						switch (buttonView.getId()) {
+							case R.id.tglloop:
+								if(isChecked){
+									fragments[index] = new ChatFragment();
+								}else{
+									fragments[index] = new FriensLoopFragment();
+								}
+								getSupportFragmentManager().beginTransaction()
+										.replace(R.id.fragment_container, fragments[index])
+										.show(fragments[index]).commit();
+								break;
+							default:
+								break;
+						}
+					}
+				});
 				index = 2;
 				break;
 			case R.id.btn_find:
@@ -736,7 +764,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				 */
 				loginXMPP();
 				sendBroadcast(new Intent(GlobalParam.SWITCH_TAB));
-				sessionPromptUpdate();
+				//sessionPromptUpdate();
 				Intent sintent = new Intent(GlobalParam.ACTION_SHOW_FOUND_NEW_TIP);
 				sintent.putExtra("found_type", 1);
 				mContext.sendBroadcast(sintent);
@@ -755,7 +783,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		case GlobalParam.SHOW_COMPLETE_REQUEST:
 			if(resultCode == GlobalParam.SHOW_COMPLETE_RESULT){
 				loginXMPP();
-				sessionPromptUpdate();
+				//sessionPromptUpdate();
 				Intent sintent = new Intent(GlobalParam.ACTION_SHOW_FOUND_NEW_TIP);
 				sintent.putExtra("found_type", 1);
 				mContext.sendBroadcast(sintent);

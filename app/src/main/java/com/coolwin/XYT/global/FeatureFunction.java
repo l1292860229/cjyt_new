@@ -581,6 +581,7 @@ public class FeatureFunction {
 		return versionCode;
 	}
 
+	@Deprecated
 	public static String getAppVersionName(Context context) {
 
 		String versionName = "";

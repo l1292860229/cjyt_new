@@ -14,7 +14,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titlelayout"
-        android:background="#efeff4"
+        android:background="@color/item_background"
         android:padding="10dp" >
 
         <EditText

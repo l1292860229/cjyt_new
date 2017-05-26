@@ -4,6 +4,7 @@ package com.coolwin.XYT.map;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.widget.Toast;
 
 import com.baidu.mapapi.BMapManager;
@@ -12,7 +13,13 @@ import com.baidu.mapapi.map.MKEvent;
 import com.coolwin.XYT.Entity.CountryList;
 import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.net.IMException;
+import com.coolwin.XYT.util.FrescoImageLoader;
+import com.facebook.fresco.helper.Phoenix;
 import com.tendcloud.tenddata.TCAgent;
+
+import cn.finalteam.galleryfinal.CoreConfig;
+import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.ThemeConfig;
 
 /**
  * http://lbsyun.baidu.com/apiconsole/key
@@ -55,6 +62,14 @@ public class BMapApiApp extends Application {
         // App ID: 在TalkingData创建应用后，进入数据报表页中，在“系统设置”-“编辑应用”页面里查看App ID。
         // 渠道 ID: 是渠道标识符，可通过不同渠道单独追踪数据。
         TCAgent.init(this, "8515B59DA24F44929E1E36742FC175F2", "pre.im");
+        ThemeConfig theme = new ThemeConfig.Builder()
+                .setTitleBarBgColor(Color.BLACK)
+                .setTitleBarTextColor(Color.WHITE)
+                .build();
+        CoreConfig coreConfig = new CoreConfig.Builder(mInstance,  new FrescoImageLoader(mInstance), theme)
+                .build();
+        GalleryFinal.init(coreConfig);
+        Phoenix.init(mInstance);
     }
     
     public void initEngineManager(Context context) {

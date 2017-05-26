@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.coolwin.XYT.BbsChatMainActivity;
 import com.coolwin.XYT.Entity.Bbs;
+import com.coolwin.XYT.FriensLoopActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.global.ImageLoader;
@@ -89,22 +90,22 @@ public class Bbs2Adapter extends BaseAdapter {
 		holder.content.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(bbs.isVisitors==1){
-					Intent intent = new Intent(mContext, BbsChatMainActivity.class);
-					intent.putExtra("data", bbs);
+//				if(bbs.isVisitors==1){
+					Intent friendsloopIntent = new Intent();
+					Intent intent = new Intent(mContext, FriensLoopActivity.class);
+					intent.putExtra("bbs", bbs);
 					intent.putExtra("isvisitors", true);
 					mContext.startActivity(intent);
-					return;
-				}
-				if(bbs.isjoin==0){
-					showModifybgDialog(bbs);
-				}else if(bbs.isjoin==1){
-					Intent intent = new Intent(mContext, BbsChatMainActivity.class);
-					intent.putExtra("data", bbs);
-					mContext.startActivity(intent);
-				}else if(bbs.isjoin==2){
-					Toast.makeText(mContext,"你的申请已经提交,等待管理员审核", Toast.LENGTH_SHORT).show();
-				}
+//				}
+//				if(bbs.isjoin==0){
+//					showModifybgDialog(bbs);
+//				}else if(bbs.isjoin==1){
+//					Intent intent = new Intent(mContext, BbsChatMainActivity.class);
+//					intent.putExtra("data", bbs);
+//					mContext.startActivity(intent);
+//				}else if(bbs.isjoin==2){
+//					Toast.makeText(mContext,"你的申请已经提交,等待管理员审核", Toast.LENGTH_SHORT).show();
+//				}
 			}
 		});
 		return convertView;

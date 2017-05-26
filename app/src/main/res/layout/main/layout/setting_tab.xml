@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="behavior" type="com.coolwin.XYT.activity.SettingTabActivity"/>
+        <variable name="cachesize" type="String"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/item_background"
+        android:orientation="vertical" >
+        <include
+            android:id="@+id/title_layout"
+            layout="@layout/title_layout" />
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:onClick="@{behavior.openUpdatePassword}"
+                    android:background="@color/white" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:text="@string/modify_pwd"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/setting_text_size" />
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/item_icon_margin_right"
+                        android:src="@drawable/deep_gray_arrow" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#dadada" />
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/item_margin_top"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:onClick="@{behavior.openCheckVersion}">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/item_margin_left"
+                            android:text="@string/check_versioin"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/setting_text_size" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/item_icon_margin_right"
+                            android:src="@drawable/deep_gray_arrow" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:background="#dadada" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:onClick="@{behavior.clearConversationData}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/item_margin_left"
+                            android:text="清除聊天数据"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/setting_text_size" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/item_icon_margin_right"
+                            android:src="@drawable/deep_gray_arrow" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:onClick="@{behavior.clearCache}">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/item_margin_left"
+                            android:text="清除缓存"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/setting_text_size" />
+                        <TextView
+                            android:id="@+id/clearcachesize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="50dp"
+                            android:text="@{cachesize}"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/item_icon_margin_right"
+                            android:contentDescription="@string/desc"
+                            android:src="@drawable/deep_gray_arrow"/>
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#dadada" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="@dimen/item_margin_top"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:onClick="@{behavior.openFeedbackLayout}">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/item_margin_left"
+                            android:text="@string/set_feedback"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/item_icon_margin_right"
+                            android:src="@drawable/deep_gray_arrow" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:onClick="@{behavior.openAboutLayout}">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/item_margin_left"
+                            android:text="关于我们"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/item_icon_margin_right"
+                            android:src="@drawable/deep_gray_arrow" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#dadada" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/item_margin_top"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:gravity="center"
+                        android:onClick="@{behavior.openNoLogin}"
+                        android:layout_height="@dimen/item_height" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                            android:text="@string/logout"
+                            android:textColor="@color/application_black"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#dadada" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

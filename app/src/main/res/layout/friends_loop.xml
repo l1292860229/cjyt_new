@@ -31,7 +31,7 @@
         android:background="@color/bottom_bar_normal_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:visibility="visible">
+        android:visibility="gone">
         <RadioGroup
             android:id="@+id/group"
             android:layout_height="50dp"

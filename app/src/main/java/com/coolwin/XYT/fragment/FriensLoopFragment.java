@@ -51,7 +51,6 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -62,7 +61,6 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.coolwin.XYT.Entity.Bbs;
 import com.coolwin.XYT.Entity.CommentUser;
@@ -203,7 +201,7 @@ public class FriensLoopFragment extends Fragment implements OnTouchListener, OnC
 	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mView = inflater.inflate(R.layout.friends_loop, container, false);
+		mView = inflater.inflate(R.layout.friends_loop2, container, false);
 		initCompent();
 		IMCommon.saveReadFriendsLoopTip(mContext, true);
 //		Intent hideIntent = new Intent(GlobalParam.ACTION_HIDE_FOUND_NEW_TIP);
@@ -267,30 +265,30 @@ public class FriensLoopFragment extends Fragment implements OnTouchListener, OnC
 		}
 //		mLeftBtn.setOnClickListener(this);
 //		mRightTextBtn.setOnClickListener(this);
-		((TextView)mView.findViewById(R.id.right_text_btn)).setText("发布");
-		mView.findViewById(R.id.right_text_btn).setOnClickListener(this);
-		ToggleButton title2TB = (ToggleButton) mView.findViewById(R.id.tglloop);
-		title2TB.setVisibility(View.VISIBLE);
-		title2TB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				switch (buttonView.getId()) {
-					case R.id.tglloop:
-						if(isChecked){
-							ismy=true;
-							mView.findViewById(R.id.main_bottom).setVisibility(View.GONE);
-						}else{
-							ismy=false;
-							mView.findViewById(R.id.main_bottom).setVisibility(View.VISIBLE);
-						}
-						mAdapter=null;
-						getLoopData(GlobalParam.LIST_LOAD_FIRST,type,bid);
-						break;
-					default:
-						break;
-				}
-			}
-		});
+//		((TextView)mView.findViewById(R.id.right_text_btn)).setText("发布");
+//		mView.findViewById(R.id.right_text_btn).setOnClickListener(this);
+//		ToggleButton title2TB = (ToggleButton) mView.findViewById(R.id.tglloop);
+//		title2TB.setVisibility(View.VISIBLE);
+//		title2TB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//			@Override
+//			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//				switch (buttonView.getId()) {
+//					case R.id.tglloop:
+//						if(isChecked){
+//							ismy=true;
+//							mView.findViewById(R.id.main_bottom).setVisibility(View.GONE);
+//						}else{
+//							ismy=false;
+//							mView.findViewById(R.id.main_bottom).setVisibility(View.VISIBLE);
+//						}
+//						mAdapter=null;
+//						getLoopData(GlobalParam.LIST_LOAD_FIRST,type,bid);
+//						break;
+//					default:
+//						break;
+//				}
+//			}
+//		});
 		mCommentBtn = (Button)mView.findViewById(R.id.send);
 		mCommentBtn.setOnClickListener(this);
 

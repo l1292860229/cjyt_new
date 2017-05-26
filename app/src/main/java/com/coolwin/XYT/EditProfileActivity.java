@@ -565,12 +565,10 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 	 */
 	private void getImageFromCamera() {
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
 		if(FeatureFunction.newFolder(Environment.getExternalStorageDirectory() + FeatureFunction.PUB_TEMP_DIRECTORY)){
 			File out = new File(Environment.getExternalStorageDirectory() + FeatureFunction.PUB_TEMP_DIRECTORY, TEMP_FILE_NAME);
 			Uri uri = Uri.fromFile(out);
 			intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-
 			startActivityForResult(intent, GlobalParam.REQUEST_GET_IMAGE_BY_CAMERA);
 		}
 

@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:background="#efeff4"
+            android:background="@color/item_background"
             android:visibility="gone">
             <ImageView
                 android:id="@+id/image_url"

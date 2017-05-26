@@ -82,6 +82,7 @@ import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.global.ImageLoader;
 import com.coolwin.XYT.net.IMException;
 import com.coolwin.XYT.widget.MyPullToRefreshListView;
+import com.coolwin.XYT.widget.RoundImageView;
 
 import java.io.File;
 import java.io.IOException;
@@ -107,8 +108,8 @@ public class FriensLoopActivity extends BaseActivity implements OnTouchListener,
 	public final static String MSG_REFRESH_MOVIINF = "im_refresh_friends_loop_action";
 	private ListView mListView;
 	private MyPullToRefreshListView mContainer;
-	private TextView mRefreshViewLastUpdated;//mLoginUserName;
-	//mSetCoverHintTextView;
+	private TextView mRefreshViewLastUpdated,mLoginUserName
+	,mSetCoverHintTextView;
 	private boolean mIsRefreshing = false;
 	private TextView shareView;
 	private ImageView shareIView;
@@ -123,9 +124,9 @@ public class FriensLoopActivity extends BaseActivity implements OnTouchListener,
 
 
 	private RelativeLayout mBottomLayout;
-//	private RoundImageView mProfileHeaderIcon;
-	private ImageView mPicBtn;
-//	private View mSearchHeader;
+	private RoundImageView mProfileHeaderIcon;
+	private ImageView mPicBtn,mHeaderBg;
+	private View mSearchHeader;
 	private LinearLayout mFootView,mBottomMenuLayout;
 	private EditText mCommentEdit;
 	private Dialog mPhoneDialog;
@@ -303,19 +304,19 @@ public class FriensLoopActivity extends BaseActivity implements OnTouchListener,
 		mContainer = (MyPullToRefreshListView)findViewById(R.id.container);
 		mListView = mContainer.getList();
 		//mListView.setOnTouchListener(this);
-		mListView.setDivider(getResources().getDrawable(R.color.friend_loop_item_line_color));
+		mListView.setDivider(getResources().getDrawable(R.color.item_background));
 		mListView.setDividerHeight(15);
 		mListView.setCacheColorHint(0);
 		mListView.setSelector(mContext.getResources().getDrawable(R.drawable.transparent_selector));
 		mContainer.setOnChangeStateListener(this);
 		mListView.setHeaderDividersEnabled(false);
-//		mSearchHeader = LayoutInflater.from(this).inflate(R.layout.friends_loop_header,null);
-//		mProfileHeaderIcon = (RoundImageView)mSearchHeader.findViewById(R.id.header_icon);
-//		mImageLoader.getBitmap(mContext, mProfileHeaderIcon,null, IMCommon.getLoginResult(mContext).headsmall,0,false,false);
-//		mHeaderBg = (ImageView)mSearchHeader.findViewById(R.id.img_bg);
-//		RelativeLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, ICON_SIZE_HEIGHT);
-//		mHeaderBg.setLayoutParams(params);
-//		mSetCoverHintTextView = (TextView)mSearchHeader.findViewById(R.id.set_cover_hint);
+		mSearchHeader = LayoutInflater.from(this).inflate(R.layout.friends_loop_header,null);
+		mProfileHeaderIcon = (RoundImageView)mSearchHeader.findViewById(R.id.header_icon);
+		mImageLoader.getBitmap(mContext, mProfileHeaderIcon,null, IMCommon.getLoginResult(mContext).headsmall,0,false,false);
+		mHeaderBg = (ImageView)mSearchHeader.findViewById(R.id.img_bg);
+		RelativeLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, ICON_SIZE_HEIGHT);
+		mHeaderBg.setLayoutParams(params);
+		mSetCoverHintTextView = (TextView)mSearchHeader.findViewById(R.id.set_cover_hint);
 //		int count = IMCommon.getFriendsLoopTip(mContext);
 //		if(count>0){
 //			List<NotifiyVo> mListData = IMCommon.getMovingResult(mContext);
@@ -337,28 +338,48 @@ public class FriensLoopActivity extends BaseActivity implements OnTouchListener,
 //				});
 //			}
 //		}
-//		String coverUrl;
-//		if(bbs!=null){
-//			coverUrl = bbs.headsmall;
-//			//mainBottom.setVisibility(View.GONE);
-//		}else{
-//			coverUrl = IMCommon.getLoginResult(mContext).cover;
-//		}
-//		if(coverUrl!=null && !coverUrl.equals("")){
-//			mImageLoader.getBitmap(mContext, mHeaderBg, null, coverUrl, 0, false, false);
-//			mSetCoverHintTextView.setVisibility(View.GONE);
-//		}else{
-//			mSetCoverHintTextView.setVisibility(View.VISIBLE);
-//		}
-//		mLoginUserName = (TextView)mSearchHeader.findViewById(R.id.login_user_name);//
-//		mLoginUserName.setText(IMCommon.getLoginResult(mContext).nickname);
-//		((TextView)mSearchHeader.findViewById(R.id.sign)).setText(IMCommon.getLoginResult(mContext).sign);
-//		mProfileHeaderIcon.setOnClickListener(this);
-//		mHeaderBg.setOnClickListener(this);
-//
-//		if(mListView.getHeaderViewsCount() ==0  || mSearchHeader!=null){
-//			mListView.addHeaderView(mSearchHeader);
-//		}
+		String coverUrl;
+		if(bbs!=null){
+			coverUrl = bbs.headsmall;
+			//mainBottom.setVisibility(View.GONE);
+		}else{
+			coverUrl = IMCommon.getLoginResult(mContext).cover;
+		}
+		if(coverUrl!=null && !coverUrl.equals("")){
+			mImageLoader.getBitmap(mContext, mHeaderBg, null, coverUrl, 0, false, false);
+			mSetCoverHintTextView.setVisibility(View.GONE);
+		}else{
+			mSetCoverHintTextView.setVisibility(View.VISIBLE);
+		}
+		mLoginUserName = (TextView)mSearchHeader.findViewById(R.id.login_user_name);//
+		mLoginUserName.setText(IMCommon.getLoginResult(mContext).nickname);
+		//((TextView)mSearchHeader.findViewById(R.id.sign)).setText(IMCommon.getLoginResult(mContext).sign);
+		mSearchHeader.findViewById(R.id.sendbbsfriendloop).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(mContext, SendMovingActivity.class);
+				intent.putExtra("bbs",bbs);
+				startActivity(intent);
+			}
+		});
+		mSearchHeader.findViewById(R.id.bbsuserlist).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent bbsUserIntent = new Intent();
+				bbsUserIntent.setClass(mContext, bbsUserActivity.class);
+				bbsUserIntent.putExtra("bbs",bbs);
+				bbsUserIntent.putExtra("isallow","2");
+				bbsUserIntent.putExtra("isvisitors", isvisitors);
+				startActivity(bbsUserIntent);
+			}
+		});
+		mProfileHeaderIcon.setOnClickListener(this);
+		mHeaderBg.setOnClickListener(this);
+
+		if(mListView.getHeaderViewsCount() ==0  || mSearchHeader!=null){
+			mListView.addHeaderView(mSearchHeader);
+		}
 		
 		mAdapter = new FriendsLoopAdapter(mContext, mDataList, mHandler, mMetric,bbs);
 		mListView.setAdapter(mAdapter);

@@ -236,6 +236,7 @@ public class IMCommon {
 		return preferences.getLong(NOTIFICATION_TIME, 0);
 	}
 
+	@Deprecated
 	public static void saveLoginResult(Context context, Login login){
 		int mode = Context.MODE_WORLD_WRITEABLE;
 		if(Build.VERSION.SDK_INT >= 11){
@@ -260,7 +261,7 @@ public class IMCommon {
 
 		editor.commit();
 	}
-
+	@Deprecated
 	public static Login getLoginResult(Context context){
 		int mode = Context.MODE_WORLD_WRITEABLE;
 		if(Build.VERSION.SDK_INT >= 11){

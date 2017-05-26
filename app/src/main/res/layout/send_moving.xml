@@ -13,7 +13,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scrollbars="none"
-        android:background="#efeff4"
+        android:background="@color/item_background"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true">
 

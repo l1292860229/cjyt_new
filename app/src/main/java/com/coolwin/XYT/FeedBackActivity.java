@@ -18,6 +18,7 @@ import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.map.BMapApiApp;
 import com.coolwin.XYT.net.IMException;
+import com.coolwin.XYT.presenter.SettingTabPresenter;
 
 /**
  * 意见反馈

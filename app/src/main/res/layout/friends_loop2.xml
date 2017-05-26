@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipChildren="false">
+    <LinearLayout
+        android:id="@+id/category_linear"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/group_bottom"
+        android:layout_marginTop="-50dp"
+        android:orientation="vertical"
+        android:visibility="visible" >
+        <include layout="@layout/pull_to_refresh_view" />
+    </LinearLayout>
+    <View
+        android:layout_below="@+id/group_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dadada"/>
+    <LinearLayout
+        android:layout_below="@+id/title_layout"
+        android:id="@+id/group_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/bottom_bar_normal_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <RadioGroup
+            android:id="@+id/group"
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/kind"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableRight="@drawable/friendloop_select_item_btn"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:gravity="center"
+                android:textColor="@color/em_main_botton_text_color"
+                android:text="人脉关系"
+                android:textSize="16dp" />
+
+            <RadioButton
+                android:id="@+id/distance"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:drawableRight="@drawable/friendloop_select_item_btn"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:textColor="@color/em_main_botton_text_color"
+                android:text="内容类型"
+                android:textSize="16dp" />
+            <RadioButton
+                android:gravity="center"
+                android:button="@null"
+                android:id="@+id/sort"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/friendloop_select_item_btn"
+                android:textColor="@color/em_main_botton_text_color"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:layout_width="0dp"
+                android:text="标签分类"
+                android:textSize="16dp" />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/friends_fragment_container_layout"
+        android:layout_below="@+id/group_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#44000000"
+        android:onClick="onC"
+        android:visibility="gone">
+        <LinearLayout
+            android:id="@+id/friends_fragment_container"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/comment_bottom_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/bottom_menu"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@color/backgroud_color"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/splite"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:background="@drawable/devider_line"
+                android:contentDescription="@string/desc" />
+
+            <ImageView
+                android:id="@+id/pic"
+                android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dip"
+                android:background="@drawable/w_brow_icon"
+                android:contentDescription="@string/desc" />
+
+            <EditText
+                android:id="@+id/edit"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/send"
+                android:layout_toRightOf="@+id/pic"
+                android:background="@drawable/cirle_edit_bg"
+                android:hint="@string/say_nothing"
+                android:paddingBottom="10dip"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dip"
+                android:paddingTop="8dip" />
+
+            <Button
+                android:id="@+id/send"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:background="@drawable/send_msg_btn"
+                android:text="@string/send"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+          <include layout="@layout/emoji_layout" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/main_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bottom_bar_normal_bg"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <RelativeLayout
+            android:id="@+id/btn_container_shop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F4F5F5"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_zhuye"
+                android:onClick="onTabClicked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F4F5F5"
+                android:textColor="@drawable/selector_friendloop_botton_text_color"
+                android:text="全部"
+                android:textSize="18dp" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"/>
+        <RelativeLayout
+            android:id="@+id/btn_container_address_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#F4F5F5"
+            android:layout_weight="1"
+            android:gravity="center">
+            <Button
+                android:id="@+id/qiye"
+                android:onClick="onTabClicked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F4F5F5"
+                android:textColor="@drawable/selector_friendloop_botton_text_color"
+                android:text="企业"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"/>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#F4F5F5"
+            android:layout_weight="1"
+            android:gravity="center">
+            <Button
+                android:id="@+id/live"
+                android:onClick="onTabClicked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F4F5F5"
+                android:textColor="@drawable/selector_friendloop_botton_text_color"
+                android:text="生活"
+                android:textSize="18dp" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"/>
+        <RelativeLayout
+            android:id="@+id/btn_container_find"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#F4F5F5"
+            android:layout_weight="1"
+            android:gravity="center">
+            <Button
+                android:id="@+id/weishan"
+                android:onClick="onTabClicked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F4F5F5"
+                android:textColor="@drawable/selector_friendloop_botton_text_color"
+                android:text="微商"
+                android:textSize="18dp" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"/>
+        <RelativeLayout
+            android:id="@+id/btn_container_profile"
+            android:layout_width="0dp"
+            android:background="#F4F5F5"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <Button
+                android:id="@+id/huodong"
+                android:onClick="onTabClicked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#F4F5F5"
+                android:textColor="@drawable/selector_friendloop_botton_text_color"
+                android:text="活动"
+                android:textSize="18dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

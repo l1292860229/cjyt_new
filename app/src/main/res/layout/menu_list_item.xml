@@ -8,7 +8,7 @@
         android:id="@+id/grouplayout"
         android:layout_width="fill_parent"
         android:layout_height="20dp"
-        android:background="#efeff4"
+        android:background="@color/item_background"
         android:visibility="gone" >
     </RelativeLayout>
     <RelativeLayout
@@ -58,7 +58,7 @@
         android:id="@+id/grouplayoutbottom"
         android:layout_width="fill_parent"
         android:layout_height="26dp"
-        android:background="#efeff4"
+        android:background="@color/item_background"
         android:visibility="gone" >
     </RelativeLayout>
 </LinearLayout>

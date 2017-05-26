@@ -24,10 +24,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.coolwin.XYT.BbsChatMainActivity;
@@ -41,10 +39,8 @@ import com.coolwin.XYT.Entity.BbsList;
 import com.coolwin.XYT.Entity.Login;
 import com.coolwin.XYT.Entity.Session;
 import com.coolwin.XYT.Entity.UserList;
-import com.coolwin.XYT.FeedBackActivity;
 import com.coolwin.XYT.MainActivity;
 import com.coolwin.XYT.R;
-import com.coolwin.XYT.WebViewActivity;
 import com.coolwin.XYT.adapter.ChatTabAdapter;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
@@ -53,7 +49,6 @@ import com.coolwin.XYT.global.ImageLoader;
 import com.coolwin.XYT.global.SystemContactGlobal;
 import com.coolwin.XYT.net.IMException;
 import com.coolwin.XYT.org.json.JSONException;
-import com.coolwin.XYT.org.json.JSONObject;
 import com.coolwin.XYT.widget.MainSearchDialog;
 import com.coolwin.XYT.widget.SelectAddPopupWindow;
 import com.tendcloud.tenddata.TCAgent;
@@ -115,9 +110,9 @@ public class ChatFragment extends Fragment implements OnItemClickListener,View.O
 
 	private Context mParentContext;
 	private ProgressDialog mProgressDialog;
-	private RelativeLayout gonggaoLayout;
-	private ImageView headerImageView;
-	private TextView messageTextView,usernameTextView,releasetimeTextView,contentTextView;
+	//private RelativeLayout gonggaoLayout;
+	//private ImageView headerImageView;
+	//private TextView messageTextView,usernameTextView,releasetimeTextView,contentTextView;
 	private String newDate="";
 	private ImageLoader mImageLoader = new ImageLoader();
 	private String newsurl;
@@ -198,10 +193,10 @@ public class ChatFragment extends Fragment implements OnItemClickListener,View.O
 
 		public void onClick(View v) {
 			switch (v.getId()) {
-				case R.id.feedback:
-					Intent feedbackIntent = new Intent(mContext, FeedBackActivity.class);
-					startActivity(feedbackIntent);
-					break;
+//				case R.id.feedback:
+//					Intent feedbackIntent = new Intent(mContext, FeedBackActivity.class);
+//					startActivity(feedbackIntent);
+//					break;
 				default:
 					break;
 			}
@@ -372,30 +367,30 @@ public class ChatFragment extends Fragment implements OnItemClickListener,View.O
 				Toast.makeText(mParentContext, timeOutMsg, Toast.LENGTH_LONG).show();
 				break;
 			case SHOW_ACTION_CHECK_NEW:
-				String result = (String)msg.obj;
-				JSONObject json = null;
-				try {
-					if(result == null ){
-						return;
-					}
-					json = new JSONObject(result.replace("(","").replace(")",""));
-					String msgstr = json.getString("msg");
-					if("成功".equals(msgstr)){
-						usernameTextView.setText("系统通知");
-						releasetimeTextView.setText(json.getString("news_date"));
-						contentTextView.setText(json.getString("news_title"));
-						newsurl = json.getString("url");
-						mImageLoader.getBitmap(mParentContext, headerImageView, null, json.getString("news_pic"), 0, false, true);
-						if (newDate.equals(json.getString("news_date"))&&isOnclick) {
-							messageTextView.setVisibility(View.GONE);
-							newDate = json.getString("news_date");
-						}else{
-							messageTextView.setVisibility(View.VISIBLE);
-						}
-					}
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
+//				String result = (String)msg.obj;
+//				JSONObject json = null;
+//				try {
+//					if(result == null ){
+//						return;
+//					}
+//					json = new JSONObject(result.replace("(","").replace(")",""));
+//					String msgstr = json.getString("msg");
+//					if("成功".equals(msgstr)){
+//						usernameTextView.setText("系统通知");
+//						releasetimeTextView.setText(json.getString("news_date"));
+//						contentTextView.setText(json.getString("news_title"));
+//						newsurl = json.getString("url");
+//						mImageLoader.getBitmap(mParentContext, headerImageView, null, json.getString("news_pic"), 0, false, true);
+//						if (newDate.equals(json.getString("news_date"))&&isOnclick) {
+//							messageTextView.setVisibility(View.GONE);
+//							newDate = json.getString("news_date");
+//						}else{
+//							messageTextView.setVisibility(View.VISIBLE);
+//						}
+//					}
+//				} catch (JSONException e) {
+//					e.printStackTrace();
+//				}
 				break;
 			case SHOW_HANGYENULL:
 				Toast.makeText(mParentContext,"该圈子不存在", Toast.LENGTH_SHORT).show();
@@ -442,42 +437,42 @@ public class ChatFragment extends Fragment implements OnItemClickListener,View.O
 	/**
 	 * 实例化控件
 	 */
-	RelativeLayout sousuoLayout,tuiguangzhongxinLayout;
-	View mSearchHeader;
-	TextView friendsMessageCountTextView;
+	//RelativeLayout sousuoLayout,tuiguangzhongxinLayout;
+	//View mSearchHeader;
+	//TextView friendsMessageCountTextView;
 	private void initComponent(){
 		mListView = (ListView) mView.findViewById(R.id.chats_list);
 		mListView.setOnItemClickListener(this);
 		mListView.setOnCreateContextMenuListener(this);
 		//设置定位条件
-		mSearchHeader = LayoutInflater.from(getActivity()).inflate(R.layout.chat_tab_head,null);
-		sousuoLayout  = (RelativeLayout) mSearchHeader.findViewById(R.id.sousuo);
-		sousuoLayout.setOnClickListener(this);
-		contentTextView = (TextView) mSearchHeader.findViewById(R.id.content);
-		gonggaoLayout = (RelativeLayout) mSearchHeader.findViewById(R.id.gonggao_content);
-		headerImageView = (ImageView) mSearchHeader.findViewById(R.id.header);
-		messageTextView = (TextView) mSearchHeader.findViewById(R.id.message_count);
-		usernameTextView = (TextView) mSearchHeader.findViewById(R.id.username);
-		releasetimeTextView = (TextView) mSearchHeader.findViewById(R.id.releasetime);
-		friendsMessageCountTextView = (TextView) mSearchHeader.findViewById(R.id.friends_message_count);
-		tuiguangzhongxinLayout = (RelativeLayout) mSearchHeader.findViewById(R.id.re_tuiguangzhongxin);
-		tuiguangzhongxinLayout.setOnClickListener(this);
-		if(bbs==null&&isshowBBS==false){
-			mListView.addHeaderView(mSearchHeader);
-			gonggaoLayout.setVisibility(View.VISIBLE);
-			gonggaoLayout.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Intent newIntent = new Intent();
-					newIntent.putExtra("url","http://"+newsurl);
-					newIntent.setClass(mParentContext, WebViewActivity.class);
-					startActivity(newIntent);
-					isOnclick = true;
-					messageTextView.setVisibility(View.GONE);
-				}
-			});
-			getGongGaoMessage();
-		}
+//		mSearchHeader = LayoutInflater.from(getActivity()).inflate(R.layout.chat_tab_head,null);
+//		sousuoLayout  = (RelativeLayout) mSearchHeader.findViewById(R.id.sousuo);
+//		sousuoLayout.setOnClickListener(this);
+//		contentTextView = (TextView) mSearchHeader.findViewById(R.id.content);
+//		gonggaoLayout = (RelativeLayout) mSearchHeader.findViewById(R.id.gonggao_content);
+//		headerImageView = (ImageView) mSearchHeader.findViewById(R.id.header);
+//		messageTextView = (TextView) mSearchHeader.findViewById(R.id.message_count);
+//		usernameTextView = (TextView) mSearchHeader.findViewById(R.id.username);
+//		releasetimeTextView = (TextView) mSearchHeader.findViewById(R.id.releasetime);
+//		friendsMessageCountTextView = (TextView) mSearchHeader.findViewById(R.id.friends_message_count);
+//		tuiguangzhongxinLayout = (RelativeLayout) mSearchHeader.findViewById(R.id.re_tuiguangzhongxin);
+//		tuiguangzhongxinLayout.setOnClickListener(this);
+//		if(bbs==null&&isshowBBS==false){
+//			mListView.addHeaderView(mSearchHeader);
+//			gonggaoLayout.setVisibility(View.VISIBLE);
+//			gonggaoLayout.setOnClickListener(new View.OnClickListener() {
+//				@Override
+//				public void onClick(View v) {
+//					Intent newIntent = new Intent();
+//					newIntent.putExtra("url","http://"+newsurl);
+//					newIntent.setClass(mParentContext, WebViewActivity.class);
+//					startActivity(newIntent);
+//					isOnclick = true;
+//					messageTextView.setVisibility(View.GONE);
+//				}
+//			});
+//			getGongGaoMessage();
+//		}
 		initSession(true);
 	}
 	private void getGongGaoMessage(){
@@ -518,31 +513,31 @@ public class ChatFragment extends Fragment implements OnItemClickListener,View.O
 			mSessionList = new ArrayList<Session>();
 		}
 		if(tempList!=null){
-			if(isshowBBS){
-				for (int i = tempList.size() - 1; i >= 0; i--) {
-					if ( tempList.get(i).bid==null || tempList.get(i).bid.equals("")) {
-						tempList.remove(i);
-					}
-				}
+//			if(isshowBBS){
+//				for (int i = tempList.size() - 1; i >= 0; i--) {
+//					if ( tempList.get(i).bid==null || tempList.get(i).bid.equals("")) {
+//						tempList.remove(i);
+//					}
+//				}
+//				mSessionList.addAll(tempList);
+//			}else if(bbs==null){
+//				int mUnreadCount=0;
+//				for (int i = tempList.size() - 1; i >= 0; i--) {
+//					if ( !(tempList.get(i).bid==null || tempList.get(i).bid.equals(""))) {
+//						mUnreadCount+=tempList.get(i).mUnreadCount;
+//						tempList.remove(i);
+//					}
+//				}
+////				if(mUnreadCount==0){
+////					friendsMessageCountTextView.setVisibility(View.GONE);
+////				}else{
+////					friendsMessageCountTextView.setVisibility(View.VISIBLE);
+////					friendsMessageCountTextView.setText(mUnreadCount+"");
+////				}
+//				mSessionList.addAll(tempList);
+//			}else{
 				mSessionList.addAll(tempList);
-			}else if(bbs==null){
-				int mUnreadCount=0;
-				for (int i = tempList.size() - 1; i >= 0; i--) {
-					if ( !(tempList.get(i).bid==null || tempList.get(i).bid.equals(""))) {
-						mUnreadCount+=tempList.get(i).mUnreadCount;
-						tempList.remove(i);
-					}
-				}
-				if(mUnreadCount==0){
-					friendsMessageCountTextView.setVisibility(View.GONE);
-				}else{
-					friendsMessageCountTextView.setVisibility(View.VISIBLE);
-					friendsMessageCountTextView.setText(mUnreadCount+"");
-				}
-				mSessionList.addAll(tempList);
-			}else{
-				mSessionList.addAll(tempList);
-			}
+//			}
 		}
 		if(isFirst){
 			mAdapter = new ChatTabAdapter(mParentContext, mSessionList);
@@ -624,11 +619,11 @@ public class ChatFragment extends Fragment implements OnItemClickListener,View.O
 	public void onItemClick(AdapterView<?> arg0, View arg1, final int position, long arg3) {
 		Login user = new Login();
 		final int pot;
-		if (isshowBBS==true || bbs!=null) {
+//		if (isshowBBS==true || bbs!=null) {
 			pot =position;
-		}else{
-			pot =position-1;
-		}
+//		}else{
+//			pot =position-1;
+//		}
 		user.uid = mSessionList.get(pot).getFromId();
 		user.phone = mSessionList.get(pot).getFromId();
 		user.nickname = mSessionList.get(pot).name;
