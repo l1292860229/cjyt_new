@@ -63,6 +63,7 @@ import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.net.IMException;
 import com.coolwin.XYT.receiver.NotifySystemMessage;
 import com.coolwin.XYT.service.SnsService;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.widget.MainSearchDialog;
 import com.coolwin.XYT.widget.SelectAddPopupWindow;
 
@@ -80,7 +81,8 @@ import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.coolwin.XYT.WebViewActivity.offlineResources;
+import static com.coolwin.XYT.webactivity.MyWebViewClient.offlineResources;
+
 
 /**
  * 高仿微信的主界面

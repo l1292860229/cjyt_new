@@ -95,6 +95,7 @@ import com.coolwin.XYT.global.Utils;
 import com.coolwin.XYT.global.VoiceTask;
 import com.coolwin.XYT.net.IMException;
 import com.coolwin.XYT.net.Utility;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.widget.MyPullToRefreshListView;
 import com.coolwin.XYT.widget.ResizeLayout;
 

@@ -3,14 +3,21 @@ package com.coolwin.XYT.presenter;
 import com.coolwin.XYT.Entity.RetrofitResult;
 import com.coolwin.XYT.fragment.ProfileFragment;
 import com.coolwin.XYT.interfaceview.UICertification;
-import com.coolwin.XYT.retrofitServlet.CertificationServlet;
 import com.coolwin.XYT.util.GetDataUtil;
 import com.coolwin.XYT.util.UIUtil;
 
+import java.util.Map;
+
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 
 /**
@@ -18,6 +25,14 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class CertificationPresenter extends BasePresenter<UICertification>{
+    public interface CertificationServlet {
+        @Multipart
+        @POST("user/api/userattest")
+        Observable<RetrofitResult<Map<String,String>>> uploadUserAttext(@Part("uid") RequestBody uid,
+                                                                        @Part MultipartBody.Part businesscard,
+                                                                        @Part MultipartBody.Part signboard,
+                                                                        @Part MultipartBody.Part idcard);
+    }
     CertificationServlet service;
     public CertificationPresenter() {
         service = retrofit.create(CertificationServlet.class);

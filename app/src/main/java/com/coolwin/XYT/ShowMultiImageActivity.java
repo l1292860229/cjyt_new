@@ -48,6 +48,7 @@ import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.global.MD5;
 import com.coolwin.XYT.net.IMException;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.widget.GestureDetector;
 import com.coolwin.XYT.widget.PhotoView;
 import com.coolwin.XYT.widget.PhotoViewAttacher.OnPhotoTapListener;

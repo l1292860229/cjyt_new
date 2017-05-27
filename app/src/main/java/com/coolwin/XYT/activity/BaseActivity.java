@@ -1,5 +1,6 @@
 package com.coolwin.XYT.activity;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -20,8 +21,9 @@ import java.lang.reflect.ParameterizedType;
 
 public abstract  class BaseActivity<T extends BasePresenter> extends FragmentActivity {
     public T mPresenter;
-    final public static String CLOSE_ACTIVITY="close_activity_action";
-    AbLoadDialogFragment loadingfragment;
+    public static final  int CLOSEACTIVITY = 100;
+    public AbLoadDialogFragment loadingfragment;
+    public Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +34,13 @@ public abstract  class BaseActivity<T extends BasePresenter> extends FragmentAct
             //透明底部菜单栏
             //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
-//        colseregisterReceiver();
+        //初始化Presenter类
         mPresenter = getT(this,0);
         if(mPresenter!=null){
             mPresenter.init(this,this);
         }
+        //全局上下文赋值
+        context = this;
     }
     public  <T> T getT(Object o, int i) {
         try {
@@ -60,30 +64,6 @@ public abstract  class BaseActivity<T extends BasePresenter> extends FragmentAct
         loadingfragment.dismiss();
         loadingfragment.onDestroyView();
     }
-    /**
-     * 处理通知
-     */
-//    private BroadcastReceiver closereceiver = new BroadcastReceiver() {
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            String action  = intent.getAction();
-//            if (action.equals(CLOSE_ACTIVITY)) {
-//                Intent intent1 =new Intent(BaseActivity.this,LoginActivity.class);
-//                startActivity(intent1);
-//                UIUtil.showMessage(BaseActivity.this,"你的账号在其他设备登陆");
-//                Log.e("closereceiver","closereceiver");
-//                finish();
-//            }
-//        }
-//    };
-//    /**
-//     * 注册通知
-//     */
-//    private void colseregisterReceiver(){
-//        IntentFilter filter  = new IntentFilter();
-//        filter.addAction(CLOSE_ACTIVITY);
-//        registerReceiver(closereceiver,filter);
-//    }
 
     /**
      * 关闭当前View
@@ -150,11 +130,10 @@ public abstract  class BaseActivity<T extends BasePresenter> extends FragmentAct
 //        this.emojiconEditText =  emojiconEditText;
 //    }
 //
-//    @Override
-//    protected void onDestroy() {
-//        if(closereceiver!=null){
-//            unregisterReceiver(closereceiver);
-//        }
-//        super.onDestroy();
-//    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //取消事件总线
+
+    }
 }

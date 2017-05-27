@@ -25,6 +25,7 @@ import com.coolwin.XYT.decoding.InactivityTimer;
 import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.net.IMException;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.widget.ViewfinderView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;

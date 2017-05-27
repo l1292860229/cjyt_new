@@ -44,6 +44,7 @@ import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.global.ImageLoader;
 import com.coolwin.XYT.map.BMapApiApp;
 import com.coolwin.XYT.net.IMException;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.widget.PopWindows;
 import com.coolwin.XYT.widget.PopWindows.PopWindowsInterface;
 

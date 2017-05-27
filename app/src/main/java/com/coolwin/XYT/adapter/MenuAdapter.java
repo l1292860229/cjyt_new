@@ -17,7 +17,7 @@ import com.coolwin.XYT.FriensLoopActivity;
 import com.coolwin.XYT.MyBbsListActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.RedpacketMapActivity;
-import com.coolwin.XYT.WebViewActivity;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.global.ImageLoader;
 
 import java.util.ArrayList;

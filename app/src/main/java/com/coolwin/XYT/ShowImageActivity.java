@@ -47,6 +47,7 @@ import com.coolwin.XYT.global.ImageLoader;
 import com.coolwin.XYT.global.MD5;
 import com.coolwin.XYT.map.BMapApiApp;
 import com.coolwin.XYT.net.IMException;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.widget.GestureDetector;
 import com.coolwin.XYT.widget.MyImageView;
 import com.google.zxing.BinaryBitmap;

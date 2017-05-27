@@ -78,7 +78,7 @@ import com.coolwin.XYT.MyAlbumActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.RotateImageActivity;
 import com.coolwin.XYT.SendMovingActivity;
-import com.coolwin.XYT.WebViewActivity;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.adapter.EmojiAdapter;
 import com.coolwin.XYT.adapter.FriendsLoopAdapter;
 import com.coolwin.XYT.adapter.IMViewPagerAdapter;

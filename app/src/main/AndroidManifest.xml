@@ -197,7 +197,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FeedBackActivity"
+            android:name=".activity.FeedBackActivity"
             android:configChanges="locale|orientation"
             android:label="@string/ochat_app_name"
             android:screenOrientation="portrait" >
@@ -540,7 +540,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".WebViewActivity"
+            android:name=".webactivity.WebViewActivity"
             android:configChanges="locale|orientation"
             android:label="@string/ochat_app_name"
             android:screenOrientation="portrait"
@@ -752,6 +752,8 @@
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" >
+        </service>
+        <service android:name=".IntentService.DownloadService">
         </service>
         <service android:name="com.talkingdata.sdk.TDAntiCheatingService"
             android:process="com.talkingdata.sdk.TDAntiCheatingService">  <!--用户质量评估Service可以配置在主进程或者单独进程-->

@@ -16,17 +16,21 @@ public class RetrofitResult<T> {
         public int getCode() {
             return code;
         }
-
         public void setCode(int code) {
             this.code = code;
         }
-
         public String getMsg() {
             return msg;
         }
-
         public void setMsg(String msg) {
             this.msg = msg;
+        }
+        @Override
+        public String toString() {
+            return "State{" +
+                    "code=" + code +
+                    ", msg='" + msg + '\'' +
+                    '}';
         }
     }
 
@@ -68,5 +72,16 @@ public class RetrofitResult<T> {
 
     public void setSpeakStatus(String speakStatus) {
         this.speakStatus = speakStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "RetrofitResult{" +
+                "data=" + data +
+                ", state=" + state +
+                ", max='" + max + '\'' +
+                ", min='" + min + '\'' +
+                ", speakStatus='" + speakStatus + '\'' +
+                '}';
     }
 }

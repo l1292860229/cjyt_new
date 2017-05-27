@@ -51,7 +51,7 @@ import com.coolwin.XYT.MyAlbumActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.ShowMultiImageActivity;
 import com.coolwin.XYT.VideoPlayMainActivity;
-import com.coolwin.XYT.WebViewActivity;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.global.IMCommon;

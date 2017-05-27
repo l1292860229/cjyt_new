@@ -1,6 +1,5 @@
 package com.coolwin.XYT.activity;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,7 +32,6 @@ public class CertificationActivity extends BaseActivity<CertificationPresenter> 
 	public static final int REQUEST_CODE_CAMERA = 1;
 	public static final int REQUEST_CODE_GALLERY = 2;
 	CertificationPageBinding binding;
-	Context context;
 	AbSampleDialogFragment abSampleDialogFragment;
 	public SimpleDraweeView clickImageView;
 	public String businesscard,signboard,idcard;
@@ -43,7 +41,6 @@ public class CertificationActivity extends BaseActivity<CertificationPresenter> 
 		binding =  DataBindingUtil.setContentView(this, R.layout.certification_page);
 		binding.titleLayout.setBehavior(this);
 		binding.setBehavior(this);
-		context = this;
 		initComponent();
 	}
 
@@ -83,7 +80,7 @@ public class CertificationActivity extends BaseActivity<CertificationPresenter> 
 		}
 		switch (view.getId()){
 			case R.id.mingpian:
-				binding.picture.setImageResource(R.drawable.mingpian_pic);
+				//binding.picture.setImageResource(R.drawable.mingpian_pic);
 				break;
 			case R.id.gongpai:
 				binding.picture.setImageResource(R.drawable.gongpai);

@@ -121,6 +121,7 @@ import com.coolwin.XYT.receiver.NotifyChatMessage;
 import com.coolwin.XYT.receiver.PushChatMessage;
 import com.coolwin.XYT.service.SnsService;
 import com.coolwin.XYT.service.type.XmppType;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.widget.MainSearchDialog;
 import com.coolwin.XYT.widget.MainSearchDialog.OnFinishClick;
 import com.coolwin.XYT.widget.ResizeLayout;

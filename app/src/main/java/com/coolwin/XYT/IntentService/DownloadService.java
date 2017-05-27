@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
@@ -26,22 +27,24 @@ import io.reactivex.functions.Action;
 public class DownloadService extends IntentService {
     private NotificationCompat.Builder notificationBuilder;
     private NotificationManager notificationManager;
-    private String apkUrl = "http://download.fir.im/v2/app/install/5818acbcca87a836f50014af?download_token=a01301d7f6f8f4957643c3fcfe5ba6ff";
+    String apkUrl;
     public DownloadService() {
         super("DownloadService");
     }
+
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
+        apkUrl = intent.getStringExtra("apkUrl");
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
         notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Download")
-                .setContentText("Downloading File")
+                .setContentTitle("正在下载")
+                .setContentText("下载中")
                 .setAutoCancel(true);
         notificationManager.notify(0, notificationBuilder.build());
         download();
     }
+
     private void download() {
         DownloadProgressListener listener = new DownloadProgressListener() {
             @Override
@@ -54,34 +57,48 @@ public class DownloadService extends IntentService {
                 sendNotification(download);
             }
         };
-        File outputFile = new File(Environment.getExternalStoragePublicDirectory
-                (Environment.DIRECTORY_DOWNLOADS), "file.apk");
-        new DownloadAPI(UrlConstants.BASEURL,listener).downloadAPK(apkUrl, outputFile, new Action() {
-            @Override
-            public void run() throws Exception {
-                downloadCompleted();
-            }
-        });
+        final File outputFile = new File(Environment.getExternalStoragePublicDirectory
+                (Environment.DIRECTORY_DOWNLOADS), "xyt.apk");
+        if (outputFile.exists()) {
+            Intent intent = new Intent();
+            // 设置目标应用安装包路径
+            intent.setDataAndType(Uri.fromFile(outputFile),
+                    "application/vnd.android.package-archive");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }else{
+            new DownloadAPI(UrlConstants.BASEURL,listener).downloadAPK(apkUrl, outputFile, new Action() {
+                @Override
+                public void run() throws Exception {
+                    downloadCompleted(outputFile);
+                }
+            });
+        }
     }
+
     private void sendNotification(Download download) {
-        sendIntent(download);
         notificationBuilder.setProgress(100, download.getProgress(), false);
         notificationBuilder.setContentText(
                 FileUtil.getFormatSize(download.getCurrentFileSize()) + "/" +
                         FileUtil.getFormatSize(download.getTotalFileSize()));
         notificationManager.notify(0, notificationBuilder.build());
     }
-    private void downloadCompleted() {
+
+    private void downloadCompleted(File outputFile) {
         Download download = new Download();
         download.setProgress(100);
-        sendIntent(download);
         notificationManager.cancel(0);
         notificationBuilder.setProgress(0, 0, false);
-        notificationBuilder.setContentText("File Downloaded");
+        notificationBuilder.setContentText("下载完成");
         notificationManager.notify(0, notificationBuilder.build());
+        Intent intent = new Intent();
+        // 设置目标应用安装包路径
+        intent.setDataAndType(Uri.fromFile(outputFile),
+                "application/vnd.android.package-archive");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
-    private void sendIntent(Download download) {
-    }
+
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         notificationManager.cancel(0);

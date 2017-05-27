@@ -53,6 +53,7 @@ import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.global.ImageLoader;
 import com.coolwin.XYT.global.Utils;
 import com.coolwin.XYT.net.IMException;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.widget.MyGridView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;

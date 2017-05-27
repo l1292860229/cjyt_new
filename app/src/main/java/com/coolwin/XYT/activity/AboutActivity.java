@@ -1,6 +1,5 @@
 package com.coolwin.XYT.activity;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -16,7 +15,6 @@ import com.coolwin.XYT.global.FeatureFunction;
  */
 public class AboutActivity extends BaseActivity {
 	AboutPageBinding binding;
-	Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
