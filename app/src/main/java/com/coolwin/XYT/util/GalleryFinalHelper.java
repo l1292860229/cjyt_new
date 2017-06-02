@@ -59,4 +59,21 @@ public class GalleryFinalHelper {
                 .build();
         GalleryFinal.openGalleryMuti(requestCode,config, callback);
     }
+    /**
+     * 相册的多选功能
+     * @param requestCode
+     * @param isCrop
+     * @param isCamera
+     * @param callback
+     */
+    public static void openGalleryMuti(int requestCode,boolean isCrop,boolean isCamera,int max,GalleryFinal.OnHanlderResultCallback callback){
+        FunctionConfig config = new FunctionConfig.Builder()
+                .setEnableCrop(isCrop)//裁剪功能
+                .setEnableEdit(isCrop)//开启编辑功能
+                .setEnablePreview(true)//预览功能
+                .setEnableCamera(isCamera)//相机功能
+                .setMutiSelectMaxSize(max)
+                .build();
+        GalleryFinal.openGalleryMuti(requestCode,config, callback);
+    }
 }

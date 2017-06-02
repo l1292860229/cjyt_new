@@ -21,7 +21,7 @@ import com.coolwin.XYT.Entity.Login;
 import com.coolwin.XYT.IntentService.DownloadService;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.webactivity.WebViewActivity;
-import com.coolwin.XYT.constant.UrlConstants;
+import com.coolwin.XYT.Entity.constant.UrlConstants;
 import com.coolwin.XYT.databinding.SettingTabBinding;
 import com.coolwin.XYT.fragment.ChatFragment;
 import com.coolwin.XYT.global.GlobalParam;

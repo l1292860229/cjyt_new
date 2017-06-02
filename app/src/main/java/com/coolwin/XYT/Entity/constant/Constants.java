@@ -1,4 +1,4 @@
-package com.coolwin.XYT.constant;
+package com.coolwin.XYT.Entity.constant;
 
 /**
  * Created by Administrator on 2017/1/21.

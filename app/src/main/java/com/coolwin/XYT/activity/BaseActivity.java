@@ -101,6 +101,13 @@ public abstract  class BaseActivity<T extends BasePresenter> extends FragmentAct
     public void right_text(View view){
         // TODO: 2017/3/20
     }
+    /**
+     * right_text2 的操作
+     * @param view
+     */
+    public void right_text2(View view){
+        // TODO: 2017/3/20
+    }
 //    /**
 //     * 点表情时将表情添加对应的文本框
 //     */

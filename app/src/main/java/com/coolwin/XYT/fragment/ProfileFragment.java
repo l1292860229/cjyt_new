@@ -15,6 +15,7 @@ import com.coolwin.XYT.Entity.Login;
 import com.coolwin.XYT.MyAlbumActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.activity.CertificationActivity;
+import com.coolwin.XYT.activity.MyShopActivity;
 import com.coolwin.XYT.activity.SettingTabActivity;
 import com.coolwin.XYT.databinding.FragmentProfileBinding;
 import com.coolwin.XYT.util.GetDataUtil;
@@ -67,7 +68,6 @@ public class ProfileFragment extends Fragment{
             binding.setUsername("鱼塘号:"+fxid);
         }
         Phoenix.with(binding.ivAvatar).load(login.headsmall);
-        Phoenix.with().load();
         if (login.isattest==null || ATTEST_FALSE.equals(login.isattest)) {
             binding.isrenzhen.setVisibility(View.GONE);
         }else if(ATTEST_TRUE.equals(login.isattest)){
@@ -101,6 +101,14 @@ public class ProfileFragment extends Fragment{
      */
     public void openEditProfile(View view){
         startActivity(new Intent(context, EditProfileActivity.class));
+    }
+
+    /**
+     * 打开我的商城设置
+     * @param view
+     */
+    public void openMyShop(View view){
+        startActivity(new Intent(context, MyShopActivity.class));
     }
 
     /**

@@ -743,6 +743,21 @@
         <activity
             android:name=".activity.CertificationActivity" >
         </activity>
+        <activity
+            android:name=".activity.MyShopActivity" >
+        </activity>
+        <activity
+            android:name=".activity.CommodityActivity" >
+        </activity>
+        <activity
+            android:name=".activity.MyDingDanActivity" >
+        </activity>
+        <activity
+            android:name=".activity.MyIndexActivity" >
+        </activity>
+        <activity
+            android:name=".activity.AddCommodityActivity" >
+        </activity>
         <service
             android:name=".service.SnsService"
             android:label="SnsService"

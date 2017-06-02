@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="name" type="String"/>
+        <variable
+            name="money" type="String"/>
+        <variable
+            name="discount" type="String"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginBottom="1dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/pic1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                app:fadeDuration="500"
+                app:actualImageScaleType="centerInside"
+                app:placeholderImage="@drawable/plugin_camera_no_pictures" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{name}"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/application_black"
+                    android:textSize="16dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{money}"
+                        android:lines="1"
+                        android:textSize="14dp"
+                        android:textColor="#ff0000"/>
+                    <com.coolwin.library.view.CustomTextView
+                        android:layout_toRightOf="@+id/money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@{discount}"
+                        android:textSize="14dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        app:textRadius="2dp"
+                        app:textStrokeColor="#cccccc"
+                        app:textStrokeWidth="1dp"
+                        android:textColor="#73737d"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

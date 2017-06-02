@@ -2,14 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="behavior" type="com.coolwin.XYT.fragment.ProfileFragment" />
-        <variable name="name" type="String" />
-        <variable name="username" type="String" />
+        <variable name="behavior" type="com.coolwin.XYT.activity.MyShopActivity" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <include layout="@layout/title_layout"
+            android:id="@+id/title_layout"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,101 +22,13 @@
                 android:orientation="vertical">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="85dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/fx_btn_list_item_bg"
-                    android:onClick="@{behavior.openEditProfile}">
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentTop="true"
-                        android:background="#dadada" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="#dadada" />
-                    <RelativeLayout
-                        android:id="@+id/avatar_layout"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="@dimen/item_margin_left"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:onClick="@{behavior.openCertification}"
-                        android:layout_centerVertical="true">
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/iv_avatar"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            app:placeholderImage="@drawable/contact_default_header"
-                            app:fadeDuration="500"
-                            app:actualImageScaleType="centerCrop"
-                            app:roundedCornerRadius="5dp"/>
-                        <TextView
-                            android:id="@+id/renzhen"
-                            android:layout_width="75dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentBottom="true"
-                            android:gravity="center"
-                            android:background="#33000000"
-                            android:text="待实名认证"
-                            android:textColor="@color/white"
-                            android:textSize="12dp"/>
-                        <ImageView
-                            android:id="@+id/isrenzhen"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/attest"
-                            android:layout_alignParentRight="true"
-                            />
-                    </RelativeLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="20dp"
-                        android:text="@{name}"
-                        android:lines="1"
-                        android:layout_toRightOf="@id/avatar_layout"
-                        android:textColor="#000000"
-                        android:textSize="16dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="22dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_toRightOf="@id/avatar_layout"
-                        android:text="@{username}"
-                        android:textColor="#F8584F"
-                        android:textSize="13dp" />
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="33dp"
-                        android:src="@drawable/fx_icon_qrcode"
-                        />
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="15dp"
-                        android:src="@drawable/navigate_next"
-                        />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
                     android:layout_marginTop="@dimen/item_margin_top"
-                    android:onClick="@{behavior.openXiangce}"
+                    android:onClick="@{behavior.openIndex}"
                     android:background="@color/white">
                     <ImageView
-                        android:id="@+id/iv_xiangce"
+                        android:id="@+id/iv_index"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentLeft="true"
@@ -128,8 +40,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/iv_xiangce"
-                        android:text="我的小鱼圈"
+                        android:layout_toRightOf="@id/iv_index"
+                        android:text="商城首页设置"
                         android:textColor="@color/item_textcolor"
                         android:textSize="@dimen/text_size" />
                     <ImageView
@@ -151,10 +63,10 @@
                     android:layout_height="@dimen/item_height"
                     android:clickable="true"
                     android:layout_marginTop="@dimen/item_margin_top"
-                    android:onClick="@{behavior.openMyShop}"
+                    android:onClick="@{behavior.openDingDan}"
                     android:background="@color/white">
                     <ImageView
-                        android:id="@+id/iv_myshancheng"
+                        android:id="@+id/iv_dingdan"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentLeft="true"
@@ -166,8 +78,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/iv_myshancheng"
-                        android:text="我的商城"
+                        android:layout_toRightOf="@id/iv_dingdan"
+                        android:text="订单管理"
                         android:textColor="@color/item_textcolor"
                         android:textSize="@dimen/text_size" />
                     <ImageView
@@ -225,24 +137,25 @@
                     android:layout_height="@dimen/item_height"
                     android:layout_marginTop="@dimen/item_margin_top"
                     android:clickable="true"
-                    android:onClick="@{behavior.openSetting}"
+                    android:onClick="@{behavior.openCommodity}"
                     android:background="@color/white">
                     <ImageView
-                        android:id="@+id/iv_setting"
+                        android:id="@+id/iv_commodity"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/item_margin_left"
-                        android:src="@drawable/fx_icon_settings" />
+                        android:src="@drawable/fx_icon_settings"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="14dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/iv_setting"
-                        android:text="设置"
+                        android:layout_toRightOf="@id/iv_commodity"
+                        android:text="我的商品"
                         android:textColor="@color/item_textcolor"
                         android:textSize="@dimen/text_size" />
                     <ImageView

@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
 import com.coolwin.XYT.R;
-import com.coolwin.XYT.constant.UrlConstants;
+import com.coolwin.XYT.Entity.constant.UrlConstants;
 import com.coolwin.XYT.download.Download;
 import com.coolwin.XYT.download.DownloadAPI;
 import com.coolwin.XYT.download.DownloadProgressListener;
