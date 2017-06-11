@@ -18,10 +18,9 @@ import com.coolwin.XYT.DB.RoomTable;
 import com.coolwin.XYT.DB.SessionTable;
 import com.coolwin.XYT.DB.UserTable;
 import com.coolwin.XYT.Entity.Login;
+import com.coolwin.XYT.Entity.constant.UrlConstants;
 import com.coolwin.XYT.IntentService.DownloadService;
 import com.coolwin.XYT.R;
-import com.coolwin.XYT.webactivity.WebViewActivity;
-import com.coolwin.XYT.Entity.constant.UrlConstants;
 import com.coolwin.XYT.databinding.SettingTabBinding;
 import com.coolwin.XYT.fragment.ChatFragment;
 import com.coolwin.XYT.global.GlobalParam;
@@ -31,10 +30,9 @@ import com.coolwin.XYT.service.SnsService;
 import com.coolwin.XYT.util.FileUtil;
 import com.coolwin.XYT.util.GetDataUtil;
 import com.coolwin.XYT.util.UIUtil;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 
 import java.util.Map;
-
-import gorden.rxbus2.RxBus;
 
 
 /**
@@ -154,6 +152,7 @@ public class SettingTabActivity extends BaseActivity<SettingTabPresenter> implem
 		UserTable utable= new UserTable(db1);
 		table.delete();
 		utable.delete();
+		sendBroadcast(new Intent(GlobalParam.CANCLE_COMPLETE_USERINFO_ACTION));
 		this.finish();
 	}
 	@Override
@@ -174,7 +173,6 @@ public class SettingTabActivity extends BaseActivity<SettingTabPresenter> implem
 
 	@Override
 	protected void onDestroy() {
-		RxBus.get().unRegister(this);
 		super.onDestroy();
 	}
 }

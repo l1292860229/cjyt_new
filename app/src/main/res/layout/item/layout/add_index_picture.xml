@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="behavior"
@@ -7,103 +8,12 @@
     </data>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#22000000"
-        android:gravity="bottom"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+        android:layout_height="wrap_content">
+        <com.bigkoo.convenientbanner.ConvenientBanner
             android:background="@color/white"
-            android:gravity="center"
-            android:onClick="@{behavior.p4ratio4}"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="全屏"
-            android:textSize="@dimen/text_size" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@color/item_background" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:onClick="@{behavior.p1ratio4}"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="1/4屏"
-            android:textSize="@dimen/text_size" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@color/item_background" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:onClick="@{behavior.p1ratio3}"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="1/3屏"
-            android:textSize="@dimen/text_size"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@color/item_background" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:onClick="@{behavior.p1ratio2}"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="半屏"
-            android:textSize="@dimen/text_size" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@color/item_background" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:onClick="@{behavior.p2ratio3}"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="2/3屏"
-            android:textSize="@dimen/text_size" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@color/item_background" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:onClick="@{behavior.p3ratio4}"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="3/4屏"
-            android:textSize="@dimen/text_size" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:background="@color/item_background" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:gravity="center"
-            android:onClick="@{behavior.cannelDialog}"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="取消"
-            android:textSize="@dimen/text_size" />
+            android:id="@+id/convenientBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            app:canLoop="true" />
     </LinearLayout>
 </layout>

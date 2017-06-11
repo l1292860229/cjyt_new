@@ -5,4 +5,5 @@ package com.coolwin.XYT.interfaceview;
  */
 
 public interface UIAddCommodity extends UIPublic {
+    void savesuccess();
 }

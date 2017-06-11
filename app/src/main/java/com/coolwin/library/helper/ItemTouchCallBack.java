@@ -9,6 +9,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.ab.fragment.AbAlertDialogFragment;
+import com.ab.util.AbDialogUtil;
 import com.coolwin.XYT.adapter.BaseAdapter;
 
 import java.util.Collections;
@@ -70,9 +72,18 @@ public class ItemTouchCallBack extends ItemTouchHelper.Callback {
      */
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-        int position = viewHolder.getAdapterPosition();
-        adapter.getData().remove(position);
-        adapter.notifyItemRemoved(position);
+        final int position = viewHolder.getAdapterPosition();
+        AbDialogUtil.showAlertDialog(adapter.context, "是否删除?", "你确定要删除该模块么?", new AbAlertDialogFragment.AbDialogOnClickListener() {
+            @Override
+            public void onPositiveClick() {
+                adapter.getData().remove(position);
+                adapter.notifyItemRemoved(position);
+            }
+            @Override
+            public void onNegativeClick() {
+                adapter.notifyItemChanged(position);
+            }
+        });
     }
 
     /**
@@ -117,8 +128,5 @@ public class ItemTouchCallBack extends ItemTouchHelper.Callback {
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         super.clearView(recyclerView, viewHolder);
         viewHolder.itemView.setBackgroundColor(0);
-        if(!recyclerView.isComputingLayout()){
-            adapter.notifyDataSetChanged();
-        }
     }
 }

@@ -1,53 +1,50 @@
 package com.coolwin.XYT.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.ab.fragment.AbSampleDialogFragment;
+import com.ab.fragment.AbAlertDialogFragment;
 import com.ab.util.AbDialogUtil;
+import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.coolwin.XYT.Entity.DataModel;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.adapter.MyIndexAdapter;
 import com.coolwin.XYT.databinding.AddIndexPictureBinding;
-import com.coolwin.XYT.databinding.MyIndexBinding;
-import com.coolwin.XYT.databinding.UpdateIndexPictureUrlBinding;
-import com.coolwin.XYT.databinding.UpdateIndexUrlBinding;
+import com.coolwin.XYT.databinding.PublicRecyclerBinding;
 import com.coolwin.XYT.interfaceview.UIMyIndex;
 import com.coolwin.XYT.presenter.MyIndexPresenter;
-import com.coolwin.XYT.util.GalleryFinalHelper;
-import com.coolwin.XYT.util.StringUtil;
-import com.coolwin.XYT.util.UIUtil;
 import com.coolwin.library.helper.ItemTouchCallBack;
+import com.coolwin.library.helper.LocalImageHolderView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.finalteam.galleryfinal.GalleryFinal;
-import cn.finalteam.galleryfinal.model.PhotoInfo;
+import static com.coolwin.XYT.Entity.constant.Constants.DATAPOSITION;
+import static com.coolwin.XYT.activity.UpdatePicIndexActivity.DATAKEY;
 
 /**
  * Created by Administrator on 2017/5/31.
  */
 
 public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements UIMyIndex {
-    public static final int REQUEST_CODE_GALLERY = 2;
-    MyIndexBinding binding;
+    public static final int BACKPIC=1;
+    PublicRecyclerBinding binding;
     private MyIndexAdapter mAdapter;
     List<DataModel> datas = new ArrayList<>();
-    AbSampleDialogFragment abSampleDialogFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding =  DataBindingUtil.setContentView(this, R.layout.my_index);
+        binding =  DataBindingUtil.setContentView(this, R.layout.public_recycler);
         binding.setBehavior(this);
         binding.titleLayout.setBehavior(this);
         binding.titleLayout.title.setText("我的商城首页");
@@ -55,13 +52,9 @@ public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements U
         leftbtn.setImageResource(R.drawable.back_icon);
         binding.titleLayout.rightTextBtn2.setText("添加");
         binding.titleLayout.rightTextBtn.setText("保存");
-        //获得屏幕宽度
-        WindowManager manager = this.getWindowManager();
-        DisplayMetrics outMetrics = new DisplayMetrics();
-        manager.getDefaultDisplay().getMetrics(outMetrics);
         //初始化加载器
-        mAdapter=new MyIndexAdapter(this,datas,outMetrics.widthPixels);
-        binding.ivIndex.setLayoutManager(new GridLayoutManager(this,12));
+        mAdapter=new MyIndexAdapter(this,datas,widthPixels);
+        binding.ivIndex.setLayoutManager(new LinearLayoutManager(context));
         binding.ivIndex.setAdapter(mAdapter);
         //创建一个条目触摸回调
         ItemTouchCallBack itemTouchCallBack = new ItemTouchCallBack(mAdapter);
@@ -75,16 +68,10 @@ public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements U
         mAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, final int position, long id) {
-                UpdateIndexUrlBinding binding =  DataBindingUtil.inflate(LayoutInflater.from(context),R.layout.update_index_url,null,false);
-                binding.setBehavior(MyIndexActivity.this);
-                //图片中是包含外链,是就显示,否就不显示
-                if(StringUtil.isNull(mAdapter.getData().get(position).openurl)){
-                    binding.picUrl.setVisibility(View.GONE);
-                }else{
-                    binding.picUrl.setText(mAdapter.getData().get(position).openurl);
-                }
-                abSampleDialogFragment = AbDialogUtil.showDialog(binding.getRoot());
-                binding.getRoot().setTag(position);
+                Intent intent = new Intent(context,UpdatePicIndexActivity.class);
+                intent.putExtra(DATAKEY,(DataModel)mAdapter.getData().get(position));
+                intent.putExtra(DATAPOSITION,position);
+                startActivityForResult(intent,BACKPIC);
             }
         });
         //初始化数据
@@ -99,101 +86,52 @@ public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements U
     public void right_text2(View view) {
         AddIndexPictureBinding binding =  DataBindingUtil.inflate(LayoutInflater.from(this),R.layout.add_index_picture,null,false);
         binding.setBehavior(this);
-        abSampleDialogFragment = AbDialogUtil.showDialog(binding.getRoot());
-    }
-
-    /**
-     * 这些方法是跟不同类型,添加不同规格的图片控件
-     * @param view
-     */
-    public void p4ratio4(View view){
-        setType(DataModel.TYPE_ONETOONE);
-    }
-    public void p1ratio4(View view){
-        setType(DataModel.TYPE_ONETOFOUR);
-    }
-    public void p1ratio3(View view){
-        setType(DataModel.TYPE_ONETOTHREE);
-    }
-    public void p1ratio2(View view){
-        setType(DataModel.TYPE_ONETOTWO);
-    }
-    public void p2ratio3(View view){
-        setType(DataModel.TYPE_TWOTOTHREE);
-    }
-    public void p3ratio4(View view){
-        setType(DataModel.TYPE_THREETOFOUR);
-    }
-    /**
-     * 跟据不同的类型添加不同的图片规格
-     * @param type
-     */
-    public void setType(int type){
-        DataModel data=new DataModel();
-        data.type=type;
-        datas.add(data);
-        mAdapter.setData(datas);
-        mAdapter.notifyDataSetChanged();
-        abSampleDialogFragment.dismiss();
-    }
-    /**
-     * 打开图片要更换的外链地址
-     * @param view
-     */
-    public void openUpdateUrl(View view){
-        int position  = (int) abSampleDialogFragment.getContentView().getTag();
-        abSampleDialogFragment.dismiss();
-        UpdateIndexPictureUrlBinding binding =  DataBindingUtil.inflate(LayoutInflater.from(this),R.layout.update_index_picture_url,null,false);
-        binding.setBehavior(this);
-        binding.getRoot().setTag(position);
-        binding.picUrl.setText(mAdapter.getData().get(position).openurl);
-        abSampleDialogFragment = AbDialogUtil.showDialog(binding.getRoot());
-    }
-
-    /**
-     *
-     * 选择本地图片
-     * @param view
-     */
-    public void openGallery(View view){
-        final int position  = (int) abSampleDialogFragment.getContentView().getTag();
-        abSampleDialogFragment.dismiss();
-        /**
-         * 打开相册
-         */
-        GalleryFinalHelper.openGallerySingle(REQUEST_CODE_GALLERY, false, true, new GalleryFinal.OnHanlderResultCallback() {
+        final List<Integer> countInt = new ArrayList<>();
+        countInt.add(1);
+        countInt.add(2);
+        countInt.add(3);
+        countInt.add(4);
+        binding.convenientBanner.setPages(new CBViewHolderCreator() {
             @Override
-            public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
-                mAdapter.getData().get(position).imagepath = resultList.get(0).getPhotoPath();
-                mAdapter.setData(datas);
-                mAdapter.notifyDataSetChanged();
+            public Object createHolder() {
+                return new LocalImageHolderView(widthPixels);
             }
+        },countInt)
+        //设置指示器的方向
+        .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
+        binding.convenientBanner.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onHanlderFailure(int requestCode, String errorMsg) {
-                UIUtil.showMessage(context,"加载图片失败,原因:"+errorMsg);
+            public void onItemClick(int position) {
+                DataModel model = new DataModel();
+                int index =  countInt.get(position);
+                model.datas = new ArrayList<>();
+                for (int i = 0; i < index; i++) {
+                    model.datas.add(model.new Data());
+                }
+                mAdapter.getData().add(model);
+                mAdapter.notifyItemInserted(mAdapter.getData().size()-1);
+                abSampleDialogFragment.dismiss();
             }
         });
+        abSampleDialogFragment = AbDialogUtil.showDialog(binding.getRoot());
     }
 
-
-    /**
-     * 这个是确定更换图片外链
-     * @param view
-     */
-    public void sureDialog(View view){
-        final int position  = (int) abSampleDialogFragment.getContentView().getTag();
-        EditText et = (EditText) abSampleDialogFragment.getContentView().findViewById(R.id.pic_url);
-        mAdapter.getData().get(position).openurl = et.getText().toString();
-        mAdapter.notifyDataSetChanged();
-        abSampleDialogFragment.dismiss();
-    }
-
-    /**
-     * 取消浮动窗口
-     * @param view
-     */
-    public void cannelDialog(View view){
-        abSampleDialogFragment.dismiss();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            switch (requestCode){
+                case BACKPIC:
+                    if(data!=null){
+                        DataModel dataModel = (DataModel) data.getSerializableExtra(DATAKEY);
+                        int position = data.getIntExtra(DATAPOSITION,0);
+                        mAdapter.getData().remove(position);
+                        mAdapter.getData().add(position,dataModel);
+                        mAdapter.notifyItemChanged(position);
+                    }
+                    break;
+            }
+        }
     }
 
     /**
@@ -214,6 +152,30 @@ public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements U
         //在adapter中添加数据
         mAdapter.setData(datas);
         mAdapter.notifyDataSetChanged();
+    }
+    @Override
+    public void close(View view) {
+        showTiXing();
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if (keyCode == KeyEvent.KEYCODE_BACK ){
+            showTiXing();
+        }
+        return false;
+
+    }
+    public void showTiXing(){
+        AbDialogUtil.showAlertDialog(context, "提示", "是否确定退出?\n未保存的修改将丢失", new AbAlertDialogFragment.AbDialogOnClickListener() {
+            @Override
+            public void onPositiveClick() {
+                MyIndexActivity.this.finish();
+            }
+            @Override
+            public void onNegativeClick() {
+            }
+        });
     }
 }
 

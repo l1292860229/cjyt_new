@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.ab.fragment.AbSampleDialogFragment;
 import com.ab.util.AbDialogUtil;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.databinding.CertificationPageBinding;
@@ -24,15 +23,12 @@ import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
- * 关于我们页面
- * @author dongli
  *
  */
 public class CertificationActivity extends BaseActivity<CertificationPresenter> implements UICertification {
 	public static final int REQUEST_CODE_CAMERA = 1;
 	public static final int REQUEST_CODE_GALLERY = 2;
 	CertificationPageBinding binding;
-	AbSampleDialogFragment abSampleDialogFragment;
 	public SimpleDraweeView clickImageView;
 	public String businesscard,signboard,idcard;
 	@Override
@@ -90,14 +86,6 @@ public class CertificationActivity extends BaseActivity<CertificationPresenter> 
 				break;
 		}
 		abSampleDialogFragment = AbDialogUtil.showDialog(binding.getRoot());
-	}
-
-	/**
-	 * 取消弹出框
-	 * @param view
-	 */
-	public void cannelDialog(View view){
-		abSampleDialogFragment.dismiss();
 	}
 
 	/**

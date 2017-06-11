@@ -2,9 +2,10 @@ package com.coolwin.XYT.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.coolwin.XYT.Entity.MyCommodity;
 import com.coolwin.XYT.R;
@@ -18,40 +19,43 @@ import java.util.List;
  * Created by Administrator on 2017/5/31.
  */
 
-public class CommodityAdapter extends BaseAdapter<MyCommodity.Subjects>{
-    public Context context;
-    public CommodityAdapter(Context context, List<MyCommodity.Subjects> mList) {
-        this.context = context;
+public class CommodityAdapter extends BaseAdapter<MyCommodity>{
+    public AdapterView.OnItemLongClickListener onItemLongClickListener;
+    public CommodityAdapter(Context context, List<MyCommodity> mList) {
+        super(context);
         this.mList = mList;
-    }
-    public List<MyCommodity.Subjects> getData(){
-        return mList;
-    }
-    public void setData(List<MyCommodity.Subjects> model) {
-        mList = model;
     }
     @Override
     public MyRecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ShopCommodityBinding shopCommodityBinding =  DataBindingUtil.
                 inflate(LayoutInflater.from(parent.getContext()), R.layout.shop_commodity, parent, false);
-        MyRecycleViewHolder vh = new MyRecycleViewHolder(shopCommodityBinding.getRoot());
-        vh.setBinding(shopCommodityBinding);
-        return vh;
+        MyRecycleViewHolder myRecycleViewHolder = new MyRecycleViewHolder(shopCommodityBinding.getRoot());
+        myRecycleViewHolder.setBinding(shopCommodityBinding);
+        return myRecycleViewHolder;
     }
     @Override
-    public void onBindViewHolder(MyRecycleViewHolder holder, final int position) {
-        ViewDataBinding dataBinding = holder.getBinding();
-        MyCommodity.Subjects subjects = mList.get(position);
-        ShopCommodityBinding shopCommodityBinding = (ShopCommodityBinding) dataBinding;
-        shopCommodityBinding.setName(subjects.Name);
-        shopCommodityBinding.setMoney(subjects.LowSellPrice+"元");
-        shopCommodityBinding.setDiscount(subjects.discount+"折");
-        Phoenix.with(shopCommodityBinding.pic1)
-                .load(subjects.url);
+    public void onBindViewHolder(final MyRecycleViewHolder holder, int position) {
+        ShopCommodityBinding shopCommodityBinding  = (ShopCommodityBinding) holder.getBinding();
+        MyCommodity subjects = mList.get(position);
+        shopCommodityBinding.setName(subjects.getTitle());
+        shopCommodityBinding.setMoney(subjects.getPrice()+"元");
+//        shopCommodityBinding.setDiscount(subjects.discount+"折");
+        if (subjects.getPicture()!=null && subjects.getPicture().size()>0) {
+            Phoenix.with(shopCommodityBinding.pic1)
+                    .load(subjects.getPicture().get(0).smallUrl);
+        }
+        shopCommodityBinding.getRoot().setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(onItemLongClickListener!=null){
+                    onItemLongClickListener.onItemLongClick(null,v,holder.getLayoutPosition(),holder.getLayoutPosition());
+                }
+                return false;
+            }
+        });
     }
-    @Override
-    public int getItemCount() {
-        return mList.size();
+    public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener onItemLongClickListener){
+        this.onItemLongClickListener = onItemLongClickListener;
     }
 }
 

@@ -52,19 +52,6 @@
                         android:lines="1"
                         android:textSize="14dp"
                         android:textColor="#ff0000"/>
-                    <com.coolwin.library.view.CustomTextView
-                        android:layout_toRightOf="@+id/money"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="@{discount}"
-                        android:textSize="14dp"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        app:textRadius="2dp"
-                        app:textStrokeColor="#cccccc"
-                        app:textStrokeWidth="1dp"
-                        android:textColor="#73737d"/>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>

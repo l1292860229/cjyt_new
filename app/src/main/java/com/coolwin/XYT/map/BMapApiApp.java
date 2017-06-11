@@ -62,6 +62,7 @@ public class BMapApiApp extends Application {
         // App ID: 在TalkingData创建应用后，进入数据报表页中，在“系统设置”-“编辑应用”页面里查看App ID。
         // 渠道 ID: 是渠道标识符，可通过不同渠道单独追踪数据。
         TCAgent.init(this, "8515B59DA24F44929E1E36742FC175F2", "pre.im");
+        //图片选择器
         ThemeConfig theme = new ThemeConfig.Builder()
                 .setTitleBarBgColor(Color.BLACK)
                 .setTitleBarTextColor(Color.WHITE)
@@ -69,7 +70,9 @@ public class BMapApiApp extends Application {
         CoreConfig coreConfig = new CoreConfig.Builder(mInstance,  new FrescoImageLoader(mInstance), theme)
                 .build();
         GalleryFinal.init(coreConfig);
+        //网络图片加载
         Phoenix.init(mInstance);
+        //视频录制
     }
     
     public void initEngineManager(Context context) {

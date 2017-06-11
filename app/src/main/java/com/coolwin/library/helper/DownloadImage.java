@@ -6,11 +6,11 @@ package com.coolwin.library.helper;
 
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.coolwin.XYT.Entity.DataModel;
+import com.coolwin.XYT.Entity.constant.StaticData;
 import com.coolwin.XYT.util.StringUtil;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,23 +24,23 @@ import java.net.URL;
  * 这个是为了获取图片的尺寸
  */
 public class DownloadImage extends AsyncTask<String, Void, BitmapFactory.Options> {
-    WeakReference<ImageView> imageViewWeakReference;
+    WeakReference<SimpleDraweeView> imageViewWeakReference;
     public int widthPixels;
-    public int type;
-    public DownloadImage(ImageView imageView1,int widthPixels,int type) {
-        imageViewWeakReference = new WeakReference<ImageView>(imageView1);
+    public float screenRatio;
+    public DownloadImage(SimpleDraweeView imageView1,int widthPixels,float screenRatio) {
+        imageViewWeakReference = new WeakReference<>(imageView1);
         this.widthPixels = widthPixels;
-        this.type = type;
+        this.screenRatio = screenRatio;
     }
     @Override
     protected void onPostExecute(BitmapFactory.Options options) {
         super.onPostExecute(options);
         if(imageViewWeakReference!=null){
-            ImageView imageView1 = imageViewWeakReference.get();
+            SimpleDraweeView imageView1 = imageViewWeakReference.get();
             if(imageView1 != null && options != null){
-                int width = (int)(widthPixels*(type*1.0/ DataModel.TYPE_ONETOONE));
+                int width = (int)(widthPixels*screenRatio);
                 int height =  (int)(1.0 *width / options.outWidth * options.outHeight);
-                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) imageView1.getLayoutParams();
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width,height);
                 layoutParams.width  = width;
                 layoutParams.height = height;
                 imageView1.setLayoutParams(layoutParams);
@@ -55,6 +55,7 @@ public class DownloadImage extends AsyncTask<String, Void, BitmapFactory.Options
         }else if(!params[0].contains("http")){//是否为本地图片
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = true;
+            StaticData.imageViewOptions.put(params[0],options);
             BitmapFactory.decodeFile(params[0],options);
             return options;
         }
@@ -69,6 +70,7 @@ public class DownloadImage extends AsyncTask<String, Void, BitmapFactory.Options
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inJustDecodeBounds = true;
                 BitmapFactory.decodeStream(inputStream, null, options);
+                StaticData.imageViewOptions.put(params[0],options);
                 return options;
             }
             conn.disconnect();

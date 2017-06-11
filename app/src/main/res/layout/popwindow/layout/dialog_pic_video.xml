@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="behavior" type="com.coolwin.XYT.activity.AddCommodityActivity"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="照片"
+                android:textSize="@dimen/text_size"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:onClick="@{behavior.openCamera}"
+                android:background="@color/white"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/item_background"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="小视频"
+                android:textSize="@dimen/text_size"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:onClick="@{behavior.openVideo}"
+                android:background="@color/white"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/item_background"/>
+            <TextView
+                android:onClick="@{behavior.cannelDialog}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="取消"
+                android:textSize="@dimen/text_size"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:background="@color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

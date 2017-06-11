@@ -18,7 +18,6 @@ allprojects {
         maven {
             url 'https://dl.bintray.com/hpdx/maven/'
         }
-       // maven { url 'https://oss.jfrog.org/libs-snapshot' }
     }
 }
 task clean(type: Delete) {

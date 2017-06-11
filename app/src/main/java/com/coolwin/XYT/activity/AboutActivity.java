@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.databinding.AboutPageBinding;
-import com.coolwin.XYT.global.FeatureFunction;
+import com.coolwin.XYT.util.UIUtil;
 
 /**
  * 关于我们页面
@@ -31,7 +31,7 @@ public class AboutActivity extends BaseActivity {
 		binding.titleLayout.title.setText("关于我们");
 		ImageView leftbtn = binding.titleLayout.leftIcon;
 		leftbtn.setImageResource(R.drawable.back_icon);
-		binding.setVersion(context.getString(R.string.ochat_app_name) + FeatureFunction.getAppVersionName(AboutActivity.this));
+		binding.setVersion(context.getString(R.string.ochat_app_name) + UIUtil.getAppVersionName(AboutActivity.this));
 		binding.setCopyright(context.getString(R.string.ochat_app_name) +"版权所有 深圳酷盈科技有限公司 ");
 		binding.setWebsiteHint(" 官方网站 http://www.winchat.com.cn ");
 	}

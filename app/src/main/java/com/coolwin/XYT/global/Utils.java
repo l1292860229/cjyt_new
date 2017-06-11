@@ -64,6 +64,7 @@ public class Utils {
         }
         return null;
     }
+    @Deprecated
     public static String createVideoThumbnailImagePath(String filePath) {
         // MediaMetadataRetriever is available on API Level 8
         // but is hidden until API Level 10
@@ -122,6 +123,7 @@ public class Utils {
         }
         return null;
     }
+    @Deprecated
     public static String getRingDuring(String mUri){
         String duration="0";
         android.media.MediaMetadataRetriever mmr = new android.media.MediaMetadataRetriever();

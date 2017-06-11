@@ -21,17 +21,10 @@ import java.util.List;
  */
 
 public class AddCommodityPicAdapter extends BaseAdapter<String>{
-    public Context context;
     private AdapterView.OnItemClickListener mOnItemClickListener = null;
     public AddCommodityPicAdapter(Context context, List<String> mList) {
-        this.context = context;
+        super(context);
         this.mList = mList;
-    }
-    public List<String> getData(){
-        return mList;
-    }
-    public void setData(List<String> model) {
-        mList = model;
     }
     @Override
     public MyRecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -65,10 +58,6 @@ public class AddCommodityPicAdapter extends BaseAdapter<String>{
                     .load(string);
             oneBinding.pic1.setOnClickListener(null);
         }
-    }
-    @Override
-    public int getItemCount() {
-        return mList.size();
     }
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener listener) {

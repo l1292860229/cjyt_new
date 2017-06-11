@@ -1,19 +1,29 @@
 package com.coolwin.XYT.webactivity;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
+import com.ab.util.AbDialogUtil;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.activity.BaseActivity;
 import com.coolwin.XYT.databinding.ActivityWebviewBinding;
+import com.coolwin.XYT.databinding.WebviewShareBinding;
+import com.coolwin.XYT.wxapi.WXEntryActivity;
 import com.facebook.fresco.helper.Phoenix;
+import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 
 /**
  * Created by yf on 2016/11/24.
@@ -25,7 +35,7 @@ public class WebViewActivity extends BaseActivity {
     public String mUrl;
     private GestureDetector gestureDetector;
     private int downX, downY;
-
+    private MyWebViewClient  webViewClient;
     @Override
     @SuppressLint({"JavascriptInterface", "SetJavaScriptEnabled", "AddJavascriptInterface"})
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +73,57 @@ public class WebViewActivity extends BaseActivity {
         binding.titleLayout.rightBtn.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public void right_btn(View view) {
+        WebviewShareBinding binding =  DataBindingUtil.inflate(LayoutInflater.from(context),R.layout.webview_share,null,false);
+        binding.setBehavior(this);
+        abSampleDialogFragment = AbDialogUtil.showDialog(binding.getRoot(), Gravity.BOTTOM);
+    }
+
+    public void shareFriendloop(View view){
+        abSampleDialogFragment.dismiss();
+    }
+    public void shareFriend(View view){
+        abSampleDialogFragment.dismiss();
+    }
+    public void shareWeichatfriend(View view){
+        Intent wechatqIntent = new Intent();
+        wechatqIntent.setClass(context,WXEntryActivity.class);
+        wechatqIntent.putExtra("url",mUrl);
+        wechatqIntent.putExtra("title", binding.titleLayout.title.getText().toString());
+        wechatqIntent.putExtra("type", SendMessageToWX.Req.WXSceneSession);
+        startActivity(wechatqIntent);
+        abSampleDialogFragment.dismiss();
+    }
+    public void shareWeichatfriendloop(View view){
+        Intent wechatqIntent = new Intent();
+        wechatqIntent.setClass(context,WXEntryActivity.class);
+        wechatqIntent.putExtra("url",mUrl);
+        wechatqIntent.putExtra("title", binding.titleLayout.title.getText().toString());
+        wechatqIntent.putExtra("type", SendMessageToWX.Req.WXSceneTimeline);
+        startActivity(wechatqIntent);
+        abSampleDialogFragment.dismiss();
+    }
+    public void openBrowser(View view){
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.VIEW");
+        intent.setData(Uri.parse(webViewClient.getmUrl()));
+        startActivity(intent);
+        abSampleDialogFragment.dismiss();
+    }
+    public void copyUrl(View view){
+        //获取剪贴板管理器：
+        ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        // 创建普通字符型ClipData
+        ClipData mClipData = ClipData.newPlainText("Label", webViewClient.getmUrl());
+        // 将ClipData内容放到系统剪贴板里。
+        cm.setPrimaryClip(mClipData);
+        abSampleDialogFragment.dismiss();
+    }
     private void initWebView() {
         binding.webView.addJavascriptInterface(new InJavaScriptLocalObj(context), "messageToApp");
-        binding.webView.setWebViewClient(new MyWebViewClient(context, binding.webloading));
+        webViewClient = new MyWebViewClient(context, binding.webloading);
+        binding.webView.setWebViewClient(webViewClient);
         //获取webView触摸的xy
         gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
@@ -124,13 +182,7 @@ public class WebViewActivity extends BaseActivity {
                 return false;
             }
         });
-        binding.webView.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void onReceivedTitle(WebView view, String title) {
-                binding.titleLayout.title.setText(title);
-            }
-
-        });
+        binding.webView.setWebChromeClient(new MyWebChromeClient(binding.titleLayout.title));
         binding.webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         //将图片调整到适合WebView的大小
 //        webView.getSettings().setUseWideViewPort(true);
@@ -144,12 +196,12 @@ public class WebViewActivity extends BaseActivity {
         binding.webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         //H5 localStorage支持
         binding.webView.getSettings().setDomStorageEnabled(true);
-        binding.webView.getSettings().setAppCacheMaxSize(1024 * 1024 * 8);
         String appCachePath = getApplicationContext().getCacheDir().getAbsolutePath();
         binding.webView.getSettings().setAppCachePath(appCachePath);
         binding.webView.getSettings().setAllowFileAccess(true);
         binding.webView.getSettings().setAppCacheEnabled(true);
         binding.webView.getSettings().setDefaultTextEncodingName("gb2312");
+        binding.webView.clearCache(true);
     }
 
     @Override
@@ -165,12 +217,6 @@ public class WebViewActivity extends BaseActivity {
 //    @Override
 //    public void onClick(View v) {
 //        switch (v.getId()) {
-//            case R.id.more_btn:
-//                shareLayout.setVisibility(View.VISIBLE);
-////                showMenuWindow(mTitleLayout);
-//                return;
-//            case R.id.cancel:
-//                break;
 //            case R.id.shanji:
 //                Intent shanjiIntent = new Intent();
 //                shanjiIntent.setClass(mWebview,SendMovingActivity.class);
@@ -191,34 +237,6 @@ public class WebViewActivity extends BaseActivity {
 //                friendIntent.putExtra("imagePath", ImagePath);
 //                friendIntent.putExtra("shareurl_msg", new ShareUrl(mUrl,urltitle,ImagePath));
 //                startActivity(friendIntent);
-//                break;
-//            case R.id.wechat:
-//                Intent wechatIntent = new Intent();
-//                wechatIntent.setClass(mWebview,WXEntryActivity.class);
-//                wechatIntent.putExtra("url",mUrl);
-//                wechatIntent.putExtra("title", urltitle);
-//                wechatIntent.putExtra("imagePath", ImagePath);
-//                wechatIntent.putExtra("type", SendMessageToWX.Req.WXSceneSession);
-//                startActivity(wechatIntent);
-//                break;
-//            case R.id.wechatq:
-//                Intent wechatqIntent = new Intent();
-//                wechatqIntent.setClass(mWebview,WXEntryActivity.class);
-//                wechatqIntent.putExtra("url",mUrl);
-//                wechatqIntent.putExtra("title", urltitle);
-//                wechatqIntent.putExtra("imagePath", ImagePath);
-//                wechatqIntent.putExtra("type", SendMessageToWX.Req.WXSceneTimeline);
-//                startActivity(wechatqIntent);
-//                break;
-//            case R.id.liulan:
-//                Intent intent = new Intent();
-//                intent.setAction("android.intent.action.VIEW");
-//                intent.setData(Uri.parse(mUrl));
-//                startActivity(intent);
-//                break;
-//            case  fuzhi:
-//                ClipboardManager cm =(ClipboardManager) mWebview.getSystemService(Context.CLIPBOARD_SERVICE);
-//                cm.setText(mUrl);
 //                break;
 //            default:
 //                break;

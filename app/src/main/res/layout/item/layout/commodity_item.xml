@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="name"
+            type="String"/>
+    </data>
+    <LinearLayout
+        android:id="@+id/rootlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <CheckBox
+            android:id="@+id/check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:button="@drawable/choose_person_selected"
+            android:layout_marginLeft="15dp"
+            android:checked="false"
+            android:visibility="gone"/>
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/pic1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            app:fadeDuration="500"
+            app:actualImageScaleType="centerInside"
+            app:placeholderImage="@drawable/plugin_camera_no_pictures" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{name}"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textColor="@color/application_black"
+            android:textSize="16dp"/>
+    </LinearLayout>
+</layout>

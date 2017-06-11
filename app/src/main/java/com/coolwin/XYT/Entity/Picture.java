@@ -15,8 +15,8 @@ public class Picture implements Serializable {
 	public String key;
 	public String originUrl;
 	public String smallUrl;
-	public int width;
-	public int height;
+	public double width;
+	public double height;
 	
 	public Picture(String small, String origin) {
 		super();

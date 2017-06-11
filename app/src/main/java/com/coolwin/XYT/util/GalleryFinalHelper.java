@@ -4,7 +4,6 @@ import cn.finalteam.galleryfinal.FunctionConfig;
 import cn.finalteam.galleryfinal.GalleryFinal;
 
 
-
 /**
  * Created by dell on 2017/5/24.
  */

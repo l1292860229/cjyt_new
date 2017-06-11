@@ -1,26 +1,23 @@
 package com.coolwin.XYT.Entity;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/5/31.
  */
 
-public class DataModel  {
-    public static  final int TYPE_ONETOONE=12;
-    public static  final int TYPE_ONETOFOUR=3;
-    public static final int TYPE_ONETOTHREE=4;
-    public static final int TYPE_ONETOTWO=6;
-    public static final int TYPE_TWOTOTHREE=8;
-    public static final int TYPE_THREETOFOUR=9;
-    public String imagepath;
-    public String openurl;
-    public int type;
+public class DataModel implements Serializable {
+    public List<Data> datas;
 
-    @Override
-    public String toString() {
-        return "DataModel{" +
-                "imagepath='" + imagepath + '\'' +
-                ", openurl='" + openurl + '\'' +
-                ", type=" + type +
-                '}';
+    public class  Data implements Serializable{
+        public String shopImageUrl;//图片路径
+        public String shopLink;//外链
+        public Data() {
+        }
+        public Data(String imagePath, String link) {
+            this.shopImageUrl = imagePath;
+            this.shopLink = link;
+        }
     }
 }

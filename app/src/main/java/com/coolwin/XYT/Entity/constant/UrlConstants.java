@@ -8,6 +8,9 @@ public class UrlConstants {
     //app 后台地址
     public static final String BASEURL ="http://139.224.57.105/im5/index.php/";
 
+    //app 后台地址2
+    public static final String BASEURL2 ="http://139.224.57.105:8080/imapp/";
+//    public static final String BASEURL2 ="http://192.168.1.131:8080/";
 
 
     //第三方后台地址

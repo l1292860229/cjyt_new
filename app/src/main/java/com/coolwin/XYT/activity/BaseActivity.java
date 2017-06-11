@@ -4,10 +4,12 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.ab.fragment.AbLoadDialogFragment;
+import com.ab.fragment.AbSampleDialogFragment;
 import com.ab.util.AbDialogUtil;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.presenter.BasePresenter;
@@ -24,6 +26,8 @@ public abstract  class BaseActivity<T extends BasePresenter> extends FragmentAct
     public static final  int CLOSEACTIVITY = 100;
     public AbLoadDialogFragment loadingfragment;
     public Context context;
+    public AbSampleDialogFragment abSampleDialogFragment;
+    int widthPixels;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,10 @@ public abstract  class BaseActivity<T extends BasePresenter> extends FragmentAct
         }
         //全局上下文赋值
         context = this;
+        WindowManager manager = this.getWindowManager();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(outMetrics);
+        widthPixels = outMetrics.widthPixels;
     }
     public  <T> T getT(Object o, int i) {
         try {
@@ -107,6 +115,16 @@ public abstract  class BaseActivity<T extends BasePresenter> extends FragmentAct
      */
     public void right_text2(View view){
         // TODO: 2017/3/20
+    }
+
+    /**
+     * 取消浮动窗口
+     * @param view
+     */
+    public void cannelDialog(View view){
+        if(abSampleDialogFragment!=null){
+            abSampleDialogFragment.dismiss();
+        }
     }
 //    /**
 //     * 点表情时将表情添加对应的文本框

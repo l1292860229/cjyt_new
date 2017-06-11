@@ -167,7 +167,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
                         android:layout_toRightOf="@id/iv_myshancheng"
-                        android:text="我的商城"
+                        android:text="管理端"
                         android:textColor="@color/item_textcolor"
                         android:textSize="@dimen/text_size" />
                     <ImageView

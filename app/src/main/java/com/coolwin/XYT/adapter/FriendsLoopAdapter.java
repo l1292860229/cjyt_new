@@ -487,7 +487,7 @@ public class FriendsLoopAdapter extends BaseAdapter {
 						View view = mInflater.inflate(R.layout.picture_item, null);
 						LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mWidth / 3, mWidth / 3);
 						if(listpicsize==1){
-							params = new LinearLayout.LayoutParams( item.listpic.get(pos).width, item.listpic.get(pos).height);
+							params = new LinearLayout.LayoutParams( (int)item.listpic.get(pos).width, (int)item.listpic.get(pos).height);
 						}
 						view.setLayoutParams(params);
 						view.setPadding(padding, padding, padding, padding);

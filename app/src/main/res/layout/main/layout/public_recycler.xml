@@ -2,7 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="behavior" type="com.coolwin.XYT.activity.CommodityActivity" />
+        <variable name="behavior"
+            type="com.coolwin.XYT.activity.BaseActivity" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/iv_commodity"
+                android:id="@+id/iv_index"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:overScrollMode="never"
