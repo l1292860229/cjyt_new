@@ -1,10 +1,10 @@
 package com.coolwin.XYT.map;
 
 
-import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.multidex.MultiDexApplication;
 import android.widget.Toast;
 
 import com.baidu.mapapi.BMapManager;
@@ -27,7 +27,7 @@ import cn.finalteam.galleryfinal.ThemeConfig;
  * @author dongli
  *
  */
-public class BMapApiApp extends Application {
+public class BMapApiApp extends MultiDexApplication {
     private Bitmap bitmap;
     private static BMapApiApp mInstance = null;
     public boolean m_bKeyRight = true;

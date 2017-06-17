@@ -20,7 +20,7 @@ import com.coolwin.XYT.Entity.DataModel;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.adapter.MyIndexAdapter;
 import com.coolwin.XYT.databinding.AddIndexPictureBinding;
-import com.coolwin.XYT.databinding.PublicRecyclerBinding;
+import com.coolwin.XYT.databinding.IndexRecyclerBinding;
 import com.coolwin.XYT.interfaceview.UIMyIndex;
 import com.coolwin.XYT.presenter.MyIndexPresenter;
 import com.coolwin.library.helper.ItemTouchCallBack;
@@ -38,13 +38,13 @@ import static com.coolwin.XYT.activity.UpdatePicIndexActivity.DATAKEY;
 
 public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements UIMyIndex {
     public static final int BACKPIC=1;
-    PublicRecyclerBinding binding;
+    IndexRecyclerBinding binding;
     private MyIndexAdapter mAdapter;
     List<DataModel> datas = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding =  DataBindingUtil.setContentView(this, R.layout.public_recycler);
+        binding =  DataBindingUtil.setContentView(this, R.layout.index_recycler);
         binding.setBehavior(this);
         binding.titleLayout.setBehavior(this);
         binding.titleLayout.title.setText("我的商城首页");
@@ -91,6 +91,7 @@ public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements U
         countInt.add(2);
         countInt.add(3);
         countInt.add(4);
+        countInt.add(5);
         binding.convenientBanner.setPages(new CBViewHolderCreator() {
             @Override
             public Object createHolder() {

@@ -921,7 +921,7 @@ public class FriendsLoopAdapter extends BaseAdapter {
 	}
 	public static int calculateInSampleSize(BitmapFactory.Options options,
 											int reqWidth, int reqHeight) {
-		// 原始图片的宽、高
+		// 原始图片的宽、高3
 		final int height = options.outHeight;
 		final int width = options.outWidth;
 		final int heightRatio = Math.round((float) height

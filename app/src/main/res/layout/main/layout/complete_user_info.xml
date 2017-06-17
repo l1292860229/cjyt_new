@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="behavior" type="com.coolwin.XYT.activity.EditProfileActivity" />
+        <variable name="login" type="com.coolwin.XYT.Entity.Login" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@+id/title_layout"
+            layout="@layout/title_layout" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dip"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#dadada" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:onClick="@{behavior.openGallerySingle}"
+                    android:paddingLeft="@dimen/item_margin_left"
+                    android:paddingRight="@dimen/item_margin_left"
+                    android:visibility="visible" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="头像"
+                        android:textColor="@color/text_title_color"
+                        android:textSize="@dimen/text_size" />
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/new_header_icon"
+                        android:layout_width="@dimen/item_height"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/desc"
+                        android:scaleType="fitXY"
+                        app:placeholderImage="@drawable/contact_default_header"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="@dimen/item_margin_left"
+                    android:layout_marginRight="@dimen/item_margin_left"
+                    android:background="#dadada" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/item_height"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/item_margin_left"
+                    android:paddingRight="@dimen/item_margin_left"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="姓名"
+                        android:textColor="@color/text_title_color"
+                        android:textSize="@dimen/text_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:maxLength="260"
+                        android:ellipsize="end"
+                        android:drawableRight="@drawable/deep_gray_arrow"
+                        android:hint="必填 "
+                        android:text="@{login.nickname}"
+                        android:textColor="@color/font_color"
+                        android:textSize="@dimen/text_size" />
+                </RelativeLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="@dimen/item_margin_left"
+                    android:layout_marginRight="@dimen/item_margin_left"
+                    android:background="#dadada" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:orientation="horizontal" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="性别"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:id="@+id/sex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openDiqu}"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="地区"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.provinceid+login.cityid}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:gravity="right|center_vertical"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openSign}"
+                        android:orientation="horizontal" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="个性签名"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.sign}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#dadada" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin_left"
+                    android:textSize="@dimen/text_size"
+                    android:text="行业信息"/>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openCompanywebsite}"
+                        android:orientation="horizontal" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="公司主页"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.companywebsite}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openIndustry}"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="行业"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.industry}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openCompany}"
+                        android:orientation="horizontal" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="所在公司"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.company}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openCompanyaddress}"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="公司地址"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.companyaddress}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openJob}"
+                        android:orientation="horizontal" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="职位"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.job}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openTelephone}"
+                        android:orientation="horizontal" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="电话"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.telephone}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#dadada" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_margin_left"
+                    android:textSize="@dimen/text_size"
+                    android:text="供求信息"/>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openProvide}"
+                        android:orientation="horizontal" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="可供"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.provide}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:gravity="right|center_vertical"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:background="#dadada" />
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/item_height"
+                        android:layout_marginLeft="@dimen/item_margin_left"
+                        android:layout_marginRight="@dimen/item_margin_left"
+                        android:onClick="@{behavior.openDemand}"
+                        android:orientation="horizontal" >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="需求"
+                            android:textColor="@color/text_title_color"
+                            android:textSize="@dimen/text_size" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:maxLength="260"
+                            android:ellipsize="end"
+                            android:text="@{login.demand}"
+                            android:drawableRight="@drawable/deep_gray_arrow"
+                            android:gravity="right|center_vertical"
+                            android:hint="选填 "
+                            android:textColor="@color/font_color"
+                            android:textSize="@dimen/text_size" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

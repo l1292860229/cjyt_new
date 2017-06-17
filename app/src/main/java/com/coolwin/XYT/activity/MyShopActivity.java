@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.coolwin.XYT.Entity.enumentity.InformationType;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.databinding.MyShopBinding;
 
@@ -21,7 +22,7 @@ public class MyShopActivity extends BaseActivity {
         binding  =  DataBindingUtil.setContentView(this, R.layout.my_shop);
         binding.setBehavior(this);
         binding.titleLayout.setBehavior(this);
-        binding.titleLayout.title.setText("我的商城");
+        binding.titleLayout.title.setText("管理端");
         ImageView leftbtn = binding.titleLayout.leftIcon;
         leftbtn.setImageResource(R.drawable.back_icon);
     }
@@ -43,10 +44,29 @@ public class MyShopActivity extends BaseActivity {
     }
 
     /**
+     * 打开文件列表
+     * @param view
+     */
+    public void openFileList(View view){
+        startActivity(new Intent(context,FileListActivity.class));
+    }
+
+    /**
      * 打开我的商品
      * @param view
      */
     public void openCommodity(View view){
-        startActivity(new Intent(this,CommodityActivity.class));
+        Intent intent = new Intent(this,InformationActivity.class);
+        intent.putExtra(InformationActivity.DATATYPE, InformationType.commodity);
+        startActivity(intent);
+    }
+    /**
+     * 打开我的资讯
+     * @param view
+     */
+    public void openInformation(View view){
+        Intent intent = new Intent(this,InformationActivity.class);
+        intent.putExtra(InformationActivity.DATATYPE, InformationType.Information);
+        startActivity(intent);
     }
 }

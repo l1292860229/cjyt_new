@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -45,6 +46,7 @@ public class WebViewActivity extends BaseActivity {
         mUrl = this.getIntent().getStringExtra(WEBURL);
         //WebView加载web资源
         binding.webView.loadUrl(mUrl);
+        Log.e("WebViewActivity","mUrl="+mUrl);
         initWebView();
         setActionBarLayout();
         Phoenix.with(binding.webloading)

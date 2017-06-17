@@ -3,7 +3,6 @@
     <string name="ypid">585</string>
     <string name="desc"></string>
 	<string name="website">www.wqdsoft.com</string>
-    <string name="nickname">姓名</string>
     <string name="check_phone_number_hint">手机号格式不正确,请输入正确的手机号</string>
     <string name="please_input_pwd">请设置密码</string>
     <string name="please_input_request_reason_hint">请输入请求内容</string>
@@ -54,7 +53,7 @@
         <item>ch_function_6</item>
         <item>ch_function_7</item>
     </string-array>
-    <string name="ochat_app_name">小鱼塘</string>
+    <string name="app_name">小鱼塘</string>
     <string name="user_not_exits">用户不存在!</string>
     <string name="visit_website">访问官网:</string>
     <string name="username">手机号/人脉号</string>
@@ -138,6 +137,8 @@
     <string name="cancel_block">取消</string>
     <string name="say_nothing">说点什么</string>
     <string name="user_sign">个性签名</string>
+    <string name="nickname">姓名</string>
+    <string name="sex">性别</string>
     <string name="feedback_fail">反馈失败</string>
     <string name="input_feedback_content">请填写反馈内容</string>
     <string name="add">添加</string>
@@ -265,7 +266,6 @@
     <string name="send_msg">发消息</string>
     <string name="user_protocol">用户协议</string>
     <string name="commit_dataing">提交数据中,请稍后...</string>
-    <string name="sex">性别</string>
     <string name="complete_user_info">完善资料</string>
     <string name="modify_pwd">修改密码</string>
     <string name="vlaue_is_null">内容不能为空</string>

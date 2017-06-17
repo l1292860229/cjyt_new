@@ -10,10 +10,10 @@
         android:icon="@drawable/logo"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".activity.WelcomeActivity"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
-            android:label="@string/ochat_app_name" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
                 <action android:name="android.intent.action.MAIN" />
@@ -25,42 +25,32 @@
             android:name=".ForgetPwdActity"
              android:configChanges="locale|orientation"
               android:screenOrientation="portrait"
-            android:label="@string/ochat_app_name" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:configChanges="locale|orientation"
              android:screenOrientation="portrait"
-            android:label="@string/ochat_app_name">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activity.RegisterActivity"
               android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
-            android:label="@string/ochat_app_name" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".UserProtocolActivity"
-            android:label="@string/ochat_app_name"
-               android:configChanges="locale|orientation"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-            <intent-filter>
-                <action android:name="android.intent.action.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".CompleteUserInfoActvity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
                android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -70,7 +60,7 @@
         </activity>
         <activity
             android:name=".WriteUserInfoActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
               android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged" >
@@ -92,7 +82,7 @@
         </activity>
         <activity
             android:name=".MyGroupListActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged" >
@@ -102,7 +92,7 @@
         </activity>
         <activity
             android:name=".activity.SettingTabActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
              android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged" >
@@ -122,7 +112,7 @@
         </activity>
         <activity
             android:name=".LocationActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged" >
@@ -132,7 +122,7 @@
         </activity>
         <activity
             android:name=".UserInfoActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged" >
@@ -143,13 +133,13 @@
         <activity
             android:name=".ChatMainActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
         <activity
             android:name=".RotateImageActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
              android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged" >
@@ -159,7 +149,7 @@
         </activity>
         <activity
             android:name=".ShowImageActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
              android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged" >
@@ -171,7 +161,7 @@
         <activity
             android:name=".ChooseUserActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -180,7 +170,7 @@
         <activity
             android:name=".activity.AboutActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -189,7 +179,7 @@
         <activity
             android:name=".HelpWebViewActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -198,7 +188,7 @@
         <activity
             android:name=".activity.FeedBackActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -207,7 +197,7 @@
         <activity
             android:name=".RemarkActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -216,7 +206,7 @@
         <activity
             android:name=".ReportedActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -225,16 +215,16 @@
         <activity
             android:name=".BlockListActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".activity.EditProfileActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
             <intent-filter>
@@ -255,7 +245,7 @@
         <activity
             android:name=".AddPersonActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -264,7 +254,7 @@
         <activity
             android:name=".ChatDetailActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -273,7 +263,7 @@
         <activity
             android:name=".GuideActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -291,7 +281,7 @@
         <activity
             android:name=".MusicActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -300,7 +290,7 @@
         <activity
             android:name=".ContactActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -309,7 +299,7 @@
         <activity
             android:name=".SendMovingActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -318,7 +308,7 @@
         <activity
             android:name=".GroupCodeActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -327,7 +317,7 @@
         <activity
             android:name=".MyFavoriteActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -336,7 +326,7 @@
         <activity
             android:name=".PrivateSetActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -345,16 +335,7 @@
         <activity
             android:name=".ModifyPwdActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".TreeViewActivity"
-            android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -363,7 +344,7 @@
         <activity
             android:name=".InviteActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -372,7 +353,7 @@
         <activity
             android:name=".SearchResultActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -381,7 +362,7 @@
         <activity
             android:name=".NewFriendsActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -391,7 +372,7 @@
         <activity
             android:name=".CardUserDetailActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -400,7 +381,7 @@
         <activity
             android:name=".RoomDetailActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -409,7 +390,7 @@
         <activity
             android:name=".FriensLoopActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
@@ -419,7 +400,7 @@
         <activity
             android:name=".ShowMultiImageActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -428,7 +409,7 @@
         <activity
             android:name=".FriendsLoopDetailActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
              android:windowSoftInputMode="stateUnchanged|adjustResize"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -438,7 +419,7 @@
         <activity
             android:name=".AreaActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -447,7 +428,7 @@
         <activity
             android:name=".AlbumCommentActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -456,7 +437,7 @@
         <activity
             android:name=".FavoriteDetailActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -465,7 +446,7 @@
         <activity
             android:name=".MyMovingMessageListActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -474,7 +455,7 @@
         <activity
             android:name=".JoinRoomDetailActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -483,7 +464,7 @@
         <activity
             android:name=".SetFriendsLoopAuthActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -492,7 +473,7 @@
         <activity
             android:name=".MettingActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
@@ -501,7 +482,7 @@
         <activity
             android:name=".ApplyMettingActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnspecified|adjustPan" >
             <intent-filter>
@@ -511,7 +492,7 @@
         <activity
             android:name=".MettingDetailActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnspecified|adjustPan" >
             <intent-filter>
@@ -521,7 +502,7 @@
         <activity
             android:name=".ManagerMeetingActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
             <intent-filter>
@@ -531,7 +512,7 @@
         <activity
             android:name=".ApplyMetListActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnspecified" >
             <intent-filter>
@@ -541,7 +522,7 @@
         <activity
             android:name=".webactivity.WebViewActivity"
             android:configChanges="locale|orientation"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnspecified" >
             <intent-filter>
@@ -550,7 +531,7 @@
         </activity>
         <activity
             android:name=".MyBbsListActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -560,7 +541,7 @@
         </activity>
         <activity
             android:name=".SendBbsActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -570,7 +551,7 @@
         </activity>
         <activity
             android:name=".BbsChatMainActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" >
@@ -580,7 +561,7 @@
         </activity>
         <activity
             android:name=".BbsDetailActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -590,7 +571,7 @@
         </activity>
         <activity
             android:name=".bbsProhibitionActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -600,7 +581,7 @@
         </activity>
         <activity
             android:name=".RedPacketActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -610,7 +591,7 @@
         </activity>
         <activity
             android:name=".RedpacketWebViewActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -620,7 +601,7 @@
         </activity>
         <activity
             android:name=".BbsChatActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -630,7 +611,7 @@
         </activity>
         <activity
             android:name=".ImagePagerActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -640,7 +621,7 @@
         </activity>
         <activity
             android:name=".LoginMainActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -650,7 +631,7 @@
         </activity>
         <activity
             android:name=".BbsQuanXianActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -660,7 +641,7 @@
         </activity>
         <activity
             android:name=".JoinBBSActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -670,7 +651,7 @@
         </activity>
         <activity
             android:name=".ShareActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -680,7 +661,7 @@
         </activity>
         <activity
             android:name=".BBSerweimaActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -689,7 +670,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".wxapi.WXEntryActivity"
-            android:label="@string/ochat_app_name"
+            android:label="@string/app_name"
             android:exported="true"
             android:launchMode="singleTop">
             <!--这个intent-filter不要忘了-->
@@ -746,7 +727,7 @@
             android:name=".activity.MyShopActivity" >
         </activity>
         <activity
-            android:name=".activity.CommodityActivity" >
+            android:name=".activity.InformationActivity" >
         </activity>
         <activity
             android:name=".activity.MyDingDanActivity" >
@@ -755,7 +736,19 @@
             android:name=".activity.MyIndexActivity" >
         </activity>
         <activity
-            android:name=".activity.AddCommodityActivity"
+            android:name=".activity.WriteNameActivity" >
+        </activity>
+        <activity
+            android:name=".activity.PayActivity" >
+        </activity>
+        <activity
+            android:name=".activity.SelectAreaCodeActivity" >
+        </activity>
+        <activity
+            android:name=".activity.FileListActivity" >
+        </activity>
+        <activity
+            android:name=".activity.AddInformationActivity"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" >
@@ -764,7 +757,10 @@
             android:name=".activity.UpdatePicIndexActivity" >
         </activity>
         <activity
-            android:name=".activity.SelectCommodityActivity" >
+            android:name=".activity.SelectInformationActivity" >
+        </activity>
+        <activity
+            android:name=".activity.OpenPDFActivity" >
         </activity>
         <service
             android:name=".service.SnsService"

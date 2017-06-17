@@ -2,6 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <variable
+            name="imageurl"
+            type="String"/>
     </data>
     <LinearLayout
         android:id="@+id/rootlayout"
@@ -17,10 +20,31 @@
             app:fadeDuration="500"
             app:actualImageScaleType="centerInside"
             app:placeholderImage="@drawable/plugin_camera_no_pictures" />
-        <Button
-            android:id="@+id/updatecommodity"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="更换商品"/>
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/information_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:lines="1"
+                android:ellipsize="end"
+                android:text="@{imageurl}"
+                android:textSize="@dimen/text_size"/>
+            <Button
+                android:id="@+id/updatecommodity"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:text="更换商品"/>
+            <Button
+                android:id="@+id/updateinformation"
+                android:layout_toRightOf="@+id/updatecommodity"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="更换资讯"/>
+        </RelativeLayout>
     </LinearLayout>
 </layout>

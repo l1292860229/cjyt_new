@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.coolwin.XYT.Entity.DataModel;
-import com.coolwin.XYT.Entity.MyCommodity;
+import com.coolwin.XYT.Entity.MyInformation;
 import com.coolwin.XYT.Entity.rxbus.Transmission;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.adapter.MyIndexAdapter;
@@ -23,6 +23,7 @@ import gorden.rxbus2.ThreadMode;
 
 import static com.coolwin.XYT.Entity.constant.Constants.DATAPOSITION;
 import static com.coolwin.XYT.Entity.constant.Constants.UPDATEMYINDEXPIC;
+import static com.coolwin.XYT.Entity.constant.Constants.UPDATEMYINDEXPIC_PIC;
 
 /**
  * Created by dell on 2017/6/8.
@@ -52,6 +53,7 @@ public class UpdatePicIndexActivity extends  BaseActivity {
         datas.add(dataModel);
         datas.addAll(dataModel.datas);
         picAdapter=new MyIndexAdapter(this,datas,widthPixels);
+        picAdapter.setItemCanClick(true);
         binding.ivLayout.setEnableRefresh(false);
         binding.ivLayout.setEnableLoadmore(false);
         binding.ivIndex.setLayoutManager(new LinearLayoutManager(context));
@@ -69,7 +71,7 @@ public class UpdatePicIndexActivity extends  BaseActivity {
 
     /**
      *  事件线的来源
-     *  1.SelectCommodityActivity->right_text 来源
+     *  1.SelectInformationActivity->right_text 来源
      * @param msg
      */
     @Subscribe(code = UPDATEMYINDEXPIC,
@@ -79,20 +81,44 @@ public class UpdatePicIndexActivity extends  BaseActivity {
             return;
         }
         //接收数据
-        List<MyCommodity> subjectses = (List<MyCommodity>) msg.object;
-        int startindex=msg.position,endindex=subjectses.size();
+        List<MyInformation> subjectses = (List<MyInformation>) msg.object;
+        StringBuffer str = new StringBuffer();
+        for (MyInformation subjectse : subjectses) {
+            str.append(subjectse.getShopurl()).append(",");
+        }
+        if(subjectses.size()>0){
+            str.deleteCharAt(str.length()-1);
+        }
+        dataModel.datas.get(msg.position).shopLink = str.toString();
+        picAdapter.setData(datas);
+        picAdapter.notifyItemRangeChanged(0,datas.size());
+    }
+    /**
+     *  事件线的来源
+     *  1.MyIndexAdapter->OnHanlderResultCallback->onHanlderSuccess 来源
+     * @param msg
+     */
+    @Subscribe(code = UPDATEMYINDEXPIC_PIC,
+            threadMode = ThreadMode.MAIN)
+    public void receive10001(Transmission msg) {
+        if (msg == null || msg.object == null) {
+            return;
+        }
+        //接收数据
+        List<String> subjectses = (List<String>) msg.object;
+        int startindex = msg.position, endindex = subjectses.size();
         //批量更新选择的商品图片
         for (int i = msg.position; i < dataModel.datas.size(); i++) {
-            if(endindex<=(i-startindex)){
+            if (endindex <= (i - startindex)) {
                 break;
             }
             DataModel.Data data = dataModel.new Data();
-            if (subjectses.get(i-startindex).getPicture()!=null && subjectses.get(i-startindex).getPicture().size()>0) {
-                data.shopImageUrl = subjectses.get(i-startindex).getPicture().get(0).originUrl;
+            if (subjectses.size() > 0) {
+                data.shopImageUrl = subjectses.get(i - startindex);
             }
-            data.shopLink = subjectses.get(i-startindex).getShopurl();
+            data.shopLink = dataModel.datas.get(i).shopLink;
             dataModel.datas.remove(i);
-            dataModel.datas.add(i,data);
+            dataModel.datas.add(i, data);
         }
         //更新数据
         datas.clear();

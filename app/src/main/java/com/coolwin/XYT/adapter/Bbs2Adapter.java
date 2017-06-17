@@ -91,7 +91,6 @@ public class Bbs2Adapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 //				if(bbs.isVisitors==1){
-					Intent friendsloopIntent = new Intent();
 					Intent intent = new Intent(mContext, FriensLoopActivity.class);
 					intent.putExtra("bbs", bbs);
 					intent.putExtra("isvisitors", true);

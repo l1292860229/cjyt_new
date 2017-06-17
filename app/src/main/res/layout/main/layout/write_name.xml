@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="username" type="String"/>
+        <variable name="behavior" type="com.coolwin.XYT.activity.WriteNameActivity"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <include
+            android:id="@+id/title_layout"
+            layout="@layout/title_layout" />
+        <EditText
+            android:id="@+id/markname"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/cirle_edit_bg"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:lines="1"
+            android:textColor="@color/black"
+            android:text="@{username}"
+            android:textSize="@dimen/text_size" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="-30dp"
+            android:layout_gravity="right"
+            android:onClick="@{behavior.clearname}"
+            android:background="@drawable/clear_btn"/>
+    </LinearLayout>
+</layout>

@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.coolwin.XYT.EditProfileActivity;
+import com.coolwin.XYT.activity.EditProfileActivity;
 import com.coolwin.XYT.Entity.Login;
 import com.coolwin.XYT.MyAlbumActivity;
 import com.coolwin.XYT.R;

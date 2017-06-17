@@ -7,4 +7,11 @@ package com.coolwin.XYT.Entity.rxbus;
 public class Transmission {
     public int position;
     public Object object;
+
+    public Transmission() {
+    }
+    public Transmission(int position, Object object) {
+        this.position = position;
+        this.object = object;
+    }
 }

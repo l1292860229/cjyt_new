@@ -160,7 +160,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/item_margin_left"
-                        android:src="@drawable/find_friends" />
+                        android:src="@drawable/mine_manager" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

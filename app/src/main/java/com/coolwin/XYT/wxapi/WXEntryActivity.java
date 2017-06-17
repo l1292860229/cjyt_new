@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.global.Util;
@@ -124,16 +123,23 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
      * 请求回调接口
      */
     @Override
-    public void onReq(BaseReq req) {
-        Log.i(TAG, "onReq");
-    }
+    public void onReq(BaseReq req) { }
 
     /**
      * 请求响应回调接口
      */
     @Override
     public void onResp(BaseResp resp) {
-        Log.i(TAG, "onResp");
+        int code = resp.errCode;
+        if (code == 0){
+            //TODO 显示充值成功的页面和需要的操作
+        }
+        if (code == -1){
+            //TODO 错误
+        }
+        if (code == -2){
+            //TODO 用户取消
+        }
         WXEntryActivity.this.finish();
     }
 }

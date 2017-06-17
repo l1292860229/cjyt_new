@@ -11,13 +11,20 @@ import com.coolwin.XYT.util.UIUtil;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MultipartBody;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
 
@@ -39,6 +46,9 @@ public class MyIndexPresenter extends BasePresenter<UIMyIndex> {
                                                         @Query("token") String token,
                                                         @Query("ypid") String ypid,
                                                         @Query("uid") String uid);
+        @Multipart
+        @POST()
+        Observable<Map<String,String>> uploadpic(@Url String url, @Part MultipartBody.Part picture);
     }
     public MyIndexPresenter() {
         servlet = retrofit.create(MyIndexServlet.class);
@@ -78,34 +88,96 @@ public class MyIndexPresenter extends BasePresenter<UIMyIndex> {
                     }
                 });
     }
-    public void uploadPicUpdateIndex( List<DataModel> datas){
+    public void uploadPicUpdateIndex(final List<DataModel> datas){
         mView.showLoading();
-        servlet.saveshopindex(UrlConstants.BASEURL2+"saveshopindex",
-                login.kai6Id,login.token,login.ypId,login.uid, AbBase64.encode(GsonUtil.objectToJson(datas).getBytes()))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<RetrofitResult>() {
+        Observable.fromArray(datas)
+                // datas -> 单个DataModel
+          .flatMap(new Function<List<DataModel>, ObservableSource<DataModel>>() {
+              @Override
+              public ObservableSource<DataModel> apply(List<DataModel> dataModels) throws Exception {
+                  return Observable.fromIterable(dataModels);
+              }
+              // 单个DataModel ->List<DataModel.Data>
+          }).map(new Function<DataModel, List<DataModel.Data>>() {
+            @Override
+            public List<DataModel.Data> apply(DataModel dataModel) throws Exception {
+                return dataModel.datas;
+            }
+            //List<DataModel.Data>-> 单个DataModel.Data
+        }).flatMap(new Function<List<DataModel.Data>, ObservableSource<DataModel.Data>>() {
+            @Override
+            public ObservableSource<DataModel.Data> apply(List<DataModel.Data> datas) throws Exception {
+                return Observable.fromIterable(datas);
+            }
+            // 单个DataModel.Data->String
+        }).map(new Function<DataModel.Data, String>() {
+            @Override
+            public String apply(DataModel.Data data) throws Exception {
+                return data.shopImageUrl;
+            }
+            //过滤掉http
+        }).filter(new Predicate<String>() {
+            @Override
+            public boolean test(String s) throws Exception {
+                if(s.contains("http")){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+            //上传图片
+        }).flatMap(new Function<String, ObservableSource<Map<String,String>>>() {
                     @Override
-                    public void accept(RetrofitResult retrofitResult) throws Exception {
-                        if(retrofitResult.getState().getCode()==0){
-                            UIUtil.showMessage(context, "提交成功");
-                        }else{
-                            UIUtil.showMessage(context, retrofitResult.getState().getMsg());
+                    public ObservableSource<Map<String,String>> apply(String s) throws Exception {
+                        return servlet.uploadpic(UrlConstants.BASEURL2+"upload",getMultipartBodyFilePathPart(s,"picture"));
+                    }
+                }).map(new Function<Map<String,String>, String>() {
+             @Override
+             public String apply(Map<String,String> stringRetrofitResult) throws Exception {
+                 return stringRetrofitResult.get("originUrl");
+             }
+             //本地图片替换成网络
+         }).toList().flatMapObservable(new Function<List<String>, ObservableSource<RetrofitResult>>() {
+            @Override
+            public ObservableSource<RetrofitResult> apply(List<String> strings) throws Exception {
+                int picindex=0;
+                for (int i = 0; i < datas.size(); i++) {
+                    for (int i1 = 0; i1 < datas.get(i).datas.size(); i1++) {
+                        if (!datas.get(i).datas.get(i1).shopImageUrl.contains("http")) {
+                            if(picindex<strings.size()){
+                                datas.get(i).datas.get(i1).shopImageUrl = strings.get(picindex++);
+                            }
                         }
                     }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        UIUtil.showMessage(context, "请求异常,请稍后重试");
-                        mView.hideLoading();
-                        throwable.printStackTrace();
-                    }
-                }, new Action() {
-                    @Override
-                    public void run() throws Exception {
-                        mView.hideLoading();
-                    }
-                });
+                }
+                //保存
+                return servlet.saveshopindex(UrlConstants.BASEURL2+"saveshopindex",
+                        login.kai6Id,login.token,login.ypId,login.uid, AbBase64.encode(GsonUtil.objectToJson(datas).getBytes()));
+            }
+        }).subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Consumer<RetrofitResult>() {
+            @Override
+            public void accept(RetrofitResult retrofitResult) throws Exception {
+                if(retrofitResult.getState().getCode()==0){
+                    UIUtil.showMessage(context, "提交成功");
+                }else{
+                    UIUtil.showMessage(context, retrofitResult.getState().getMsg());
+                }
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                UIUtil.showMessage(context, "请求异常,请稍后重试");
+                mView.hideLoading();
+                throwable.printStackTrace();
+            }
+        }, new Action() {
+            @Override
+            public void run() throws Exception {
+                mView.hideLoading();
+            }
+        });
 
     }
 }

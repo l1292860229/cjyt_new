@@ -153,7 +153,7 @@ public class ChatMessageNotifiy extends AbstractNotifiy{
 		UnReadSessionInfo sessionInfo = table.queryUnReadSessionInfo();
 		
 		if (sessionInfo.sessionCount > 1) {
-			notificationTitle = mContext.getString(R.string.ochat_app_name);
+			notificationTitle = mContext.getString(R.string.app_name);
 			
 			notificationContent = sessionInfo.sessionCount + mContext.getString(R.string.contact_count) 
 					+ mContext.getString(R.string.send_in) + sessionInfo.msgCount 

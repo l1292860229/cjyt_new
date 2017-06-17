@@ -114,8 +114,10 @@ public class ItemTouchCallBack extends ItemTouchHelper.Callback {
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-            viewHolder.itemView.setBackgroundColor(Color.LTGRAY);//为拖拽的item设置背景颜色
+            viewHolder.itemView.setBackgroundColor(Color.RED);//为拖拽的item设置背景颜色
+
         }
+        viewHolder.itemView.setBackgroundColor(Color.RED);
         super.onSelectedChanged(viewHolder, actionState);
     }
 

@@ -19,5 +19,20 @@ public class DataModel implements Serializable {
             this.shopImageUrl = imagePath;
             this.shopLink = link;
         }
+
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "shopImageUrl='" + shopImageUrl + '\'' +
+                    ", shopLink='" + shopLink + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "DataModel{" +
+                "datas=" + datas +
+                '}';
     }
 }

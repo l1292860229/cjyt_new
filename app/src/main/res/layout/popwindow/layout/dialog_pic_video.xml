@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <variable name="behavior" type="com.coolwin.XYT.activity.AddCommodityActivity"/>
+        <variable name="behavior" type="com.coolwin.XYT.activity.AddInformationActivity"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"

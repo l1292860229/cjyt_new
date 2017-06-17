@@ -50,6 +50,8 @@ import com.coolwin.XYT.DB.SessionTable;
 import com.coolwin.XYT.Entity.Login;
 import com.coolwin.XYT.Entity.Version;
 import com.coolwin.XYT.Entity.VersionInfo;
+import com.coolwin.XYT.activity.EditProfileActivity;
+import com.coolwin.XYT.activity.LoginActivity;
 import com.coolwin.XYT.exception.ExceptionHandler;
 import com.coolwin.XYT.fragment.ChatFragment;
 import com.coolwin.XYT.fragment.FatherContactsFragment;
@@ -336,7 +338,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	public void setActionBarLayout(){
 		mTitleLayout = (RelativeLayout)findViewById(R.id.title_layout);
 		mTitleView = (TextView)findViewById(R.id.title);
-		mTitleView.setText(mContext.getResources().getString(R.string.ochat_app_name));
+		mTitleView.setText(mContext.getResources().getString(R.string.app_name));
 		//mSearchBtn = (ImageView)findViewById(R.id.search_btn);
 		mAddBtn = (ImageView)findViewById(R.id.add_btn);
 		//mSearchBtn.setVisibility(View.VISIBLE);
@@ -391,18 +393,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	/**
 	 * 检测用是否填写昵称，如果没有则跳转到完善资料页进行填写
 	 */
-	private void startGuidePage(){
-		Login login = IMCommon.getLoginResult(mContext);
-		if(checkValue(login)){
-			checkUpgrade();//检测新版本
-		}else{//跳转到完善资料页
-			Intent completeIntent = new Intent();
-			completeIntent.setClass(mContext, CompleteUserInfoActvity.class);
-			completeIntent.putExtra("login", login);
-			startActivityForResult(completeIntent, GlobalParam.SHOW_COMPLETE_REQUEST);
-		}
-		//return isShowGudie;
-	}
 
 	/**
 	 * 开启聊天服务

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Base64;
 
+import com.coolwin.XYT.Entity.AreaCode;
 import com.coolwin.XYT.Entity.Login;
 import com.coolwin.XYT.Entity.constant.Constants;
 
@@ -17,6 +18,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.Map;
+
+import static com.coolwin.XYT.util.GsonUtil.gson;
 
 /**
  * Created by Administrator on 2017/1/22.
@@ -48,6 +51,10 @@ public class GetDataUtil {
         }
         return null;
     }
+    public static AreaCode[] getAreaCode(Context context) {
+        AreaCode[] provinces = gson.fromJson(getAssestsFile(context, "AreaCode"), AreaCode[].class);
+        return provinces;
+    }
     public static void saveLogin(Context context,Login login) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream(3000);
         ObjectOutputStream oos = null;
@@ -69,6 +76,19 @@ public class GetDataUtil {
             return null;
         }
         return str;
+    }
+    public static void saveUsername(Context context,String username) {
+        put(context, Constants.REMENBER_SHARED,Constants.USERNAME,username);
+    }
+    public static String getPassword(Context context) {
+        String str  = (String) get(context, Constants.REMENBER_SHARED,Constants.PASSWORD,"");
+        if(StringUtil.isNull(str)){
+            return null;
+        }
+        return str;
+    }
+    public static void savePassword(Context context,String password) {
+        put(context, Constants.REMENBER_SHARED,Constants.PASSWORD,password);
     }
     public static void removLogin(Context context) {
         remove(context,Constants.LOGIN_SHARED,Constants.LOGIN_RESULT);
