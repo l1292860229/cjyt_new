@@ -78,13 +78,13 @@ import com.coolwin.XYT.Entity.ShareUrl;
 import com.coolwin.XYT.Entity.Video;
 import com.coolwin.XYT.action.AudioPlayListener;
 import com.coolwin.XYT.action.AudioRecorderAction;
+import com.coolwin.XYT.activity.LocationActivity;
 import com.coolwin.XYT.adapter.EmojiAdapter;
 import com.coolwin.XYT.adapter.EmojiUtil;
 import com.coolwin.XYT.adapter.IMViewPagerAdapter;
 import com.coolwin.XYT.control.ReaderImpl;
 import com.coolwin.XYT.dialog.MMAlert;
 import com.coolwin.XYT.dialog.MMAlert.OnAlertSelectId;
-import com.coolwin.XYT.fragment.ChatFragment;
 import com.coolwin.XYT.global.AjaxCallBack;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
@@ -1485,7 +1485,6 @@ public class BbsChatMainActivity extends BaseActivity implements OnItemLongClick
 		if(mReaderImpl != null){
 			mReaderImpl.unregisterRecordReceiver();
 		}
-		mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 		mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 		playListener.stop();
 

@@ -9,7 +9,16 @@ import java.util.List;
 
 public class DataModel implements Serializable {
     public List<Data> datas;
-
+    public List<BannerList> bannerList;
+    public class BannerList implements Serializable{
+        public String imgUrl;
+        public String type;
+        public String id;
+        public BannerList(){}
+        public BannerList(String imgUrl){
+            this.imgUrl = imgUrl;
+        }
+    }
     public class  Data implements Serializable{
         public String shopImageUrl;//图片路径
         public String shopLink;//外链

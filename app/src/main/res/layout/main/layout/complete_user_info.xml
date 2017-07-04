@@ -50,7 +50,6 @@
                         android:layout_height="@dimen/item_height"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:contentDescription="@string/desc"
                         android:scaleType="fitXY"
                         app:placeholderImage="@drawable/contact_default_header"/>
                 </RelativeLayout>

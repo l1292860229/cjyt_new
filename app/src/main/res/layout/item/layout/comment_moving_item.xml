@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="timetext" type="String"/>
+        <variable
+            name="name" type="String"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/user_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dip"
+            android:src="@drawable/contact_default_header" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/user_icon"
+            android:orientation="vertical" >
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxWidth="150dip"
+                    android:singleLine="true"
+                    android:text="@{name}"
+                    android:layout_toLeftOf="@+id/time"
+                    android:textColor="@color/application_friends_loop_user_name"
+                    android:textSize="12dp" />
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{timetext}"
+                    android:textColor="@color/application_gray_black"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/contextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/application_black"
+                android:textSize="13dp" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

@@ -1,10 +1,7 @@
 package com.coolwin.XYT.adapter;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.coolwin.XYT.Entity.MyInformation;
 import com.coolwin.XYT.R;
@@ -28,14 +25,10 @@ public class SelectInformationAdapter extends BaseAdapter<MyInformation>{
     public List<MyInformation> getCheckedSubjects() {
         return checkedSubjects;
     }
-    @Override
-    public MyRecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        CommodityItemBinding dataBinding =  DataBindingUtil.
-                inflate(LayoutInflater.from(context), R.layout.commodity_item, parent, false);
-        MyRecycleViewHolder  vh = new MyRecycleViewHolder(dataBinding.getRoot());
-        vh.setBinding(dataBinding);
-        return vh;
 
+    @Override
+    public int getLayoutId() {
+        return R.layout.commodity_item;
     }
     @Override
     public void onBindViewHolder(final MyRecycleViewHolder holder, final int position) {

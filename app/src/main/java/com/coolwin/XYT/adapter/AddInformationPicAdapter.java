@@ -1,11 +1,8 @@
 package com.coolwin.XYT.adapter;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.coolwin.XYT.R;
@@ -26,13 +23,10 @@ public class AddInformationPicAdapter extends BaseAdapter<String>{
         super(context);
         this.mList = mList;
     }
+
     @Override
-    public MyRecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ShopIndexBinding oneBinding =  DataBindingUtil.
-                inflate(LayoutInflater.from(parent.getContext()), R.layout.shop_index, parent, false);
-        MyRecycleViewHolder vh = new MyRecycleViewHolder(oneBinding.getRoot());
-        vh.setBinding(oneBinding);
-        return vh;
+    public int getLayoutId() {
+        return R.layout.shop_index;
     }
     @Override
     public void onBindViewHolder(MyRecycleViewHolder holder, final int position) {

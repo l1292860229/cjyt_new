@@ -73,7 +73,7 @@ public class InformationActivity extends BaseActivity<InformationPresenter>  imp
                 AbDialogUtil.showAlertDialog(context, "是否删除?", "你确定要删除么?", new AbAlertDialogFragment.AbDialogOnClickListener() {
                     @Override
                     public void onPositiveClick() {
-                        mPresenter.deleteData(commodityAdapter.getData().get(position).getId()+"");
+                        mPresenter.deleteData(commodityAdapter.getData().get(position).getId()+"",informationType.getValue());
                         commodityAdapter.getData().remove(position);
                         commodityAdapter.notifyItemRemoved(position);
                     }

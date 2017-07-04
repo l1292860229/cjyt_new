@@ -2,12 +2,9 @@ package com.coolwin.XYT.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Environment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.ab.fragment.AbLoadDialogFragment;
 import com.ab.util.AbDialogUtil;
@@ -34,15 +31,11 @@ public class FileListAdapter extends BaseAdapter<String>{
         super(context);
         this.mList = list;
     }
-    @Override
-    public MyRecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        FilelistBinding filelistBinding =  DataBindingUtil.
-                inflate(LayoutInflater.from(parent.getContext()), R.layout.filelist, parent, false);
-        MyRecycleViewHolder myRecycleViewHolder = new MyRecycleViewHolder(filelistBinding.getRoot());
-        myRecycleViewHolder.setBinding(filelistBinding);
-        return myRecycleViewHolder;
-    }
 
+    @Override
+    public int getLayoutId() {
+        return R.layout.filelist;
+    }
     @Override
     public void onBindViewHolder(MyRecycleViewHolder holder, final int position) {
         FilelistBinding filelistBinding = (FilelistBinding) holder.getBinding();

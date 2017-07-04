@@ -53,6 +53,7 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
     }
     private void shareLocalPic2Cir(String picPath) {
         //TODO 判断图片是否存在
+
         WXImageObject imageObject = new WXImageObject();
         imageObject.setImagePath(picPath);
         WXMediaMessage msg = new WXMediaMessage();

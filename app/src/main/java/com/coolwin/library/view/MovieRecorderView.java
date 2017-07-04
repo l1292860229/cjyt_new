@@ -29,7 +29,7 @@ import java.util.TimerTask;
 
 
 /**
- * 视频播放控件
+ * 视频播放控件,工具,之所以保存,是为了方便查看某些属性
  *
  */
 public class MovieRecorderView extends LinearLayout implements OnErrorListener {

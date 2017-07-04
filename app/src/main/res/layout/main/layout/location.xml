@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="behavior"
+            type="com.coolwin.XYT.activity.LocationActivity"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/title_layout"
+            layout="@layout/title_layout" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <com.baidu.mapapi.map.MapView
+                android:id="@+id/bmapView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+            <TextView
+                android:id="@+id/loction_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/location_address"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/loction_icon"
+                />
+            <ImageView
+                android:id="@+id/loction_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/location_marker"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <ListView
+            android:id="@+id/address_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+        </ListView>
+    </LinearLayout>
+</layout>

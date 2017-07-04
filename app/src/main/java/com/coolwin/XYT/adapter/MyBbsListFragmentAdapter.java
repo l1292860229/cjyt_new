@@ -38,7 +38,7 @@ public class MyBbsListFragmentAdapter extends BaseAdapter<Bbs>{
             @Override
             public void onClick(View v) {
                 if(mItemClickListener!=null){
-                    mItemClickListener.onItemClick(null,dataBinding.getRoot(),holder.getLayoutPosition()-1,holder.getLayoutPosition());
+                    mItemClickListener.onItemClick(null,dataBinding.getRoot(),holder.getLayoutPosition(),holder.getLayoutPosition());
                 }
             }
         });

@@ -28,6 +28,7 @@ public abstract  class BaseActivity<T extends BasePresenter> extends FragmentAct
     public Context context;
     public AbSampleDialogFragment abSampleDialogFragment;
     int widthPixels;
+    int heightPixels;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public abstract  class BaseActivity<T extends BasePresenter> extends FragmentAct
         DisplayMetrics outMetrics = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(outMetrics);
         widthPixels = outMetrics.widthPixels;
+        heightPixels = outMetrics.heightPixels;
     }
     public  <T> T getT(Object o, int i) {
         try {

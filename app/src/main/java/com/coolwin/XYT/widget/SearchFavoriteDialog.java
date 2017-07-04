@@ -20,7 +20,7 @@ import com.coolwin.XYT.Entity.MessageType;
 import com.coolwin.XYT.Entity.MovingContent;
 import com.coolwin.XYT.Entity.MovingLoaction;
 import com.coolwin.XYT.FavoriteDetailActivity;
-import com.coolwin.XYT.LocationActivity;
+import com.coolwin.XYT.activity.LocationActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.adapter.MyFavoriteListAdapter;
 

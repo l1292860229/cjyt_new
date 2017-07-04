@@ -19,10 +19,9 @@ import com.coolwin.XYT.Entity.MessageType;
 import com.coolwin.XYT.Entity.Room;
 import com.coolwin.XYT.Entity.SNSMessage;
 import com.coolwin.XYT.Entity.UnReadSessionInfo;
-import com.coolwin.XYT.MainActivity;
 import com.coolwin.XYT.MettingDetailActivity;
 import com.coolwin.XYT.R;
-import com.coolwin.XYT.fragment.ChatFragment;
+import com.coolwin.XYT.activity.MainActivity;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.global.GlobleType;
@@ -115,7 +114,6 @@ public class ChatMessageNotifiy extends AbstractNotifiy{
 		
 			
 		 if(messageInfo.typechat != GlobleType.MEETING_CHAT){
-			 mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 			mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 		}else{
 			Intent intent = new Intent(GlobalParam.ACTION_SHOW_FOUND_NEW_TIP);

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="totalSales"
+            type="String" />
+        <variable name="totalRecharge"
+            type="String" />
+        <variable name="totalRechargeValue"
+            type="String" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EB452E"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/qianbao"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="@dimen/item_margin_left"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:text="@{totalSales}"/>
+            <com.coolwin.library.view.CountView
+                android:id="@+id/totalsalesvalue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/item_margin_left"
+                android:textSize="50dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/item_margin_left"
+            android:paddingLeft="@dimen/item_margin_left"
+            android:paddingRight="@dimen/item_margin_left">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/item_margin_top"
+                android:text="@{totalRecharge}"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{totalRechargeValue}"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

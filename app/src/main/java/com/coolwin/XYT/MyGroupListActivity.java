@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.coolwin.XYT.DB.DBHelper;
@@ -43,7 +42,7 @@ public class MyGroupListActivity extends BaseActivity{
 	private ListView mListView;
 	private RelativeLayout mTitleLayout;
 	private RoomAdapter mAdapter;
-	private TextView mGroupCount;
+//	private TextView mGroupCount;
 	
 	private DisplayMetrics mMetrics;
 	private int mWdith;
@@ -129,7 +128,7 @@ public class MyGroupListActivity extends BaseActivity{
 							mAdapter.notifyDataSetChanged();
 						}
 					}
-					mGroupCount.setText(mRoomList.size()+mContext.getResources().getString(R.string.group_count));
+//					mGroupCount.setText(mRoomList.size()+mContext.getResources().getString(R.string.group_count));
 				}
 			}else if(action.equals(REFRESH_ROOM_ACTION)){//刷新群信息
 				getGroupList(false);
@@ -159,10 +158,10 @@ public class MyGroupListActivity extends BaseActivity{
 	private void initCompent(){
 		mTitleLayout = (RelativeLayout)findViewById(R.id.title_layout);
 		mTitleLayout.setVisibility(View.VISIBLE);
-		mGroupCount = (TextView)findViewById(R.id.group_count);
+//		mGroupCount = (TextView)findViewById(R.id.group_count);
 		if(mIsHideSearcBtn == 1){
 			setTitleContent(R.drawable.back_btn,0, R.string.group_list);
-			mGroupCount.setVisibility(View.GONE);
+//			mGroupCount.setVisibility(View.GONE);
 		}else{
 			setTitleContent(R.drawable.back_btn,true,true,false, R.string.room_chat);
 			mSearchBtn.setOnClickListener(this);
@@ -303,12 +302,12 @@ public class MyGroupListActivity extends BaseActivity{
 					mListView.setAdapter(mAdapter);
 				}
 				if(mIsHideSearcBtn == 1){
-					mGroupCount.setVisibility(View.GONE);
+//					mGroupCount.setVisibility(View.GONE);
 				}else{
-					mGroupCount.setVisibility(View.VISIBLE);
+//					mGroupCount.setVisibility(View.VISIBLE);
 				}
 				
-				mGroupCount.setText(mRoomList.size()+mContext.getResources().getString(R.string.group_count));
+//				mGroupCount.setText(mRoomList.size()+mContext.getResources().getString(R.string.group_count));
 				break;
 
 			default:

@@ -635,9 +635,9 @@ public class IMCommon {
 			try {
 				if((lastTime==null || lastTime.equals("")) || !(FeatureFunction.jisuan(lastTime, currentTime))){
 					//发送检测新的朋友通知
-					Intent intent = new Intent(ChatFragment.ACTION_CHECK_NEW_FRIENDS);
-					intent.putExtra("count",contactCount);
-					context.sendBroadcast(intent);
+//					Intent intent = new Intent(ChatFragment.ACTION_CHECK_NEW_FRIENDS);
+//					intent.putExtra("count",contactCount);
+//					context.sendBroadcast(intent);
 				}
 
 			} catch (Exception e) {

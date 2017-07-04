@@ -12,11 +12,16 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
             android:theme="@android:style/Theme.Holo.Light"
-
-
         -->
     </style>
-
+    <style name="MaterialSearch" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+    </style>
     <style name="SendMoneyRLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">44dp</item>

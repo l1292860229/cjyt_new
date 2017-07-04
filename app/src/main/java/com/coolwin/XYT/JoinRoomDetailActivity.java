@@ -262,7 +262,6 @@ public class JoinRoomDetailActivity extends BaseActivity {
 
 					SessionTable table = new SessionTable(db);
 					table.insert(session);
-					sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 
 
 

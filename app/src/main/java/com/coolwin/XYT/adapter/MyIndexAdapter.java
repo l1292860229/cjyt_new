@@ -10,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.coolwin.XYT.Entity.DataModel;
 import com.coolwin.XYT.Entity.constant.StaticData;
 import com.coolwin.XYT.Entity.enumentity.InformationType;
-import com.coolwin.XYT.Entity.rxbus.Transmission;
 import com.coolwin.XYT.R;
+import com.coolwin.XYT.activity.CropPicActivity;
 import com.coolwin.XYT.activity.SelectInformationActivity;
 import com.coolwin.XYT.databinding.ShopIndexListBinding;
 import com.coolwin.XYT.databinding.ShopIndexPicItemBinding;
@@ -26,15 +29,12 @@ import com.coolwin.library.helper.MyRecycleViewHolder;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.fresco.helper.Phoenix;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
-import gorden.rxbus2.RxBus;
 
 import static com.coolwin.XYT.Entity.constant.Constants.DATAPOSITION;
-import static com.coolwin.XYT.Entity.constant.Constants.UPDATEMYINDEXPIC_PIC;
 
 
 /**
@@ -43,7 +43,7 @@ import static com.coolwin.XYT.Entity.constant.Constants.UPDATEMYINDEXPIC_PIC;
 
 public class MyIndexAdapter extends BaseAdapter{
     public boolean itemCanClick=false;
-    public MyIndexAdapter(Context context, List mList,int widthPixels) {
+    public MyIndexAdapter(Context context, List mList, int widthPixels) {
         super(context);
         this.mList = mList;
         this.widthPixels = widthPixels;
@@ -83,7 +83,33 @@ public class MyIndexAdapter extends BaseAdapter{
                 }
             });
             //非空判断
-            if(dataModelist.datas==null){
+            if(dataModelist.datas==null && dataModelist.bannerList==null){
+                return;
+            }
+            if(dataModelist.bannerList!=null && dataModelist.bannerList.size()>0){
+                final ConvenientBanner convenientBanner = new ConvenientBanner(context);
+                convenientBanner.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200));
+                convenientBanner.setCanLoop(true);
+                convenientBanner.startTurning(3000);
+                convenientBanner.setPages(new CBViewHolderCreator() {
+                    @Override
+                    public Object createHolder() {
+                        return new NetworkImageHolderView(convenientBanner,widthPixels);
+                    }
+                },dataModelist.bannerList)
+                //设置指示器的方向
+                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
+                convenientBanner.setOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        if(mItemClickListener!=null){
+                            mItemClickListener.onItemClick(null,convenientBanner,holder.getLayoutPosition(),0);
+                        }
+
+                    }
+                });
+                dataBinding.rootlayout.addView(convenientBanner);
+                setCanMoreTop(false);
                 return;
             }
             final int dataSize = dataModelist.datas.size();
@@ -116,15 +142,14 @@ public class MyIndexAdapter extends BaseAdapter{
                     view.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            GalleryFinalHelper.openGalleryMuti(0, true, true, dataSize, new GalleryFinal.OnHanlderResultCallback() {
+                            GalleryFinalHelper.openGallerySingle(0, false, true, new GalleryFinal.OnHanlderResultCallback() {
                                 @Override
                                 public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
-                                    List<String> imagepath = new ArrayList<>();
                                     if (resultList.size()>0) {
-                                        for (PhotoInfo photoInfo : resultList) {
-                                            imagepath.add(photoInfo.getPhotoPath());
-                                        }
-                                        RxBus.get().send(UPDATEMYINDEXPIC_PIC,new Transmission(pos,imagepath));
+                                        Intent intent = new Intent(context,CropPicActivity.class);
+                                        intent.putExtra(CropPicActivity.DATA,resultList.get(0).getPhotoPath());
+                                        intent.putExtra(CropPicActivity.POSITION,pos);
+                                        context.startActivity(intent);
                                     }
                                 }
                                 @Override

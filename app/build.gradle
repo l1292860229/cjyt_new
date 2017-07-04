@@ -7,8 +7,8 @@ android {
         applicationId "com.coolwin.XYT"
         minSdkVersion 17
         targetSdkVersion 22
-        versionCode 20170522
-        versionName "1.0.1"
+        versionCode 20170623
+        versionName "1.1.0"
         multiDexEnabled true
     }
     dataBinding {
@@ -24,13 +24,18 @@ android {
         main {
             res.srcDirs =
                     [
-                            'src/main/res/layout/popwindow',
-                            'src/main/res/layout/indexpage',
-                            'src/main/res/layout/item',
-                            'src/main/res/layout/main',
-                            'src/main/res/layout',
-                            'src/main/res'
+                        'src/main/res/layout/popwindow',
+                        'src/main/res/layout/indexpage',
+                        'src/main/res/layout/item',
+                        'src/main/res/layout/main',
+                        'src/main/res/layout',
+                        'src/main/res'
                     ]
+        }
+    }
+    applicationVariants.all {
+        variant -> variant.outputs.each {
+            output -> output.outputFile = new File(output.outputFile.parent, "xyt_" + defaultConfig.versionCode +  "_v" + defaultConfig.versionName +"_"+buildType.name+ ".apk");
         }
     }
     //packagingOptions {
@@ -79,13 +84,12 @@ dependencies {
     //https://github.com/lcodecorex/TwinklingRefreshLayout //下拉刷新,上拉加载
     compile 'com.lcodecorex:tkrefreshlayout:1.0.7'
     //https://github.com/barteksc/AndroidPdfViewer
-    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'
+//    compile 'com.github.barteksc:android-pdf-viewer:2.6.1'
+    //https://github.com/astuetz/PagerSlidingTabStrip
     //这里是我们自己添加的包
     compile files('libs/audio.jar')
-    compile files('libs/baidumapapi_v2_3_1.jar')
     compile files('libs/fastjson-1.1.27-android.jar')
     compile files('libs/libammsdk.jar')
-    compile files('libs/locSDK_3.1.jar')
     compile files('libs/pinyin4j-2.5.0.jar')
     compile files('libs/TalkingData_AppAnalytics_Android_SDK_V2.3.53.jar')
     compile files('libs/tbs_sdk.jar')
@@ -94,5 +98,10 @@ dependencies {
     compile files('libs/httpcore-4.2.4.jar')
     compile files('libs/asmack.jar')
     compile files('libs/andbase.jar')
+    compile files('libs/baidumapapi_base_v4_3_0.jar')
+    compile files('libs/baidumapapi_map_v4_3_0.jar')
+    compile files('libs/baidumapapi_search_v4_3_0.jar')
+    compile files('libs/locSDK_6.13.jar')
+    compile files('libs/android-support-v13.jar')
     compile project(':geneqiaovideorecorder')
 }

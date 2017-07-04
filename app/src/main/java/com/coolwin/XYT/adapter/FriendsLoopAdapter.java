@@ -45,19 +45,19 @@ import com.coolwin.XYT.Entity.Picture;
 import com.coolwin.XYT.Entity.PopItem;
 import com.coolwin.XYT.Entity.ShowFriendsLoopUser;
 import com.coolwin.XYT.Entity.Video;
-import com.coolwin.XYT.FriendsLoopDetailActivity;
-import com.coolwin.XYT.LocationActivity;
 import com.coolwin.XYT.MyAlbumActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.ShowMultiImageActivity;
 import com.coolwin.XYT.VideoPlayMainActivity;
-import com.coolwin.XYT.webactivity.WebViewActivity;
+import com.coolwin.XYT.activity.FriendsLoopDetailActivity;
+import com.coolwin.XYT.activity.LocationActivity;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.global.IMCommon;
 import com.coolwin.XYT.global.ImageLoader;
 import com.coolwin.XYT.global.Utils;
 import com.coolwin.XYT.net.IMException;
+import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.widget.CustomProgressDialog;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -76,9 +76,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static com.coolwin.XYT.R.id.company;
-import static com.coolwin.XYT.R.id.url;
 
 /**
  * 朋友圈适配器
@@ -188,7 +185,7 @@ public class FriendsLoopAdapter extends BaseAdapter {
 			holder.mZanIcon = (ImageView)convertView.findViewById(R.id.zan_icon);
 			holder.mZanIcon.setVisibility(View.GONE);
 			holder.jobTextView = (TextView) convertView.findViewById(R.id.job);
-			holder.companyTextView = (TextView) convertView.findViewById(company);
+			holder.companyTextView = (TextView) convertView.findViewById(R.id.company);
 			holder.mJumpLayout = (LinearLayout)convertView.findViewById(R.id.jump_layout);
 			holder.mZanIconBtn = (LinearLayout)convertView.findViewById(R.id.zan_btn);
 			holder.mZanTextView = (TextView)convertView.findViewById(R.id.zan_text);
@@ -204,7 +201,7 @@ public class FriendsLoopAdapter extends BaseAdapter {
 			holder.videoPlayTime= (TextView) convertView.findViewById(R.id.play_video_time);
 
 			holder.mOtherLayout = (LinearLayout)convertView.findViewById(R.id.other_layout);
-			holder.urlLayout= (RelativeLayout)convertView.findViewById(url);
+			holder.urlLayout= (RelativeLayout)convertView.findViewById(R.id.url);
 			holder.imageUrlView= (ImageView) convertView.findViewById(R.id.image_url);
 			holder.titleView= (TextView) convertView.findViewById(R.id.url_text);
 			holder.shareweichat = (LinearLayout) convertView.findViewById(R.id.zhuan_btn);

@@ -44,6 +44,8 @@ import com.coolwin.XYT.Entity.Login;
 import com.coolwin.XYT.Entity.MapInfo;
 import com.coolwin.XYT.Entity.MorePicture;
 import com.coolwin.XYT.Entity.UploadImg;
+import com.coolwin.XYT.activity.LocationActivity;
+import com.coolwin.XYT.activity.MainActivity;
 import com.coolwin.XYT.adapter.UploadPicAdapter;
 import com.coolwin.XYT.dialog.MMAlert;
 import com.coolwin.XYT.dialog.MMAlert.OnAlertSelectId;

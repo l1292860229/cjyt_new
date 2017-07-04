@@ -20,7 +20,7 @@ public class BbsChatActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bbschat_main);
         bbs = (Bbs) getIntent().getSerializableExtra("bbs");
-        chatFragment = ChatFragment.newInstance(bbs);
+//        chatFragment = ChatFragment.newInstance(bbs);
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, chatFragment)
                 .show(chatFragment).commit();
         setTitleContent(R.drawable.back_btn,0, R.string.bbs_join_persion);

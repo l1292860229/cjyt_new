@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.coolwin.XYT.activity.LoginActivity;
+import com.coolwin.XYT.activity.MainActivity;
 import com.coolwin.XYT.activity.RegisterActivity;
 import com.coolwin.XYT.global.GlobalParam;
 

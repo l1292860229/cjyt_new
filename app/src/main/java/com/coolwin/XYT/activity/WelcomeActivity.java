@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.coolwin.XYT.MainActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.global.IMCommon;
 

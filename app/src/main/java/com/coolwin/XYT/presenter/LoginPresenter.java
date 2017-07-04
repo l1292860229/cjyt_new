@@ -4,7 +4,7 @@ import android.content.Intent;
 
 import com.coolwin.XYT.Entity.Login;
 import com.coolwin.XYT.Entity.RetrofitResult;
-import com.coolwin.XYT.MainActivity;
+import com.coolwin.XYT.activity.MainActivity;
 import com.coolwin.XYT.interfaceview.UIPublic;
 import com.coolwin.XYT.org.json.JSONObject;
 import com.coolwin.XYT.util.GetDataUtil;
@@ -55,6 +55,7 @@ public class LoginPresenter extends BasePresenter<UIPublic> {
                             GetDataUtil.saveUsername(context, username);
                             GetDataUtil.savePassword(context, password);
                             context.startActivity(new Intent(context, MainActivity.class));
+                            context.finish();
                         } else {
                             UIUtil.showMessage(context, listRetrofitResult.getState().getMsg());
                         }

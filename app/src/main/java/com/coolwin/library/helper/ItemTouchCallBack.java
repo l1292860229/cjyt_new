@@ -4,10 +4,11 @@ package com.coolwin.library.helper;
  * Created by Administrator on 2017/6/2.
  */
 
-import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 
 import com.ab.fragment.AbAlertDialogFragment;
 import com.ab.util.AbDialogUtil;
@@ -50,8 +51,14 @@ public class ItemTouchCallBack extends ItemTouchHelper.Callback {
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
         //得到当拖拽的viewHolder的Position
         int fromPosition = viewHolder.getAdapterPosition();
+        if(!adapter.getCanMoreTop()&&fromPosition==0){
+            return false;
+        }
         //拿到当前拖拽到的item的viewHolder
         int toPosition = target.getAdapterPosition();
+        if(!adapter.getCanMoreTop()&& toPosition==0){
+            return false;
+        }
         if (fromPosition < toPosition) {
             for (int i = fromPosition; i < toPosition; i++) {
                 Collections.swap(adapter.getData(), i, i + 1);//交换位置
@@ -114,10 +121,14 @@ public class ItemTouchCallBack extends ItemTouchHelper.Callback {
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-            viewHolder.itemView.setBackgroundColor(Color.RED);//为拖拽的item设置背景颜色
-
+//            viewHolder.itemView.setBackgroundColor(Color.RED);//为拖拽的item设置背景颜色
+            final ScaleAnimation animation =new ScaleAnimation(1f, 1.1f, 1f, 1.1f,
+                    Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            animation.setDuration(200);
+            viewHolder.itemView.startAnimation(animation);
+            viewHolder.itemView.setScaleX(1.1f);
+            viewHolder.itemView.setScaleY(1.1f);
         }
-        viewHolder.itemView.setBackgroundColor(Color.RED);
         super.onSelectedChanged(viewHolder, actionState);
     }
 
@@ -129,6 +140,9 @@ public class ItemTouchCallBack extends ItemTouchHelper.Callback {
     @Override
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         super.clearView(recyclerView, viewHolder);
-        viewHolder.itemView.setBackgroundColor(0);
+//        viewHolder.itemView.setBackgroundColor(0);
+        viewHolder.itemView.clearAnimation();
+        viewHolder.itemView.setScaleX(1f);
+        viewHolder.itemView.setScaleY(1f);
     }
 }

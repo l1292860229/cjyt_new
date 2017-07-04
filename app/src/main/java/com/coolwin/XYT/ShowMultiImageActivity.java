@@ -41,6 +41,7 @@ import com.coolwin.XYT.Entity.MovingPic;
 import com.coolwin.XYT.Entity.Picture;
 import com.coolwin.XYT.Entity.PopItem;
 import com.coolwin.XYT.Entity.Room;
+import com.coolwin.XYT.activity.FriendsLoopDetailActivity;
 import com.coolwin.XYT.adapter.ImagePagerAdapter;
 import com.coolwin.XYT.exception.SPException;
 import com.coolwin.XYT.global.FeatureFunction;

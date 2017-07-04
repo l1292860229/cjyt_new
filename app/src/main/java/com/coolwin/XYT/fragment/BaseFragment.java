@@ -36,10 +36,15 @@ public class BaseFragment<T extends BasePresenter> extends Fragment {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (ClassCastException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         } catch (java.lang.InstantiationException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void showLoading() {
+    }
+    public void hideLoading() {
     }
 }

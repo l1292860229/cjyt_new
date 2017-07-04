@@ -16,7 +16,6 @@
     <dimen name="chat_user_name_text_size">18dp</dimen>
     <dimen name="chat_content_text_size">16dp</dimen>
     <dimen name="chat_time_text_size">14dp</dimen>
-    <dimen name="text_size">16dp</dimen>
     <dimen name="pl_emoji">22dp</dimen>
     <!--    <dimen name="emotion_grid_height">220dp</dimen> -->
     <dimen name="emotion_grid_height">220dip</dimen>
@@ -36,4 +35,6 @@
     <dimen name="item_margin_top">20dp</dimen>
     <dimen name="item_margin_left">15dp</dimen>
     <dimen name="item_icon_margin_right">15dp</dimen>
+    <!--字体大小-->
+    <dimen name="text_size">16dp</dimen>
 </resources>

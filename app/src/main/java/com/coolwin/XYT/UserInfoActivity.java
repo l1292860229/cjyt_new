@@ -35,7 +35,7 @@ import com.coolwin.XYT.Entity.NewFriendItem;
 import com.coolwin.XYT.Entity.Picture;
 import com.coolwin.XYT.Entity.PopItem;
 import com.coolwin.XYT.Entity.Session;
-import com.coolwin.XYT.fragment.ChatFragment;
+import com.coolwin.XYT.activity.MainActivity;
 import com.coolwin.XYT.fragment.ContactsFragment;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
@@ -641,7 +641,6 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 							Intent chatIntent = new Intent(ChatMainActivity.REFRESH_ADAPTER);
 							chatIntent.putExtra("id", mLogin.uid);
 							mContext.sendBroadcast(chatIntent);
-							mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 							mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 
 							List<NewFriendItem> list = IMCommon.getNewFriendItemResult(mContext);
@@ -887,7 +886,6 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onDestroy() {
 		//sendBroadcast(new Intent(ContactsFragment.REFRESH_FRIEND_ACTION));
-		sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 		super.onDestroy();
 	}
 

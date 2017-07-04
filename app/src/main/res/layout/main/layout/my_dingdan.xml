@@ -10,8 +10,9 @@
         android:orientation="vertical">
         <include layout="@layout/title_layout"
             android:id="@+id/title_layout"/>
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+        <com.ab.view.sliding.AbSlidingTabView
+            android:id="@+id/mAbSlidingTabView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
     </LinearLayout>
 </layout>

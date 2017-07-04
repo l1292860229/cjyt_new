@@ -27,6 +27,7 @@ import com.coolwin.XYT.R;
  * textDrawable                                   图片
  * textNormalTextColor                            正常状态文字颜色
  * textSelectedTextColor                          按下状态文字颜色
+ * 方便添加样式的textView
  */
 public class CustomTextView extends android.support.v7.widget.AppCompatTextView {
 

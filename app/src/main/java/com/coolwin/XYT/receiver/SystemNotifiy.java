@@ -22,10 +22,9 @@ import com.coolwin.XYT.Entity.Room;
 import com.coolwin.XYT.Entity.SNSMessage;
 import com.coolwin.XYT.Entity.Session;
 import com.coolwin.XYT.FriensLoopActivity;
-import com.coolwin.XYT.MainActivity;
 import com.coolwin.XYT.MyGroupListActivity;
 import com.coolwin.XYT.R;
-import com.coolwin.XYT.fragment.ChatFragment;
+import com.coolwin.XYT.activity.MainActivity;
 import com.coolwin.XYT.fragment.ContactsFragment;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
@@ -100,7 +99,6 @@ public class SystemNotifiy extends AbstractNotifiy {
 						messageTable.delete(notifiyVo.roomID, 300);
 						sessionTable.delete(notifiyVo.roomID, 300);
 
-						mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 						mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 						NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 						notificationManager.cancel(0);
@@ -149,7 +147,6 @@ public class SystemNotifiy extends AbstractNotifiy {
 					messageTable.delete(notifiyVo.roomID, 300);
 					sessionTable.delete(notifiyVo.roomID, 300);
 
-					mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 					mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 				}
 				NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -270,7 +267,6 @@ public class SystemNotifiy extends AbstractNotifiy {
 						messageTable.delete(notifiyVo.roomID, GlobleType.MEETING_CHAT);
 						sessionTable.delete(notifiyVo.roomID, GlobleType.MEETING_CHAT);
 
-						mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 						mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 						NotificationManager snotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 						snotificationManager.cancel(0);

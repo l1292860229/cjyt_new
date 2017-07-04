@@ -32,8 +32,11 @@ public class BbsListFragmentPresenter extends BasePresenter<UIBbsListFragment> {
     public BbsListFragmentPresenter(){
         bbsListFragmentServlet = retrofit.create(BbsListFragmentServlet.class);
     }
-    public void getData(String title, int page, final GetDataType type){
-        bbsListFragmentServlet.getData(login.uid,login.phone,"1",title,page)
+    public void getData(int page, final GetDataType type){
+        if(type==GetDataType.INIT){
+            mView.showLoading();
+        }
+        bbsListFragmentServlet.getData(login.uid,login.phone,"1",null,page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<RetrofitResult<List<Bbs>>>() {
@@ -42,6 +45,7 @@ public class BbsListFragmentPresenter extends BasePresenter<UIBbsListFragment> {
                         if(retrofitResult.getState().getCode()==0){
                             switch (type){
                                 case INIT:
+                                    mView.hideLoading();
                                     mView.init(retrofitResult.getData());
                                     break;
                                 case REFRESH:
@@ -51,6 +55,27 @@ public class BbsListFragmentPresenter extends BasePresenter<UIBbsListFragment> {
                                     mView.reloadMoreSucess(retrofitResult.getData());
                                     break;
                             }
+                        }else{
+                            UIUtil.showMessage(context,retrofitResult.getState().getMsg());
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        UIUtil.showMessage(context, "请求异常,请稍后重试");
+                        throwable.printStackTrace();
+                    }
+                });
+    }
+    public void searchData(String title){
+        bbsListFragmentServlet.getData(login.uid,login.phone,"1",title,1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<RetrofitResult<List<Bbs>>>() {
+                    @Override
+                    public void accept(RetrofitResult<List<Bbs>> retrofitResult) throws Exception {
+                        if(retrofitResult.getState().getCode()==0){
+                            mView.searchData(retrofitResult.getData());
                         }else{
                             UIUtil.showMessage(context,retrofitResult.getState().getMsg());
                         }

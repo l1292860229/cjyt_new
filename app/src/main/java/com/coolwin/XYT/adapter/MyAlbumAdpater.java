@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.coolwin.XYT.ChatMainActivity;
 import com.coolwin.XYT.Entity.FriendsLoopItem;
 import com.coolwin.XYT.Entity.Picture;
-import com.coolwin.XYT.FriendsLoopDetailActivity;
+import com.coolwin.XYT.activity.FriendsLoopDetailActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.ShowMultiImageActivity;
 import com.coolwin.XYT.global.FeatureFunction;

@@ -9,8 +9,6 @@ import com.coolwin.XYT.databinding.PdfPageBinding;
 import com.coolwin.XYT.interfaceview.UIOpenPDF;
 import com.coolwin.XYT.presenter.OpenPDFPresenter;
 
-import java.io.File;
-
 /**
  * 关于我们页面
  * @author dongli
@@ -38,16 +36,16 @@ public class OpenPDFActivity extends BaseActivity<OpenPDFPresenter> implements U
 
 	@Override
 	public void init(String file) {
-		binding.pdfView.fromFile(new File(file))
-				.enableSwipe(true) // allows to block changing pages using swipe
-				.swipeHorizontal(false)
-				.enableDoubletap(true)
-				.defaultPage(0)
-				.enableAnnotationRendering(false) // render annotations (such as comments, colors or forms)
-				.password(null)
-				.scrollHandle(null)
-				.enableAntialiasing(true) // improve rendering a little bit on low-res screens
-				// spacing between pages in dp. To define spacing color, set view background
-				.load();
+//		binding.pdfView.fromFile(new File(file))
+//				.enableSwipe(true) // allows to block changing pages using swipe
+//				.swipeHorizontal(false)
+//				.enableDoubletap(true)
+//				.defaultPage(0)
+//				.enableAnnotationRendering(false) // render annotations (such as comments, colors or forms)
+//				.password(null)
+//				.scrollHandle(null)
+//				.enableAntialiasing(true) // improve rendering a little bit on low-res screens
+//				// spacing between pages in dp. To define spacing color, set view background
+//				.load();
 	}
 }

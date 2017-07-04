@@ -8,7 +8,7 @@
     </data>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <ScrollView
             android:layout_width="match_parent"
@@ -130,44 +130,6 @@
                         android:layout_marginLeft="20dp"
                         android:layout_toRightOf="@id/iv_xiangce"
                         android:text="我的小鱼圈"
-                        android:textColor="@color/item_textcolor"
-                        android:textSize="@dimen/text_size" />
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/item_icon_margin_right"
-                        android:src="@drawable/navigate_next"
-                        />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="#dadada" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height"
-                    android:clickable="true"
-                    android:layout_marginTop="@dimen/item_margin_top"
-                    android:onClick="@{behavior.openMyShop}"
-                    android:background="@color/white">
-                    <ImageView
-                        android:id="@+id/iv_myshancheng"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/item_margin_left"
-                        android:src="@drawable/mine_manager" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/iv_myshancheng"
-                        android:text="管理端"
                         android:textColor="@color/item_textcolor"
                         android:textSize="@dimen/text_size" />
                     <ImageView

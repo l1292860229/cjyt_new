@@ -18,12 +18,11 @@ import com.coolwin.XYT.DB.RoomTable;
 import com.coolwin.XYT.DB.SessionTable;
 import com.coolwin.XYT.DB.UserTable;
 import com.coolwin.XYT.Entity.Login;
+import com.coolwin.XYT.Entity.constant.Constants;
 import com.coolwin.XYT.Entity.constant.UrlConstants;
 import com.coolwin.XYT.IntentService.DownloadService;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.databinding.SettingTabBinding;
-import com.coolwin.XYT.fragment.ChatFragment;
-import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.interfaceview.UISettingTab;
 import com.coolwin.XYT.presenter.SettingTabPresenter;
 import com.coolwin.XYT.service.SnsService;
@@ -33,6 +32,8 @@ import com.coolwin.XYT.util.UIUtil;
 import com.coolwin.XYT.webactivity.WebViewActivity;
 
 import java.util.Map;
+
+import gorden.rxbus2.RxBus;
 
 
 /**
@@ -76,7 +77,8 @@ public class SettingTabActivity extends BaseActivity<SettingTabPresenter> implem
 	public void openUpdatePassword(View view){
 		Login login = GetDataUtil.getLogin(context);
 		Intent intent = new Intent();
-		intent.putExtra("url", UrlConstants.USERPASS+"?id="+login.ypId+"&tid="+login.kai6Id+"&m=ptbbs&token="+login.token);
+		intent.putExtra(WebViewActivity.SHOWRIGHT, false);
+		intent.putExtra(WebViewActivity.WEBURL, UrlConstants.USERPASS+"?id="+login.ypId+"&tid="+login.kai6Id+"&m=ptbbs&token="+login.token);
 		intent.setClass(context, WebViewActivity.class);
 		startActivity(intent);
 	}
@@ -86,7 +88,7 @@ public class SettingTabActivity extends BaseActivity<SettingTabPresenter> implem
 	 * @param view
 	 */
 	public void openCheckVersion(View view){
-		mPresenter.getNewVersion(UIUtil.getAppVersionName(context));
+		mPresenter.getNewVersion(UIUtil.getAppVersionName(context),true);
 	}
 
 	/**
@@ -103,7 +105,6 @@ public class SettingTabActivity extends BaseActivity<SettingTabPresenter> implem
 		db.execSQL(MessageTable.getCreateTableSQLString());
 		db.execSQL(GroupTable.getCreateTableSQLString());
 		db.execSQL(RoomTable.getCreateTableSQLString());
-		context.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 		Toast.makeText(context,"清除成功", Toast.LENGTH_SHORT).show();
 	}
 
@@ -137,7 +138,6 @@ public class SettingTabActivity extends BaseActivity<SettingTabPresenter> implem
 	 * @param view
 	 */
 	public void openNoLogin(View view){
-		sendBroadcast(new Intent(GlobalParam.SWITCH_TAB));
 		//移除本地信息记录
 		GetDataUtil.removLogin(context);
 		//停止openfire
@@ -152,7 +152,7 @@ public class SettingTabActivity extends BaseActivity<SettingTabPresenter> implem
 		UserTable utable= new UserTable(db1);
 		table.delete();
 		utable.delete();
-		sendBroadcast(new Intent(GlobalParam.CANCLE_COMPLETE_USERINFO_ACTION));
+		RxBus.get().send(Constants.MAIN);
 		this.finish();
 	}
 	@Override

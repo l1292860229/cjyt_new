@@ -33,11 +33,19 @@ public  class BaseAdapter<T> extends RecyclerView.Adapter<MyRecycleViewHolder> {
     private View mFooterView;
     private boolean isHasHeader = false;
     private boolean isHasFooter = false;
+    public boolean canMoreTop = true;
     // item 的三种类型
     public static final int ITEM_TYPE_NORMAL = 0X1111; // 正常的item类型
     public static final int ITEM_TYPE_HEADER = 0X1112; // header
     public static final int ITEM_TYPE_FOOTER = 0X1113; // footer
     public AdapterView.OnItemClickListener mItemClickListener;
+    public void setCanMoreTop(boolean canMoreTop) {
+        this.canMoreTop = canMoreTop;
+    }
+    public boolean getCanMoreTop() {
+        return canMoreTop;
+    }
+
     /**
      * 添加头部视图
      * @param header
@@ -59,6 +67,10 @@ public  class BaseAdapter<T> extends RecyclerView.Adapter<MyRecycleViewHolder> {
 
     public BaseAdapter(Context context){
         this.context = context;
+    }
+    public BaseAdapter(Context context,List<T> mList){
+        this.context = context;
+        this.mList = mList;
     }
     public List<T> getData(){
         return mList;

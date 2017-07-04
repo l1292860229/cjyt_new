@@ -40,6 +40,7 @@ import com.coolwin.XYT.Entity.MovingContent;
 import com.coolwin.XYT.Entity.MovingLoaction;
 import com.coolwin.XYT.Entity.MovingPic;
 import com.coolwin.XYT.Entity.MovingVoice;
+import com.coolwin.XYT.activity.LocationActivity;
 import com.coolwin.XYT.adapter.MyFavoriteListAdapter;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;

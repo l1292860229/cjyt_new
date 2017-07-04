@@ -1,265 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <variable name="behavior" type="com.coolwin.XYT.activity.MyShopActivity" />
+        <variable name="behavior"
+            type="com.coolwin.XYT.fragment.MyShopFragment" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/item_background"
         android:orientation="vertical">
-        <include layout="@layout/title_layout"
-            android:id="@+id/title_layout"/>
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/item_background"
-            android:scrollbars="none">
-            <LinearLayout
+            android:layout_height="@dimen/item_height"
+            android:clickable="true"
+            android:layout_marginTop="@dimen/item_margin_top"
+            android:onClick="@{behavior.openIndex}"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/iv_index"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/item_margin_left"
+                android:src="@drawable/manager_shop" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/iv_index"
+                android:text="店铺装修"
+                android:textColor="@color/item_textcolor"
+                android:textSize="@dimen/text_size" />
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/item_icon_margin_right"
+                android:src="@drawable/navigate_next"
+                />
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/item_background"
-                android:orientation="vertical">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height"
-                    android:clickable="true"
-                    android:layout_marginTop="@dimen/item_margin_top"
-                    android:onClick="@{behavior.openIndex}"
-                    android:background="@color/white">
-                    <ImageView
-                        android:id="@+id/iv_index"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/item_margin_left"
-                        android:src="@drawable/manager_shop" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/iv_index"
-                        android:text="商城首页设置"
-                        android:textColor="@color/item_textcolor"
-                        android:textSize="@dimen/text_size" />
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/item_icon_margin_right"
-                        android:src="@drawable/navigate_next"
-                        />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="#dadada" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height"
-                    android:clickable="true"
-                    android:layout_marginTop="@dimen/item_margin_top"
-                    android:onClick="@{behavior.openDingDan}"
-                    android:background="@color/white">
-                    <ImageView
-                        android:id="@+id/iv_dingdan"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/item_margin_left"
-                        android:src="@drawable/manager_order" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/iv_dingdan"
-                        android:text="订单管理"
-                        android:textColor="@color/item_textcolor"
-                        android:textSize="@dimen/text_size" />
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/item_icon_margin_right"
-                        android:src="@drawable/navigate_next"
-                        />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="#dadada" />
-                </RelativeLayout>
+                android:layout_height="0.1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#dadada" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:clickable="true"
+            android:layout_marginTop="@dimen/item_margin_top"
+            android:onClick="@{behavior.openDingDan}"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/iv_dingdan"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/item_margin_left"
+                android:src="@drawable/manager_order" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/iv_dingdan"
+                android:text="订单管理"
+                android:textColor="@color/item_textcolor"
+                android:textSize="@dimen/text_size" />
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/item_icon_margin_right"
+                android:src="@drawable/navigate_next"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#dadada" />
+        </RelativeLayout>
 
 
-                <RelativeLayout
-                    android:id="@+id/yaoqing_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:background="@drawable/fx_btn_list_item_bg"
-                    android:clickable="true"
-                    android:paddingLeft="15dp"
-                    android:visibility="gone">
-                    <ImageView
-                        android:id="@+id/yaoqing"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="12dp"
-                        android:src="@drawable/kefu" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/yaoqing"
-                        android:text="邀请好友"
-                        android:textColor="#353535"
-                        android:textSize="16dp" />
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="15dp"
-                        android:src="@drawable/navigate_next"
-                        />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height"
-                    android:layout_marginTop="@dimen/item_margin_top"
-                    android:clickable="true"
-                    android:onClick="@{behavior.openCommodity}"
-                    android:background="@color/white">
-                    <ImageView
-                        android:id="@+id/iv_commodity"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginLeft="@dimen/item_margin_left"
-                        android:src="@drawable/manager_product"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="14dp" />
+        <RelativeLayout
+            android:id="@+id/yaoqing_layout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/fx_btn_list_item_bg"
+            android:clickable="true"
+            android:paddingLeft="15dp"
+            android:visibility="gone">
+            <ImageView
+                android:id="@+id/yaoqing"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/kefu" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/yaoqing"
+                android:text="邀请好友"
+                android:textColor="#353535"
+                android:textSize="16dp" />
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/navigate_next"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_marginTop="@dimen/item_margin_top"
+            android:clickable="true"
+            android:onClick="@{behavior.openCommodity}"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/iv_commodity"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="@dimen/item_margin_left"
+                android:src="@drawable/manager_product"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="14dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/iv_commodity"
-                        android:text="我的商品"
-                        android:textColor="@color/item_textcolor"
-                        android:textSize="@dimen/text_size" />
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/item_icon_margin_right"
-                        android:src="@drawable/navigate_next"
-                        />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentTop="true"
-                        android:background="#dadada" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="#dadada" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height"
-                    android:clickable="true"
-                    android:onClick="@{behavior.openInformation}"
-                    android:background="@color/white">
-                    <ImageView
-                        android:id="@+id/iv_information"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginLeft="@dimen/item_margin_left"
-                        android:src="@drawable/manager_info"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="14dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/iv_commodity"
+                android:text="我的商品"
+                android:textColor="@color/item_textcolor"
+                android:textSize="@dimen/text_size" />
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/item_icon_margin_right"
+                android:src="@drawable/navigate_next"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_alignParentTop="true"
+                android:background="#dadada" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#dadada" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:clickable="true"
+            android:onClick="@{behavior.openInformation}"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/iv_information"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="@dimen/item_margin_left"
+                android:src="@drawable/manager_info"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="14dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/iv_information"
-                        android:text="我的资讯"
-                        android:textColor="@color/item_textcolor"
-                        android:textSize="@dimen/text_size" />
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/item_icon_margin_right"
-                        android:src="@drawable/navigate_next"
-                        />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentTop="true"
-                        android:background="#dadada" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="#dadada" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height"
-                    android:clickable="true"
-                    android:layout_marginTop="@dimen/item_margin_top"
-                    android:onClick="@{behavior.openFileList}"
-                    android:background="@color/white">
-                    <ImageView
-                        android:id="@+id/iv_file"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/item_margin_left"
-                        android:src="@drawable/manager_order" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="20dp"
-                        android:layout_toRightOf="@id/iv_file"
-                        android:text="文件列表"
-                        android:textColor="@color/item_textcolor"
-                        android:textSize="@dimen/text_size" />
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/item_icon_margin_right"
-                        android:src="@drawable/navigate_next"
-                        />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.1dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="#dadada" />
-                </RelativeLayout>
-            </LinearLayout>
-        </ScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/iv_information"
+                android:text="我的资讯"
+                android:textColor="@color/item_textcolor"
+                android:textSize="@dimen/text_size" />
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/item_icon_margin_right"
+                android:src="@drawable/navigate_next"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_alignParentTop="true"
+                android:background="#dadada" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#dadada" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:clickable="true"
+            android:layout_marginTop="@dimen/item_margin_top"
+            android:onClick="@{behavior.openFileList}"
+            android:visibility="gone"
+            android:background="@color/white">
+            <ImageView
+                android:id="@+id/iv_file"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/item_margin_left"
+                android:src="@drawable/manager_order" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/iv_file"
+                android:text="文件列表"
+                android:textColor="@color/item_textcolor"
+                android:textSize="@dimen/text_size" />
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/item_icon_margin_right"
+                android:src="@drawable/navigate_next"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#dadada" />
+        </RelativeLayout>
     </LinearLayout>
 </layout>

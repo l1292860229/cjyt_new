@@ -16,7 +16,6 @@ import com.coolwin.XYT.Entity.Menu;
 import com.coolwin.XYT.FriensLoopActivity;
 import com.coolwin.XYT.MyBbsListActivity;
 import com.coolwin.XYT.R;
-import com.coolwin.XYT.RedpacketMapActivity;
 import com.coolwin.XYT.webactivity.WebViewActivity;
 import com.coolwin.XYT.global.ImageLoader;
 
@@ -139,8 +138,8 @@ public class MenuAdapter extends BaseAdapter {
 			holder.layout.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					Intent scanIntent = new Intent(mContext, RedpacketMapActivity.class);
-					mContext.startActivity(scanIntent);
+//					Intent scanIntent = new Intent(mContext, RedpacketMapActivity.class);
+//					mContext.startActivity(scanIntent);
 				}
 			});
 			return convertView;

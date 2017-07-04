@@ -329,7 +329,6 @@ public class AddPersonActivity extends BaseActivity implements OnItemClickListen
 
 					SessionTable table = new SessionTable(db);
 					table.insert(session);
-					sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 					Login user = new Login();
 					user.phone = room.groupId;
 					user.nickname = room.groupName;

@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.coolwin.XYT.Entity.NotifiyVo;
+import com.coolwin.XYT.activity.FriendsLoopDetailActivity;
 import com.coolwin.XYT.adapter.MessageMovingAdapter;
 import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.global.IMCommon;

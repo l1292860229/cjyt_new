@@ -1,35 +1,44 @@
 package com.coolwin.XYT.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.coolwin.XYT.activity.EditProfileActivity;
 import com.coolwin.XYT.Entity.Login;
+import com.coolwin.XYT.Entity.Menu;
+import com.coolwin.XYT.Entity.constant.UrlConstants;
 import com.coolwin.XYT.MyAlbumActivity;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.activity.CertificationActivity;
-import com.coolwin.XYT.activity.MyShopActivity;
+import com.coolwin.XYT.activity.EditProfileActivity;
 import com.coolwin.XYT.activity.SettingTabActivity;
+import com.coolwin.XYT.adapter.ShopMenuAdapter;
 import com.coolwin.XYT.databinding.FragmentProfileBinding;
+import com.coolwin.XYT.databinding.ShopMenuBinding;
+import com.coolwin.XYT.interfaceview.UIShopMenu;
+import com.coolwin.XYT.presenter.ShopMenuPresenter;
 import com.coolwin.XYT.util.GetDataUtil;
 import com.coolwin.XYT.util.StringUtil;
 import com.facebook.fresco.helper.Phoenix;
 import com.tendcloud.tenddata.TCAgent;
 
-public class ProfileFragment extends Fragment{
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProfileFragment extends BaseFragment<ShopMenuPresenter> implements UIShopMenu{
     public static final String ATTEST_TRUE = "1";
     public static final String ATTEST_FALSE= "0";
     public static final String ATTEST_ING= "2";
-    Context context;
-    FragmentProfileBinding binding;
     Login login;
+    ShopMenuBinding binding;
+    ShopMenuAdapter shopMenuAdapter;
+    List<Menu> menus = new ArrayList<>();
+    FragmentProfileBinding fragmentProfileBinding;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +46,17 @@ public class ProfileFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        context = this.getActivity();
-        binding =  DataBindingUtil.inflate(inflater,R.layout.fragment_profile,container,false);
-        binding.setBehavior(this);
+        binding = DataBindingUtil.inflate(inflater, R.layout.shop_menu,container,false);
+        binding.listlayout.setLayoutManager(new LinearLayoutManager(context));
+        shopMenuAdapter = new ShopMenuAdapter(context,menus);
+        binding.listlayout.setAdapter(shopMenuAdapter);
+        fragmentProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile,container,false);
+        fragmentProfileBinding.setBehavior(this);
+        shopMenuAdapter.setHeaderView(fragmentProfileBinding.getRoot());
         TCAgent.onPageStart(context, "ProfileFragment");
         return binding.getRoot();
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -53,6 +67,7 @@ public class ProfileFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
+        mPresenter.getData(UrlConstants.BASEURL+"user/api/getmenu");
     }
 
     private void initView(){
@@ -60,21 +75,21 @@ public class ProfileFragment extends Fragment{
         if (login==null) {
             return;
         }
-        binding.setName(login.nickname);
+        fragmentProfileBinding.setName(login.nickname);
         String fxid=GetDataUtil.getUsername(context);
         if(StringUtil.isNull(fxid)){
-            binding.setUsername("未设置");
+            fragmentProfileBinding.setUsername("未设置");
         }else{
-            binding.setUsername("鱼塘号:"+fxid);
+            fragmentProfileBinding.setUsername("鱼塘号:"+fxid);
         }
-        Phoenix.with(binding.ivAvatar).load(login.headsmall);
+        Phoenix.with(fragmentProfileBinding.ivAvatar).load(login.headsmall);
         if (login.isattest==null || ATTEST_FALSE.equals(login.isattest)) {
-            binding.isrenzhen.setVisibility(View.GONE);
+            fragmentProfileBinding.isrenzhen.setVisibility(View.GONE);
         }else if(ATTEST_TRUE.equals(login.isattest)){
-            binding.renzhen.setVisibility(View.GONE);
+            fragmentProfileBinding.renzhen.setVisibility(View.GONE);
         }else if(ATTEST_ING.equals(login.isattest)){
-            binding.isrenzhen.setVisibility(View.GONE);
-            binding.renzhen.setText("审核中");
+            fragmentProfileBinding.isrenzhen.setVisibility(View.GONE);
+            fragmentProfileBinding.renzhen.setText("审核中");
         }
     }
     @Override
@@ -104,14 +119,6 @@ public class ProfileFragment extends Fragment{
     }
 
     /**
-     * 打开我的商城设置
-     * @param view
-     */
-    public void openMyShop(View view){
-        startActivity(new Intent(context, MyShopActivity.class));
-    }
-
-    /**
      * 打开我的小鱼圈
      * @param view
      */
@@ -130,5 +137,12 @@ public class ProfileFragment extends Fragment{
     public void onDestroy() {
         super.onDestroy();
         TCAgent.onPageEnd(context, "ProfileFragment");
+    }
+
+    @Override
+    public void init(List<Menu> menus) {
+        this.menus = menus;
+        shopMenuAdapter.setData(this.menus);
+        shopMenuAdapter.notifyDataSetChanged();
     }
 }

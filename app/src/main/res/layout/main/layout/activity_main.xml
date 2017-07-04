@@ -1,0 +1,128 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="behavior"
+            type="com.coolwin.XYT.activity.MainActivity" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:clipChildren="false">
+        <include layout="@layout/title_layout"
+            android:id="@+id/title_layout"/>
+        <RelativeLayout
+            android:layout_below="@+id/title_layout"
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="52dp">
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_above="@+id/main_bottom"
+            android:background="#a7a7ab" />
+        <LinearLayout
+            android:id="@+id/main_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+            <RelativeLayout
+                android:id="@+id/btn_index"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{behavior.onTabClicked}"
+                android:padding="3dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@drawable/fx_tab_home_list_bg"
+                    android:text="首页"
+                    android:textColor="@color/em_main_botton_text_color"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/btn_userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{behavior.onTabClicked}"
+                android:padding="3dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@drawable/fx_tab_contact_list_bg"
+                    android:text="会员"
+                    android:textColor="@color/em_main_botton_text_color"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/btn_xcx"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{behavior.onTabClicked}" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@drawable/fx_tab_mine_manager"
+                    android:text="小程序"
+                    android:textColor="@color/em_main_botton_text_color"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/btn_container_supper"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{behavior.onTabClicked}"
+                android:padding="3dp" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:drawableTop="@drawable/fx_tab_supper_bg"
+                    android:layout_marginTop="3dp"
+                    android:drawablePadding="5dp"
+                    android:text="动态"
+                    android:textColor="@color/em_main_botton_text_color"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/btn_profile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{behavior.onTabClicked}"
+                android:padding="3dp" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:drawableTop="@drawable/fx_tab_profile_bg"
+                    android:gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:drawablePadding="5dp"
+                    android:text="我"
+                    android:textColor="@color/em_main_botton_text_color"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

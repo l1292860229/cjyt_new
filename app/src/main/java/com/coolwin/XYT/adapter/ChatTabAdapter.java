@@ -57,6 +57,9 @@ public class ChatTabAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
+		if(mData==null){
+			return 0;
+		}
 		return mData.size();
 	}
 
@@ -113,7 +116,7 @@ public class ChatTabAdapter extends BaseAdapter {
 		if(session.isTop != 0){
 			holder.mParentLayout.setBackgroundResource(R.drawable.last_new_friend);
 		}else{
-//			holder.mParentLayout.setBackgroundResource(R.drawable.devider_line_n);
+			holder.mParentLayout.setBackgroundResource(0);
 		}
 		if(session.type == 100){//不是房间消息
 			holder.mGroupHeaderLayout.setVisibility(View.GONE);

@@ -21,4 +21,5 @@ public class Constants {
     public static final int UPDATEMYINDEXPIC = 1000;//UpdatePicIndexActivity
     public static final int UPDATEMYINDEXPIC_PIC = 10001;//UpdatePicIndexActivity
     public static final int COMMODITY = 1001;//InformationActivity
+    public static final int MAIN = 1002;//MainActivity
 }

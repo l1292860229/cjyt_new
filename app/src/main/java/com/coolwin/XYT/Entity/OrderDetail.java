@@ -20,7 +20,7 @@ public class OrderDetail implements Serializable {
 			if(!json.isNull("data")){
 				JSONArray array = json.getJSONArray("data");
 				if(array != null && array.length() > 0){
-					mOrder = new Order(array.getJSONObject(0));
+//					mOrder = new Order(array.getJSONObject(0));
 				}
 			}
 			

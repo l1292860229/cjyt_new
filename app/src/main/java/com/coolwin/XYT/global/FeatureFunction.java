@@ -298,6 +298,7 @@ public class FeatureFunction {
 	 * @return -1 ：同一天.    0：昨天 .   1 ：至少是前天.
 	 * @throws ParseException 转换异常
 	 */
+	@Deprecated
 	public static int isYeaterday(Date oldTime, Date newTime) throws ParseException {
 		if(newTime==null){
 			newTime=new Date();
@@ -319,6 +320,7 @@ public class FeatureFunction {
 
 	}
 
+	@Deprecated
 	public static String calculaterReleasedTime(Context context, Date date, long time, long lastMsgTime) {
 		Date currentDate = new Date();
 		long duration = (currentDate.getTime() - date.getTime()) / 1000; // Seconds
@@ -387,6 +389,7 @@ public class FeatureFunction {
 		}
 	}
 
+	@Deprecated
 	public static String getDateString(Context context, Date date,
                                        boolean withYearString, boolean isShowMM) {
 		String timeString = "";

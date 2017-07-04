@@ -10,6 +10,7 @@ import com.coolwin.XYT.util.StringUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import cn.finalteam.toolsfinal.io.FileUtils;
 import okhttp3.FormBody;
@@ -31,6 +32,9 @@ public class BasePresenter<T> {
     static Retrofit  retrofit = new Retrofit.Builder()
             .baseUrl(UrlConstants.BASEURL)
             .client( new OkHttpClient.Builder()
+                    .connectTimeout(60*1000, TimeUnit.MILLISECONDS)
+                    .readTimeout(60*1000, TimeUnit.MILLISECONDS)
+                    .writeTimeout(60*1000, TimeUnit.MILLISECONDS)
                     .addInterceptor(new LogInterceptor()).build())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

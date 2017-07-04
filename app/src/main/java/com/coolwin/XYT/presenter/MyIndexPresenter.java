@@ -98,7 +98,75 @@ public class MyIndexPresenter extends BasePresenter<UIMyIndex> {
                   return Observable.fromIterable(dataModels);
               }
               // 单个DataModel ->List<DataModel.Data>
-          }).map(new Function<DataModel, List<DataModel.Data>>() {
+          }).flatMap(new Function<DataModel, ObservableSource<DataModel>>() {
+            @Override
+            public ObservableSource<DataModel> apply(DataModel dataModel) throws Exception {
+                if(dataModel.bannerList!=null && dataModel.bannerList.size()>0){
+                    return Observable.fromArray(dataModel.bannerList)
+                            .flatMap(new Function<List<DataModel.BannerList>, ObservableSource<DataModel.BannerList>>() {
+                                @Override
+                                public ObservableSource<DataModel.BannerList> apply(List<DataModel.BannerList> bannerLists) throws Exception {
+                                    return Observable.fromIterable(bannerLists);
+                                }
+                            }).map(new Function<DataModel.BannerList, String>() {
+                                @Override
+                                public String apply(DataModel.BannerList bannerList) throws Exception {
+                                    return bannerList.imgUrl;
+                                }
+                            }).filter(new Predicate<String>() {
+                                @Override
+                                public boolean test(String s) throws Exception {
+                                    if(s.contains("http")){
+                                        return false;
+                                    }else{
+                                        return true;
+                                    }
+                                }
+                        }).flatMap(new Function<String, ObservableSource<Map<String,String>>>() {
+                        @Override
+                        public ObservableSource<Map<String,String>> apply(String s) throws Exception {
+                            return servlet.uploadpic(UrlConstants.BASEURL2+"upload",getMultipartBodyFilePathPart(s,"picture"));
+                        }
+                    }).map(new Function<Map<String,String>, String>() {
+                        @Override
+                        public String apply(Map<String,String> stringRetrofitResult) throws Exception {
+                            return stringRetrofitResult.get("originUrl");
+                        }
+                        //本地图片替换成网络
+                    }).toList().flatMapObservable(new Function<List<String>, ObservableSource<DataModel>>() {
+                        @Override
+                        public ObservableSource<DataModel> apply(List<String> strings) throws Exception {
+                            int picindex=0;
+                            for (int i = 0; i < datas.size(); i++) {
+                                if( datas.get(i).bannerList==null){
+                                    continue;
+                                }
+                                for (int i1 = 0; i1 < datas.get(i).bannerList.size(); i1++) {
+                                    if (!datas.get(i).bannerList.get(i1).imgUrl.contains("http")) {
+                                        if(picindex<strings.size()){
+                                            datas.get(i).bannerList.get(i1).imgUrl = strings.get(picindex++);
+                                        }
+                                    }
+                                }
+                            }
+                            return Observable.fromIterable(datas);
+                        }
+                    });
+                }else{
+                    return Observable.fromArray(dataModel);
+                }
+
+            }
+        }).filter(new Predicate<DataModel>() {
+            @Override
+            public boolean test(DataModel dataModel) throws Exception {
+                if (dataModel.datas==null) {
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }).map(new Function<DataModel, List<DataModel.Data>>() {
             @Override
             public List<DataModel.Data> apply(DataModel dataModel) throws Exception {
                 return dataModel.datas;
@@ -142,6 +210,9 @@ public class MyIndexPresenter extends BasePresenter<UIMyIndex> {
             public ObservableSource<RetrofitResult> apply(List<String> strings) throws Exception {
                 int picindex=0;
                 for (int i = 0; i < datas.size(); i++) {
+                    if (datas.get(i).datas==null) {
+                        continue;
+                    }
                     for (int i1 = 0; i1 < datas.get(i).datas.size(); i1++) {
                         if (!datas.get(i).datas.get(i1).shopImageUrl.contains("http")) {
                             if(picindex<strings.size()){

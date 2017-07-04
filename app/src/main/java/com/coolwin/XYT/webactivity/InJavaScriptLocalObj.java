@@ -8,7 +8,7 @@ import com.coolwin.XYT.BbsChatMainActivity;
 import com.coolwin.XYT.Entity.Bbs;
 import com.coolwin.XYT.Entity.BbsList;
 import com.coolwin.XYT.JoinBBSActivity;
-import com.coolwin.XYT.MainActivity;
+import com.coolwin.XYT.activity.MainActivity;
 import com.coolwin.XYT.MyBbsListActivity;
 import com.coolwin.XYT.UserInfoActivity;
 import com.coolwin.XYT.apientity.UserInfo;

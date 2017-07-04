@@ -26,7 +26,7 @@ public class SettingTabPresenter extends BasePresenter<UISettingTab> {
     public SettingTabPresenter(){
         servlet = retrofit.create(SettingTabServlet.class);
     }
-    public void getNewVersion(String version){
+    public void getNewVersion(String version, final boolean isshowMessage){
         servlet.getNewVersion(version,"android")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -40,7 +40,9 @@ public class SettingTabPresenter extends BasePresenter<UISettingTab> {
                                 return;
                             }
                         }
-                        UIUtil.showMessage(context,mapRetrofitResult.getState().getMsg());
+                        if(isshowMessage){
+                            UIUtil.showMessage(context,mapRetrofitResult.getState().getMsg());
+                        }
                     }
                 }, new Consumer<Throwable>() {
                     @Override

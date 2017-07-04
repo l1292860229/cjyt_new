@@ -12,4 +12,5 @@ public interface UIBbsListFragment extends UIPublic {
     void init(List<Bbs> bbses);
     void refreshSucess(List<Bbs> bbses);
     void reloadMoreSucess(List<Bbs> bbses);
+    void searchData(List<Bbs> bbses);
 }

@@ -36,7 +36,6 @@ import com.coolwin.XYT.Entity.Session;
 import com.coolwin.XYT.adapter.ChatPersonAdapter;
 import com.coolwin.XYT.dialog.MMAlert;
 import com.coolwin.XYT.dialog.MMAlert.OnAlertSelectId;
-import com.coolwin.XYT.fragment.ChatFragment;
 import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.global.GlobleType;
 import com.coolwin.XYT.global.IMCommon;
@@ -259,7 +258,6 @@ public class ChatDetailActivity extends BaseActivity implements OnClickListener,
 						if(existSession!=null && existSession.isTop <= 0){
 							existSession.isTop =  sessionTable.getTopSize()+1;
 							sessionTable.update(existSession, existSession.type);
-							sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 						}
 						mIsTopMsg = true;
 					}
@@ -283,7 +281,6 @@ public class ChatDetailActivity extends BaseActivity implements OnClickListener,
 							}
 							existSession.isTop =  0;
 							sessionTable.update(existSession, existSession.type);
-							sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 						}
 						mIsTopMsg = false;
 					}
@@ -569,7 +566,6 @@ public class ChatDetailActivity extends BaseActivity implements OnClickListener,
 					Intent chatIntent = new Intent(ChatMainActivity.REFRESH_ADAPTER);
 					chatIntent.putExtra("id", mGroupID);
 					mContext.sendBroadcast(chatIntent);
-					mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 					mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 					break;
 
@@ -774,7 +770,6 @@ public class ChatDetailActivity extends BaseActivity implements OnClickListener,
 
 					SessionTable table = new SessionTable(db);
 					table.insert(session);
-					sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 
 					mGroupDetail = room;
 					if(mList!=null && mList.size()>0){
@@ -1297,9 +1292,8 @@ public class ChatDetailActivity extends BaseActivity implements OnClickListener,
 							//roomUserTable.delete(roomId);
 							RoomTable table = new RoomTable(db);
 							table.delete(roomId);
-							Intent intent = new Intent(ChatFragment.DELETE_ROOM_SUCCESS);
-							intent.putExtra("froom_id", roomId);
-							sendBroadcast(intent);
+//							intent.putExtra("froom_id", roomId);
+//							sendBroadcast(intent);
 							sendBroadcast(new Intent(ChatMainActivity.DESTORY_ACTION));
 							Intent delRoomList = new Intent(MyGroupListActivity.MY_ROOM_BE_DELETED_ACTION);//roomID
 							delRoomList.putExtra("roomID",roomId );
@@ -1341,10 +1335,10 @@ public class ChatDetailActivity extends BaseActivity implements OnClickListener,
 							SQLiteDatabase db = DBHelper.getInstance(mContext).getWritableDatabase();
 							RoomTable table = new RoomTable(db);
 							table.delete(roomId);
-							Intent intent = new Intent(ChatFragment.DELETE_ROOM_SUCCESS);
-							sendBroadcast(new Intent(ChatMainActivity.DESTORY_ACTION));
-							intent.putExtra("froom_id", roomId);
-							sendBroadcast(intent);
+//							Intent intent = new Intent(ChatFragment.DELETE_ROOM_SUCCESS);
+//							sendBroadcast(new Intent(ChatMainActivity.DESTORY_ACTION));
+//							intent.putExtra("froom_id", roomId);
+//							sendBroadcast(intent);
 
 							Intent delRoomList = new Intent(MyGroupListActivity.MY_ROOM_BE_DELETED_ACTION);//roomID
 							delRoomList.putExtra("roomID",roomId );

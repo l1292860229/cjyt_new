@@ -31,7 +31,7 @@ public class InformationPresenter extends BasePresenter<UIInformation> {
         @POST
         Observable<RetrofitResult> delete(@Url String url,@Query("id") String id,
                                                               @Query("ka6id") String ka6id, @Query("token") String token,
-                                                                @Query("ypid") String ypid,@Query("uid") String uid);
+                                                                @Query("ypid") String ypid,@Query("uid") String uid,@Query("type") String type);
     }
     CertificationServlet servlet;
     public InformationPresenter(){
@@ -68,8 +68,8 @@ public class InformationPresenter extends BasePresenter<UIInformation> {
                     }
                 });
     }
-    public void deleteData(String id){
-        servlet.delete(UrlConstants.BASEURL2+"delinformation",id,login.kai6Id,login.token,login.ypId,login.uid)
+    public void deleteData(String id,String type){
+        servlet.delete(UrlConstants.BASEURL2+"delinformation",id,login.kai6Id,login.token,login.ypId,login.uid,type)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<RetrofitResult>() {

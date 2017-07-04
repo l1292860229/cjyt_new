@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -32,11 +31,13 @@ import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 
 public class WebViewActivity extends BaseActivity {
     public static final String WEBURL = "url";
+    public static final String SHOWRIGHT = "isShowRight";
     ActivityWebviewBinding binding;
     public String mUrl;
     private GestureDetector gestureDetector;
     private int downX, downY;
     private MyWebViewClient  webViewClient;
+    private boolean isShowRight=true;
     @Override
     @SuppressLint({"JavascriptInterface", "SetJavaScriptEnabled", "AddJavascriptInterface"})
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +45,9 @@ public class WebViewActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_webview);
         binding.titleLayout.setBehavior(this);
         mUrl = this.getIntent().getStringExtra(WEBURL);
+        isShowRight = this.getIntent().getBooleanExtra(SHOWRIGHT,true);
         //WebView加载web资源
         binding.webView.loadUrl(mUrl);
-        Log.e("WebViewActivity","mUrl="+mUrl);
         initWebView();
         setActionBarLayout();
         Phoenix.with(binding.webloading)
@@ -72,7 +73,9 @@ public class WebViewActivity extends BaseActivity {
         binding.titleLayout.leftTitle.setText("返回");
         binding.titleLayout.leftTitle2.setText("关闭");
         binding.titleLayout.rightBtn.setImageResource(R.drawable.more_btn);
-        binding.titleLayout.rightBtn.setVisibility(View.VISIBLE);
+        if(isShowRight){
+            binding.titleLayout.rightBtn.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -215,36 +218,6 @@ public class WebViewActivity extends BaseActivity {
         }
         super.onDestroy();
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.shanji:
-//                Intent shanjiIntent = new Intent();
-//                shanjiIntent.setClass(mWebview,SendMovingActivity.class);
-//                shanjiIntent.putExtra("url",mUrl);
-//                shanjiIntent.putExtra("title", urltitle);
-//                if (IMCommon.getLoginResult(mWebview).userDj.equals("0")) {
-//                    Toast.makeText(mWebview,"等级不够无法分享", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                startActivity(shanjiIntent);
-//                break;
-//            case R.id.friend:
-//                getUrlImage();
-//                Intent friendIntent = new Intent();
-//                friendIntent.setClass(mWebview, ShareActivity.class);
-//                friendIntent.putExtra("url",mUrl);
-//                friendIntent.putExtra("title", urltitle);
-//                friendIntent.putExtra("imagePath", ImagePath);
-//                friendIntent.putExtra("shareurl_msg", new ShareUrl(mUrl,urltitle,ImagePath));
-//                startActivity(friendIntent);
-//                break;
-//            default:
-//                break;
-//        }
-//        shareLayout.setVisibility(View.GONE);
-//    }
     //分享详细
     @Override
     public boolean onKeyDown(int keyCoder, KeyEvent event) {

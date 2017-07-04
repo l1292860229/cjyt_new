@@ -44,7 +44,6 @@ import com.coolwin.XYT.Entity.Room;
 import com.coolwin.XYT.Entity.Session;
 import com.coolwin.XYT.Entity.ShareUrl;
 import com.coolwin.XYT.adapter.ChooseUserListAdapter;
-import com.coolwin.XYT.fragment.ChatFragment;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
 import com.coolwin.XYT.global.IMCommon;
@@ -406,7 +405,6 @@ public class ChooseUserActivity extends BaseActivity implements OnItemClickListe
 				SessionTable sessionTable = new SessionTable(db);
 				sessionTable.insert(session);
 
-				sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 
 				Login user = new Login();
 				user.phone = room.groupId;

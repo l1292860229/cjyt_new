@@ -1,10 +1,7 @@
 package com.coolwin.XYT.adapter;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.coolwin.XYT.Entity.MyInformation;
@@ -26,13 +23,10 @@ public class InformationAdapter extends BaseAdapter<MyInformation>{
         super(context);
         this.mList = mList;
     }
+
     @Override
-    public MyRecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ShopCommodityBinding shopCommodityBinding =  DataBindingUtil.
-                inflate(LayoutInflater.from(parent.getContext()), R.layout.shop_commodity, parent, false);
-        MyRecycleViewHolder myRecycleViewHolder = new MyRecycleViewHolder(shopCommodityBinding.getRoot());
-        myRecycleViewHolder.setBinding(shopCommodityBinding);
-        return myRecycleViewHolder;
+    public int getLayoutId() {
+        return R.layout.shop_commodity;
     }
     @Override
     public void onBindViewHolder(final MyRecycleViewHolder holder, int position) {

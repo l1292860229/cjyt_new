@@ -17,9 +17,9 @@ public class ChatMainBbsActivity extends BaseActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bbschat_main);
-        chatFragment = ChatFragment.newInstance(true);
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, chatFragment)
-                .show(chatFragment).commit();
+//        chatFragment = ChatFragment.newInstance(true);
+//        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, chatFragment)
+//                .show(chatFragment).commit();
         setTitleContent(R.drawable.back_btn,0, "");
         mTitleView = (TextView)findViewById(R.id.title);
         mTitleView.setText("社群消息");

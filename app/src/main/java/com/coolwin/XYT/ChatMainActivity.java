@@ -99,13 +99,13 @@ import com.coolwin.XYT.Entity.UserMenuList;
 import com.coolwin.XYT.Entity.Video;
 import com.coolwin.XYT.action.AudioPlayListener;
 import com.coolwin.XYT.action.AudioRecorderAction;
+import com.coolwin.XYT.activity.LocationActivity;
 import com.coolwin.XYT.adapter.EmojiAdapter;
 import com.coolwin.XYT.adapter.EmojiUtil;
 import com.coolwin.XYT.adapter.IMViewPagerAdapter;
 import com.coolwin.XYT.control.ReaderImpl;
 import com.coolwin.XYT.dialog.MMAlert;
 import com.coolwin.XYT.dialog.MMAlert.OnAlertSelectId;
-import com.coolwin.XYT.fragment.ChatFragment;
 import com.coolwin.XYT.global.AjaxCallBack;
 import com.coolwin.XYT.global.FeatureFunction;
 import com.coolwin.XYT.global.GlobalParam;
@@ -293,8 +293,6 @@ public class ChatMainActivity  extends BaseActivity implements OnItemLongClickLi
 				}
 				lbs= location.getLatitude()+","+location.getLongitude();
 			}
-			@Override
-			public void onReceivePoi(BDLocation location) {}
 		});
 		locationClient.start();
 		/*
@@ -1164,7 +1162,6 @@ public class ChatMainActivity  extends BaseActivity implements OnItemLongClickLi
 		MessageTable messageTable = new MessageTable(db);
 		boolean status = messageTable.updateReadState(fCustomerVo.phone, mType,bid);
 		if(status){
-			mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 			mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 			if(mType == GlobleType.MEETING_CHAT){
 				mContext.sendBroadcast(new Intent(MettingDetailActivity.ACTION_HIDE_NEW_MEETING_TIP));
@@ -1596,7 +1593,6 @@ public class ChatMainActivity  extends BaseActivity implements OnItemLongClickLi
 								messageTable.delete(fCustomerVo.uid, 300);
 								sessionTable.delete(fCustomerVo.phone, 300);
 
-								mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 								mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 							}
 							mHandler.sendEmptyMessage(SHOW_KICK_OUT_DIALOG);
@@ -1667,7 +1663,6 @@ public class ChatMainActivity  extends BaseActivity implements OnItemLongClickLi
 		session.bid=bid;
 		insertSession(session);
 
-		mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 	}
 
 	@Override
@@ -1700,7 +1695,6 @@ public class ChatMainActivity  extends BaseActivity implements OnItemLongClickLi
 		if(mReaderImpl != null){
 			mReaderImpl.unregisterRecordReceiver();
 		}
-		mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 		mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 		playListener.stop();
 
@@ -2845,7 +2839,6 @@ public class ChatMainActivity  extends BaseActivity implements OnItemLongClickLi
 						|| ((msg.typechat == GlobleType.GROUP_CHAT || msg.typechat == GlobleType.MEETING_CHAT)  && msg.toid.equals(fCustomerVo.phone))){
 					msg.readState = 1;
 					updateMessage(msg);
-					mContext.sendBroadcast(new Intent(ChatFragment.ACTION_REFRESH_SESSION));
 					mContext.sendBroadcast(new Intent(GlobalParam.ACTION_UPDATE_SESSION_COUNT));
 					notifyMessage(msg);
 				}

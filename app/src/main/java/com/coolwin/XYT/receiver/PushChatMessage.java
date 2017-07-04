@@ -11,7 +11,6 @@ import android.util.Log;
 import com.coolwin.XYT.DB.DBHelper;
 import com.coolwin.XYT.DB.MessageTable;
 import com.coolwin.XYT.Entity.MessageInfo;
-import com.coolwin.XYT.fragment.ChatFragment;
 import com.coolwin.XYT.service.SnsService;
 import com.coolwin.XYT.service.XmppManager;
 
@@ -123,9 +122,9 @@ public class PushChatMessage implements PushMessage {
 				String group = intent.getStringExtra("groupname");
 				int isResend = intent.getIntExtra("isResend", 0);
 				if(isResend == 0){
-					Intent refreshIntent = new Intent(ChatFragment.ACTION_REFRESH_SESSION);
-					refreshIntent.putExtra("message", info);
-					context.sendBroadcast(refreshIntent);
+//					Intent refreshIntent = new Intent(ChatFragment.ACTION_REFRESH_SESSION);
+//					refreshIntent.putExtra("message", info);
+//					context.sendBroadcast(refreshIntent);
 				}
 
 				if(info != null){

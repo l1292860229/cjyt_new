@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="behavior"
+            type="com.coolwin.XYT.fragment.ChatFragment" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/chats_list"
+            android:layout_below="@+id/title_layout"
+            android:dividerHeight="0.3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"/>
+    </RelativeLayout>
+</layout>

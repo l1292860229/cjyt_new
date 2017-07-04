@@ -6,25 +6,19 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 
 import com.ab.fragment.AbAlertDialogFragment;
 import com.ab.util.AbDialogUtil;
-import com.bigkoo.convenientbanner.ConvenientBanner;
-import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
-import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.coolwin.XYT.Entity.DataModel;
 import com.coolwin.XYT.R;
 import com.coolwin.XYT.adapter.MyIndexAdapter;
-import com.coolwin.XYT.databinding.AddIndexPictureBinding;
 import com.coolwin.XYT.databinding.IndexRecyclerBinding;
 import com.coolwin.XYT.interfaceview.UIMyIndex;
 import com.coolwin.XYT.presenter.MyIndexPresenter;
 import com.coolwin.library.helper.ItemTouchCallBack;
-import com.coolwin.library.helper.LocalImageHolderView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +32,7 @@ import static com.coolwin.XYT.activity.UpdatePicIndexActivity.DATAKEY;
 
 public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements UIMyIndex {
     public static final int BACKPIC=1;
+    public static final int BACKTEMPLATEPIC=2;
     IndexRecyclerBinding binding;
     private MyIndexAdapter mAdapter;
     List<DataModel> datas = new ArrayList<>();
@@ -84,39 +79,17 @@ public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements U
      */
     @Override
     public void right_text2(View view) {
-        AddIndexPictureBinding binding =  DataBindingUtil.inflate(LayoutInflater.from(this),R.layout.add_index_picture,null,false);
-        binding.setBehavior(this);
-        final List<Integer> countInt = new ArrayList<>();
-        countInt.add(1);
-        countInt.add(2);
-        countInt.add(3);
-        countInt.add(4);
-        countInt.add(5);
-        binding.convenientBanner.setPages(new CBViewHolderCreator() {
-            @Override
-            public Object createHolder() {
-                return new LocalImageHolderView(widthPixels);
-            }
-        },countInt)
-        //设置指示器的方向
-        .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
-        binding.convenientBanner.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                DataModel model = new DataModel();
-                int index =  countInt.get(position);
-                model.datas = new ArrayList<>();
-                for (int i = 0; i < index; i++) {
-                    model.datas.add(model.new Data());
-                }
-                mAdapter.getData().add(model);
-                mAdapter.notifyItemInserted(mAdapter.getData().size()-1);
-                abSampleDialogFragment.dismiss();
-            }
-        });
-        abSampleDialogFragment = AbDialogUtil.showDialog(binding.getRoot());
+        startActivityForResult(new Intent(context,SelectTemplatePicActivity.class),BACKTEMPLATEPIC);
     }
-
+    public void openLunBo(View view){
+        DataModel model = new DataModel();
+        model.bannerList = new ArrayList<>();
+        model.bannerList.add(model.new BannerList(""));
+        datas.add(0,model);
+        mAdapter.setData(datas);
+        mAdapter.notifyDataSetChanged();
+        abSampleDialogFragment.dismiss();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -129,6 +102,31 @@ public class MyIndexActivity extends BaseActivity<MyIndexPresenter> implements U
                         mAdapter.getData().remove(position);
                         mAdapter.getData().add(position,dataModel);
                         mAdapter.notifyItemChanged(position);
+                    }
+                    break;
+                case BACKTEMPLATEPIC:
+                    if(data!=null){
+                        DataModel dataModel = (DataModel) data.getSerializableExtra(SelectTemplatePicActivity.DATA);
+                        if(dataModel.bannerList!=null && dataModel.bannerList.size()>0){
+                            datas =  mAdapter.getData();
+                            if(datas==null){
+                                datas = new ArrayList<>();
+                            }
+                            if(datas.size()==0){
+                                datas.add(dataModel);
+                            }else if (datas.get(0).bannerList!=null) {
+                                    datas.remove(0);
+                                    datas.add(0,dataModel);
+                            }else{
+                                datas.add(0,dataModel);
+                            }
+                            mAdapter.setData(datas);
+                            mAdapter.notifyItemChanged(0);
+                            return;
+                        }else{
+                            mAdapter.getData().add(dataModel);
+                        }
+                        mAdapter.notifyItemChanged(mAdapter.getData().size()-1);
                     }
                     break;
             }

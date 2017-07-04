@@ -25,10 +25,10 @@ public class OrderList implements Serializable {
 				JSONArray array = json.getJSONArray("data");
 				if(array != null){
 					mOrderList = new ArrayList<Order>();
-					List<Order> tempList = Order.constructOrderList(array);
-					if(tempList != null){
-						mOrderList.addAll(tempList);
-					}
+//					List<Order> tempList = Order.constructOrderList(array);
+//					if(tempList != null){
+//						mOrderList.addAll(tempList);
+//					}
 				}
 			}
 			
